@@ -1,0 +1,76 @@
+ int i;
+    int j;
+    int k;
+    int l;
+
+    for(i=0; i=6; i++){    //sorok
+        printf(" * ");
+        if(i=6){
+            for(l=0; l<5; l++){
+             //printf("%d\n", l);
+           printf(" * \n");
+                    }
+
+               }
+
+        /*
+        for(k=0; k<6; k++)
+        printf("%d ", i);
+        //printf(" * ");
+        */
+    }
+    /*
+    for (j=0; j< 5; j++){ //oszlopok
+        for(l=0; l<5; l++){
+             printf("%d\n", j);
+           //printf(" * ");
+        }
+
+       }*/
+
+
+
+
+
+
+régebbi:
+
+ int i;
+    int j;
+    int k;
+    int l;
+
+
+    for(i=0; i<6; i++){   //sorok
+        for(k=0; k<6; k++){
+            //printf("%d ", i);
+        printf(" * ");
+        }
+
+    }
+    for (j=0; j< 5; j++){ //oszlopok
+        for(l=0; l<5; l++){
+             //printf("%d\n", j);
+           printf(" * ");
+        }
+
+       }
+
+
+jól müködõ sor és oszlop:
+
+   int i;
+    int j;
+
+
+    for(i=0; i<6; i++){   //sorok
+
+        printf(" * ");
+
+    }
+    for (j=0; j< 5; j++){ //oszlopok
+
+        printf(" * \n");
+
+
+       }
