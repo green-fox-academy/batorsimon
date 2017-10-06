@@ -19,6 +19,8 @@ int main()
     int to;
     int i;
     int mennyi;
+    int prim = 0;
+    int nem_prim = 0;
 
     printf("Prim szamok vizsgalata!\n");
     printf("Adja meg a kezdo erteket: \n");
@@ -26,43 +28,55 @@ int main()
     printf("Adja meg a vegerteket: \n");
     scanf("%d", &to);
 
-    for(i = from; i <= to; i++) {
+    for(i = from; i < to; i++) {
 
             switch(i){
             case 1 : i%9 == 0;
-                    continue;
+                     nem_prim++;
 
             case 2 : i%8 == 0;
-                     continue;
+                     nem_prim++;
+
             case 3 : i%7 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
             case 4 : i%6 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
             case 5 : i%5 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
             case 6 : i%4 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
             case 7 : i%3 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
             case 8 : i%2 == 0;
-                     continue;
+                     //continue;
+                      nem_prim++;
 
-            case 9 : i%1 == 0;
-                     printf("The prime numbers: %d \n", i);
+            case 9 : i%1 == 0 && i%i == 0;
+                     mennyi++;
+                     prim = i;
+                     printf("The prime numbers: %d \n", prim);
 
 
-            case 10 : i%i == 0;
-                      printf("The prime numbers: %d \n", i);
+           // case 10 : i%i == 0;
+                      //printf("The prime numbers: %d \n", i);
             }
 
-            printf("These are the %d numbers\n", i, mennyi);
 
     }
+    //printf("These are the %d numbers\n", i);
+    printf("The not prime numbers: %d \n", nem_prim);
+    printf("These was %d prime numbers.\n", mennyi);
+
 
 
     return 0;
