@@ -15,37 +15,46 @@ create a program which draws a diamond, like this:
 
 (6* 8) +1 oszlop teli + (6*8)
 
- *
- *  *  *  *  *  *
- *  *  *  *  *  *
- *  *  *  *  *  *
- *  *  *  *  *
-
- 1x5
-
 
 */
 
 
 int main()
 {
-    int i;
-    int j;
-    int k;
-    int l;
+    int bevitel=0, c=0, k=0, space = 1;
 
+    printf("Enter number of rows\n");
+    scanf("%d", &bevitel);
 
-    for (j=0; j< 4; j++){ //sorok
+    space = bevitel - 1;
 
-        printf(" * \n");
+    for (k = 1; k <= bevitel; k++)
+    {
+    for (c = 1; c <= space; c++)
+      printf(" ");
 
-        for(k=0; k<6; k++){  //oszlopok
-             printf(" * ");
-        }
+    space--;
 
+    for (c = 1; c <= 2*k-1; c++)
+        printf("*");
 
-       }
+    printf("\n");
+    }
 
+    space = 1;
+
+    for (k = 1; k <= bevitel - 1; k++)
+    {
+    for (c = 1; c <= space; c++)
+      printf(" ");
+
+    space++;
+
+    for (c = 1 ; c <= 2*(bevitel-k)-1; c++)
+      printf("*");
+
+    printf("\n");
+    }
 
 
     return 0;

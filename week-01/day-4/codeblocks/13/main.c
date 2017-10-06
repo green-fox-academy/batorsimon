@@ -16,13 +16,13 @@ print out at least 10 lines
 
 int main()
 {
-    float i;û
+    float i;
     float fahrenheit = 0;
     float celsius = 0;
 
     for(i=1; i<11; i++){
         celsius = i;
-       fahrenheit = (1.8 * celsius)+32;
+        fahrenheit = (1.8 * celsius)+32;
         printf("Fahrenheit: %f Celsius: %f\n", fahrenheit, celsius);
     }
 

@@ -1,0 +1,86 @@
+Simon Bátor. 2017.10.06.
+
+
+1. feladat:
+
+abc.c
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+//writing ABC with loop like this : aAbBcC...zZ
+
+int main()
+{
+    char a;
+    char b;
+
+    for(a = 'a'; a <= 'z'; a++){
+            b=a-32;
+            printf("%c%c ", a, b);
+
+    }
+    
+    /*
+    for(a = 'A'; a <= 'Z'; a++){
+        for(b = 'a'; b <='z'; b++){
+             printf("%c%c ", a, b);
+        }
+    }  */
+
+    return 0;
+}
+
+
+2. feladat:
+
+ASCII.c
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+//create a program to print ASCII values of all characters.
+/*your output should be something like this:
+ASCII value of character 8 = 56
+ASCII value of character 9 = 57
+ASCII value of character : = 58
+ASCII value of character ; = 59
+ASCII value of character < = 60
+ASCII value of character = = 61
+ASCII value of character > = 62
+ASCII value of character ? = 63
+ASCII value of character @ = 64
+ASCII value of character A = 65
+ASCII value of character B = 66
+*/
+
+int main()
+{
+    /*
+    int i;
+    i=0;
+    do
+    {
+        printf("%d %c \n",i,i);
+        i++;
+    }
+    while(i<=255);
+    return 0;
+    */
+
+    int b=33;
+    char a=0;
+
+    for(a = '!'; a <= '~'; a++){
+            printf("ASCII value of character %c = %d\n", a, b);
+            b++;
+
+    }
+
+    return 0;
+
+}
+
+
