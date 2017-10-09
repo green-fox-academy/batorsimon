@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507559340 source:d:\én\greenfox\week-01\day-5\codeblocks\factorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"number.h"
+
+1507559097 d:\én\greenfox\week-01\day-5\codeblocks\factorio\number.h
+
