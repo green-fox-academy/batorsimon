@@ -16,11 +16,10 @@ int main()
 int sum(number)
 {
     int i= 0;
-    int j = 0;   //if i want to use factorial set it to 1
+    int j = 0;
 
-    for(i=0; i <= number; i++)  //if i want to use factorial set i to 1
+    for(i=0; i <= number; i++)
     {
-       // j = j * i;  //if I would like to use as  a factorial
         j += i;
     }
     return j;
