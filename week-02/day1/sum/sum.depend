@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507557883 source:d:\én\greenfox\week-02\day1\sum\main.c
+	<stdio.h>
+	<stdlib.h>
+	"number.h"
+
+1507556655 d:\én\greenfox\week-02\day1\sum\number.h
+
