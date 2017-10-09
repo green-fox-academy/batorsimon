@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507567312 source:d:\én\greenfox\week-02\day1\double\main.c
+	<stdio.h>
+	<stdlib.h>
+	"parameters.h"
+
+1507567325 d:\én\greenfox\week-02\day1\double\parameters.h
+
