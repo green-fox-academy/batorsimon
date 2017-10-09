@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507561724 source:d:\én\greenfox\week-02\day1\greet\main.c
+	<stdio.h>
+	<stdlib.h>
+	"greet_names.h"
+
+1507562020 d:\én\greenfox\week-02\day1\greet\greet_names.h
+
