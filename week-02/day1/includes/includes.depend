@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1507555666 source:d:\én\greenfox\week-02\day1\includes\main.c
+	<stdio.h>
+	<stdlib.h>
+	"another_file.h"
+
+1507555588 d:\én\greenfox\week-02\day1\includes\another_file.h
+
+1507555457 source:d:\én\greenfox\week-02\day1\includes\another_file.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	"another_file.h"
+
+1507555457 d:\én\greenfox\week-02\day1\includes\another_file.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	"another_file.h"
+
