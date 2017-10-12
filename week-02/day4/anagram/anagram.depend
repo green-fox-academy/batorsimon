@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1507808785 source:d:\én\greenfox\week-02\day4\anagram\main.c
+	<stdio.h>
+	<stdlib.h>
+
