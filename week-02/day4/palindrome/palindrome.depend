@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1507818395 source:d:\én\greenfox\week-02\day4\palindrome\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

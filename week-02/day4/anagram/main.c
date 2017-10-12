@@ -34,9 +34,9 @@ void anagram()
 
     for(i = 0; i < sizeof input_length; i++)
     {
-
-        for(j = 0; j < sizeof input2_length; j++){
+        for(j = 0; j < sizeof input2_length; j++) {
             if(input[i] == input2[j]){
+
                     printf("Megeggyezik\n");
 
             }
