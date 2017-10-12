@@ -15,22 +15,21 @@ int main()
     int i = 0;
 
     printf("I choosed a number between 1 and 100. \nGuess a number: \n");
+    printf("You have %d lives.\n", lives);
 
-    for(lives; lives >= 0; lives--){
-        printf("You have %d lives remaining\n", lives);
-        --lives;
+    for(i; i < 10; i++){
         scanf("%d", &guess);
         if(random == guess){
         printf("Winning!");
         exit(0);
         } else {
+        lives--;
         printf("Guess another! You have %d lives remaining\n", lives);
         }
-        if(lives == 1){
-            printf("Vesztettél!");
+        if(lives == 0){
+            printf("Loser!");
             exit(0);
         }
-
     }
     return 0;
 }
