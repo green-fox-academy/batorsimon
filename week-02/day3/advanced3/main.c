@@ -15,6 +15,7 @@ int main()
     int i = 0;
     int j = 0;
     int k = 0;
+    int count = 0;
 
     //int b = rand();
 
@@ -36,12 +37,22 @@ int main()
     printf("Now lets see which of the given numbers were unique: \n");
 
     for(i = 1; i < size_of_arr; i++) {
-        printf("%d\n", arr[i]);
-        c = arr[i];
-
-        if(i == c) {
-            printf("%d\n", c);
+            count = 1;
+            for(k = i+1; k < numbers_in_arr; k++) {
+                 if(arr[i] == arr[k]){
+                     count ++;
+                    freq[j] = 0;
+                 }
             }
+            if(freq[i] !=0){
+                freq[i] = count;
+            }
+    }
+
+    for(i = 1; i < size_of_arr; i++){
+        if(freq[i] == 1) {
+            printf(" %d\n", freq[i]);
+        }
     }
 
 

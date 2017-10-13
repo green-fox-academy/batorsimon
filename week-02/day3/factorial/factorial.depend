@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1507802199 source:d:\én\greenfox\week-02\day3\factorial\main.c
+	<stdio.h>
+	<stdlib.h>
+

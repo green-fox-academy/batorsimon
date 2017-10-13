@@ -4,25 +4,39 @@
 // create a function which returns the power of a base number
 //int exponent(base, power);
 
+int exponent(int power);
+
 int main()
 {
     int base = 2;
     int power = 7;
 
-    int j = 0;
-    int result = 0;
+    int exponent();
+    print("%d", exponent(result));
 
-    for(j=1; j < power*power; j = j*2)
-    {
-        result = (base * base) * j;
-        printf("%d\n", result);    //ha látni szeretném a hatványokat
-    }
-    printf("%d base on the power of %d is: %d\n", base, power, result);
     return 0;
 }
 
-int exponent(int i)
+int exponent(int power)
 {
+    int base = 2;
+    //int power = 7;
+
+    int a = 1;
+    int j = 0;
+    int result = 1;
+
+    for(j=power; j > 0; )
+    {
+        a = (base * base)/2;
+        result = a * result;
+        printf("%d\n", result);
+        j--;
+    }
+    printf("%d base on the power of %d is: %d\n", base, power, result);
+    return result;
+
+
 
 
 }

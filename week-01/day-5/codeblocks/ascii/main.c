@@ -18,18 +18,6 @@ ASCII value of character B = 66
 
 int main()
 {
-    /*
-    int i;
-    i=0;
-    do
-    {
-        printf("%d %c \n",i,i);
-        i++;
-    }
-    while(i<=255);
-    return 0;
-    */
-
     int b=33;
     char a=0;
 

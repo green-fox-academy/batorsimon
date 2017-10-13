@@ -11,20 +11,18 @@ int factorio();
 
 int main()
 {
-    printf("The given number is: %d and factorial of the number is: %d \n", number, factorio(number));
+    printf("The number is: %d and factorial of the number is: %d \n", number, factorio(number));
     return 0;
 }
 
 int factorio(number)
 {
     int i = 0;
-    int j = 1;
-
     for(i =1; i <= number; i++)
     {
-        j = j * i;
+        number = (number+1) * number;
     }
-    return j;
+    return number;
 
 
 }

@@ -11,14 +11,12 @@ int main()
 
     int i = 0;
     int j = 0;
-
-    for(i = 0; i < 50; i++) {
-        for(j = 200; j >= -200; j--) {
-                if(j%17==0 && j%5==0) {
-                    my_array[i] = j;
-                    printf("%d\n", my_array[i]);
-                    }
-                }
+    for(i = 0,j = 200; i < 50; j--) {
+        if(j%17==0 && j%5==0) {
+            my_array[i] = j;
+            printf("%d. ik ertek: %d\n", i,my_array[i]);
+            i++;
+            }
     }
 
     return 0;
