@@ -1,1 +1,1 @@
-int number=12;
+int number=0;

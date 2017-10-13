@@ -7,18 +7,25 @@
 
 #include "number.h"
 
-//int fibonacci(number);
-
 int main()
 {
-    fibonacci();
+    fibonacci(number);
+    printf("Write a number and you will get the Fibonacci value of it: ");
+    scanf("%d", &number);
+    printf("The number: %d Fibonacci value is: %d.", number, fibonacci());
+
     return 0;
 }
 
-int fibonacci(number)
+int fibonacci()
 {
-    if (number <= 2)
-        return 1;
-    else
-        return fibonacci(number - 1) + fibonacci(number - 2);
+    int i;
+    int fibonacci[number+1];
+    fibonacci[0] = 0;
+    fibonacci[1] = 1;
+    fibonacci[2] = 1;
+    for(i = 3; i<= number; i++){
+        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+    }
+        return fibonacci[number];
 }
