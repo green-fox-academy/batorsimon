@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507900137 source:d:\én\greenfox\week-02\day5\fibonacci memoization\main.c
+	<stdio.h>
+	<stdlib.h>
+	"number.h"
+
+1507899751 d:\én\greenfox\week-02\day5\fibonacci memoization\number.h
+
