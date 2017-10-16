@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1508161691 source:d:\én\greenfox\week-03\day1\numberprinter\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+
