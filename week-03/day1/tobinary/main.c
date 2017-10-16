@@ -9,14 +9,12 @@
 
 int int_to_bin_digit(int in, int count)
 {
-
-	int mask = 1U << (count);
+	int mask = 0x00 << (count);
 	int i = 0;
     printf("The number %d and %d bitwise ANDed together is: ", in, count);
 	for (i = 0; i < count; i++) {
 		int result = (in & mask) ? 1 : 0;
 		printf("%d", result);
-		//in = in < 1;
 	}
 }
 
