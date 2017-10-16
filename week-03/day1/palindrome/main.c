@@ -23,8 +23,8 @@ void  palindrome(char input)
 	int i = 0;
 
 	for (i; i < strlen(input); i++) {
-		pointer = input[i];
-			printf("%s", input[i]);
+        pointer = input[i];
+        printf("%s", input[i]);
 
 
 		printf("%c", pointer);

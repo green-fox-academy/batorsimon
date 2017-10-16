@@ -4,41 +4,35 @@
 // create a function which returns the power of a base number
 //int exponent(base, power);
 
-int exponent(int power);
+int exponent(int base1, int power1);
 
 int main()
 {
     int base = 2;
     int power = 7;
+    int ret;
 
-    int exponent();
-    print("%d", exponent(result));
+    ret = exponent(base, power);
 
     return 0;
 }
 
-int exponent(int power)
+int exponent(int base1, int power1)
 {
-    int base = 2;
-    //int power = 7;
 
     int a = 1;
     int j = 0;
     int result = 1;
 
-    for(j=power; j > 0; )
+    for(j=power1; j > 0; )
     {
-        a = (base * base)/2;
+        a = (base1 * base1)/2;
         result = a * result;
         printf("%d\n", result);
         j--;
     }
-    printf("%d base on the power of %d is: %d\n", base, power, result);
+    printf("%d base on the power of %d is: %d\n", base1, power1, result);
     return result;
-
-
-
-
 }
 
 

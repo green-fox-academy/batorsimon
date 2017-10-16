@@ -4,22 +4,30 @@
 //Josephus Problem is when you have a circle of n people standing
 //you want to cross out every second person step-by-step until only one remains
 
-int rows();
+int circle();
 
-int rows(int number)
+int circle(int soldiers_number, int starting_pos)
 {
-    if (number <= 2)
-        return 1;
-    else
-        return rows(number - 1) * number;
+    if (soldiers_number == 1) {
+        return soldiers_number;
+    }
+    else {
+        return (circle(soldiers_number - 1, starting_pos) + starting_pos-1) % soldiers_number + 1;
+    }
 }
 
 int main()
 {
-    int number_of_people = 0;
-    int solider = 0;
+     int soldiers_number, starting_pos;
+    printf("Enter the number of soldiers: ");
+    scanf("%d", &soldiers_number);
+    if (soldiers_number < 1) {
+            printf("This is not a positive number");
+            exit(0);
+    }
+    starting_pos = 2;
 
-     printf("%d\n", rows(10));
+    printf("The chosen place is %d to survive", circle(soldiers_number, starting_pos));
 
     return 0;
 }
