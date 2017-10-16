@@ -5,7 +5,16 @@
 //project-guessing-game
 //Note: the program gets harder, when you set a lower range
 
+int searching();
+
 int main()
+{
+	searching();
+
+    return 0;
+}
+
+int searching()
 {
     int x = 1;
 	int count = 0;
@@ -43,5 +52,5 @@ int main()
             printf("You have used all your lives!");
 	}
 
-    return 0;
+
 }
