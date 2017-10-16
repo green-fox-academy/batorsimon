@@ -4,18 +4,18 @@
 //project-guessing-game
 //Note: the program gets harder, when you set a lower range
 
-int minandmaxvalues(int *rand_num);
+int min_and_max_values(int *rand_num);
 int guessing(int rand_num);
 
 int main()
 {
     int rand_num;
-	minandmaxvalues(&rand_num);
+	min_and_max_values(&rand_num);
 	guessing(rand_num);
     return 0;
 }
 
-int minandmaxvalues(int *rand_num)
+int min_and_max_values(int *rand_num)
 {
 	int rand_max = 0;
 	int rand_min = 0;
