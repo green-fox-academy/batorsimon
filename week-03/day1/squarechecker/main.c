@@ -6,20 +6,22 @@
 
 int main()
 {
-    int number = 0;
-    int result = 0;
+    float number = 0;
+    float result = 0;
 	printf("Please enter a number: ");
 	fflush(stdin);
-	scanf("%d", &number);
+	scanf("%f", &number);
+	number = pow(number, 2);
 
 	printf("Please enter the square of that number: ");
 	fflush(stdin);
-	scanf("%d", &result);
+	scanf("%f", &result);
 
-	if ((pow(number, 2)) == result)
+	if (number == result)
 		printf(":)\n");
 	else
 		printf(":(\n");
+		printf("%f\n", result);
 
     return 0;
 }
