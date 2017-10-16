@@ -5,20 +5,20 @@
 //project-guessing-game
 //Note: the program gets harder, when you set a lower range
 
-int searching();
+int minandmaxvalues(int *rand_num);
+int guessing(int rand_num);
 
 int main()
 {
-	searching();
+    int rand_num;
+	minandmaxvalues(&rand_num);
+	guessing(rand_num);
 
     return 0;
 }
 
-int searching()
+int minandmaxvalues(int *rand_num)
 {
-    int x = 1;
-	int count = 0;
-	int guess = 0;
 	int rand_max = 0;
 	int rand_min = 0;
 	printf("please add the minimum number!\n");
@@ -26,10 +26,18 @@ int searching()
 	printf("please add the maximum number!\n");
 	scanf("%d", &rand_max);
 	srand(time(NULL));
-	int rand_num = rand() % (rand_max - rand_min);
+	rand_num = rand() % (rand_max - rand_min);
 
 	printf("I have a number between %d and %d. You have 5 lives\n", rand_min, rand_max);
 	printf("%d\n", rand_num); //generated number
+	//int a = rand_num;
+	//return rand_num;
+}
+int guessing(int rand_num)
+{
+    int x = 1;
+	int count = 0;
+	int guess = 0;
 
 	for (count = 4; count >= 0; count--) {
 		printf("\n");
