@@ -22,17 +22,17 @@ void tasks_prio();
 void new_task();
 void rm_task(int index_task);
 void complete_task(int index_cmp);
-void clear_screen();
 
 int main()
 {
         start_srceen();
 		//Sleep(1000);
-		clear_screen();
+		//clear_screen();
 		printf("Please enter what you want to do: ");
 		int choice = 0;
-		while (choice != 6) {
-        scanf("%d", choice);
+		while (choice != 6){
+            scanf("%d", choice);
+
 
 		if (choice == 0) {
 			printf("program will end now");
@@ -58,8 +58,6 @@ int main()
 		} else {
 			printf("Please choose from the given options\n");
 		}
-		if (choice >= 6) {
-			see_tasks();
 	}
 
 	return 0;
