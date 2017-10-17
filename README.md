@@ -41,8 +41,7 @@
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day4">Day 4</a></li>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day5">Day 5</a></li>
 </ul>
+<br>
 
-<br/>
-<br/>
 ![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/binbrain.jpg)
 
