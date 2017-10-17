@@ -3,6 +3,12 @@
 
 ![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/binbrain.jpg)
 
+####Unordered list (-)
+
+- Item A
+- Item B
+- Item C
+
 #####WEEK-01
 
 -[Day 1](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-1 "day1")
