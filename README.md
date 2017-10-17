@@ -3,11 +3,11 @@
 
 #WEEK-01
 
-[Day 1](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-1 "day1")
-[Day 2](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-2 "day2")
-[Day 3](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-3 "day3")
-[Day 4](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-4 "day4")
-[Day 5](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-5 "day5")
+[Day 1](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-1 "day1")\n
+[Day 2](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-2 "day2")\n
+[Day 3](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-3 "day3")\n
+[Day 4](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-4 "day4")\n
+[Day 5](https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-5 "day5")\n
 
 
 #WEEK-02

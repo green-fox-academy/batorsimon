@@ -29,9 +29,10 @@ int main()
 void transform(char str[], int original_base, int new_base)
 {
     char buffer[20];
+
     if(new_base == 2) {
         itoa(str, buffer, original_base);
-        printf("The original value of %d is %s.\n", a, original_base);
+        printf("The original value of %d is %s.\n", , original_base);
         itoa(, buffer, new_base);
         printf("The binary value of %d is %s.\n", a, new_base);
     }
