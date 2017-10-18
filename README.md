@@ -2,7 +2,7 @@
 
 
 
-<table border="2" cellspacing="10">
+<table border="2">
 <tr>
 <td>
 WEEK-01
@@ -112,7 +112,7 @@ WEEK-08
 
 <tr>
 <td>
-WEEK-01
+WEEK-09
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-1">Day 1</a></li>
@@ -125,7 +125,7 @@ WEEK-01
 </td>
 
 <td>
-WEEK-02
+WEEK-10
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-02/day1">Day 1</a></li>
@@ -138,7 +138,7 @@ WEEK-02
 </td>
 
 <td>
-WEEK-03
+WEEK-11
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-03/day1">Day 1</a></li>
@@ -151,7 +151,7 @@ WEEK-03
 </td>
 
 <td>
-WEEK-04
+WEEK-12
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day1">Day 1</a></li>
@@ -164,7 +164,7 @@ WEEK-04
 </td>
 
 <td>
-WEEK-05
+WEEK-13
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day1">Day 1</a></li>
@@ -177,7 +177,7 @@ WEEK-05
 </td>
 
 <td>
-WEEK-06
+WEEK-14
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day1">Day 1</a></li>
@@ -190,7 +190,7 @@ WEEK-06
 </td>
 
 <td>
-WEEK-07
+WEEK-15
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day1">Day 1</a></li>
@@ -203,7 +203,7 @@ WEEK-07
 </td>
 
 <td>
-WEEK-08
+WEEK-16
 
 <ul>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day1">Day 1</a></li>
