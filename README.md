@@ -43,5 +43,5 @@
 </ul>
 <br>
 
-![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/binbrain.jpg)
+![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/icons3.jpg)
 
