@@ -1,6 +1,10 @@
 # batorsimon
 
 
+
+<table border="2" cellspacing="10">
+<tr>
+<td>
 ### WEEK-01
 
 <ul>
@@ -11,6 +15,9 @@
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-01/day-5">Day 5</a></li>
 </ul>
 
+</td>
+
+<td>
 ### WEEK-02
 
 <ul>
@@ -21,6 +28,9 @@
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-02/day5">Day 5</a></li>
 </ul>
 
+</td>
+
+<td>
 ### WEEK-03
 
 <ul>
@@ -31,7 +41,9 @@
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-03/day5">Day 5</a></li>
 </ul>
 
+</td>
 
+<td>
 ### WEEK-04
 
 <ul>
@@ -42,6 +54,10 @@
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day5">Day 5</a></li>
 </ul>
 <br>
+
+</td>
+</tr>
+</table>
 
 ![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/icons3.jpg)
 

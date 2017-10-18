@@ -12,6 +12,10 @@ int main()
     char a[20];
     char b[20];
 
+    int *bin_op1;
+    bin_op1 = &a;
+    int *bin_op2;
+    bin_op2 = &b;
 
     printf("Give me a binary number: ");
     scanf("%s", a);
@@ -26,13 +30,7 @@ int main()
 void binary_adder (char *bin_op_1, char *bin_op_2)
 {
     char buffer[20];
-    int a = atoi(str);
-
-    if(new_base == 2) {
-        itoa(a, buffer, new_base);
-        printf("The binary value of %s is %s.\n", str, buffer);
-    }
-    int c = 0, b = 0, a = 0;
-    a+b;
-    printf("The number %d and %d added together is: %d", a, b, c);
+    int i = atoi(buffer);
+    itoa(i, buffer, 2);
+    printf("The binary value of %s is %s.\n", i, buffer);
 }
