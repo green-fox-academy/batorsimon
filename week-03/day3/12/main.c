@@ -13,10 +13,11 @@ int main()
     int position = 0;
 
     for(i=0; i < sizeof string; i++){
-            if(string[i] == 'i'){
-                position = i;
-                printf( "The letter 'i' is can be found at the %d. position.\n", position);
-            }
+        if(string[i] == 'i'){
+            position = i;
+            printf( "The letter 'i' is can be found at the %d. position.\n", position);
+        }
     }
+
     return 0;
 }
