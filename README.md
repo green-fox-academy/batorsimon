@@ -57,6 +57,7 @@ WEEK-04
 
 </td>
 
+<td>
 WEEK-05
 
 <ul>
@@ -69,6 +70,8 @@ WEEK-05
 <br>
 
 </td>
+
+<td>
 
 WEEK-06
 
@@ -83,6 +86,7 @@ WEEK-06
 
 </td>
 
+<td>
 WEEK-07
 
 <ul>
