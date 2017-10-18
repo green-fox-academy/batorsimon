@@ -2,7 +2,7 @@
 
 
 
-<table border="2" cellspacing="10">
+<table border="2" cellspacing="10" cellpadding="10" >
 <tr>
 <td>
 WEEK-01
