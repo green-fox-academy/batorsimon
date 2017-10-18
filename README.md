@@ -108,6 +108,19 @@ WEEK-08
 
 </td>
 
+<td>
+WEEK-08
+
+<ul>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-09/day1">Day 1</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-09/day2">Day 2</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-09/day3">Day 3</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-09/day4">Day 4</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-09/day5">Day 5</a></li>
+</ul>
+
+</td>
+
 </tr>
 </table>
 
