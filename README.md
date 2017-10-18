@@ -40,6 +40,7 @@ WEEK-03
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-03/day4">Day 4</a></li>
 <li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-03/day5">Day 5</a></li>
 </ul>
+<br>
 
 </td>
 
@@ -72,15 +73,14 @@ WEEK-05
 </td>
 
 <td>
-
 WEEK-06
 
 <ul>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day1">Day 1</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day2">Day 2</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day3">Day 3</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day4">Day 4</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day5">Day 5</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day1">Day 1</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day2">Day 2</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day3">Day 3</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day4">Day 4</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-06/day5">Day 5</a></li>
 </ul>
 <br>
 
@@ -90,13 +90,26 @@ WEEK-06
 WEEK-07
 
 <ul>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day1">Day 1</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day2">Day 2</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day3">Day 3</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day4">Day 4</a></li>
-<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-04/day5">Day 5</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day1">Day 1</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day2">Day 2</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day3">Day 3</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day4">Day 4</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-07/day5">Day 5</a></li>
 </ul>
 <br>
+
+</td>
+
+<td>
+WEEK-08
+
+<ul>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day1">Day 1</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day2">Day 2</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day3">Day 3</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day4">Day 4</a></li>
+<li><a href="https://github.com/greenfox-academy/batorsimon/tree/master/week-08/day5">Day 5</a></li>
+</ul>
 
 </td>
 
