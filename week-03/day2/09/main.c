@@ -8,7 +8,6 @@ void binary_adder (char *bin_op_1, char *bin_op_2);
 
 int main()
 {
-
     char a[20];
     char b[20];
 
@@ -24,12 +23,12 @@ int main()
 
 void binary_adder (char *bin_op_1, char *bin_op_2)
 {
-    char buffer[20];
     int a;
     a = strtol(bin_op_1, NULL, 2);
     int b;
     b = strtol(bin_op_2, NULL, 2);
 
+    char buffer[20];
     int sum = a + b;
     itoa(sum, buffer, 2);
 
