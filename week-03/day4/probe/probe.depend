@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1508415269 source:d:\én\greenfox\week-03\day4\probe\main.c
+1508420780 source:d:\én\greenfox\week-03\day4\probe\main.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
 	<string.h>
+	<ctype.h>
 

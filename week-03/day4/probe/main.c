@@ -185,8 +185,8 @@ int main()
 
     char *point2;
     char s2[2] = "+";
-    char c;
 
+    int i = 0;
 
     gets(calc_operator);
     point = strtok(calc_operator, s);
@@ -196,20 +196,9 @@ int main()
         puts("Please use space between the operands!");
         break;
         }
-         while ((c = *inputS++) != '\0')
-        {
-            input[strnum++] = next;
-            if (isdigit(c))
-            {
-            printf("Digit: %c\n", c);
-            *next++ = c;
-            }
-            else
-            {
-            printf("Non-digit: %c\n", c);
-            *next++ = c;
-            *next++ = '\0';
-            }
+        while(point != NULL ) {
+        point = strtok(NULL, s);
+
         }
 
     }
