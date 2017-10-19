@@ -27,38 +27,93 @@ void menu()
 
 void summation()
 {
-    float number1 = 0;
-    float number2 = 0;
-    float result = 0;
-    result = number1 + number2;
-    printf("%.2f + %.2f = %.2f\n",number1,number2,result);
+   int n = 0;
+   int k = 0;
+   float total = 0;
+   float number =0;
+
+   printf("Enter the number of elements you want to add together: \n");
+   scanf("%d", &n);
+   printf("Please add the numbers one by one: %d\n", n);
+
+   while(k<n){
+    scanf("%f", &number);
+    total = total + number;
+    k = k+1;
+
+   }
+   printf("The numbers %d added together: %f\n",n,total);
 
 }
 
 void subtraction()
 {
+    float number1 = 0;
+    float number2 = 0;
+    float sum = 0;
 
-
+    printf("Write down the first number: ");
+    scanf("%f", number1);
+    printf("Write down the second number: ");
+    scanf("%f", number2);
+    sum = number1 - number2;
+    printf("\n%f - %f = %f", number1, number2, sum);
 }
 
 void multiplication()
 {
+    float number1 = 0;
+    float number2 = 0;
+    float sum = 0;
+
+    printf("Write down the first number: ");
+    scanf("%f", number1);
+    printf("Write down the second number: ");
+    scanf("%f", number2);
+    sum = number1 * number2;
+    printf("\n%f - %f = %f", number1, number2, sum);
 
 }
 
 void division()
 {
+    float number1 = 0;
+    float number2 = 0;
+    float sum = 0;
+
+    printf("Write down the first number: ");
+    scanf("%f", number1);
+    printf("Write down the second number: ");
+    scanf("%f", number2);
+    sum = number1 / number2;
+    printf("\n%f - %f = %f", number1, number2, sum);
 
 }
 
 void division_with_remainder()
 {
-
+    float number1 = 0;
+    float number2 = 0;
+    float sum = 0;
+    float remainder = 0;
+    printf("Write down the first number: ");
+    scanf("%f", number1);
+    printf("Write down the second number: ");
+    scanf("%f", number2);
+    sum = number1 / number2;
+//    remainder = number1 % number2;
+    printf("\n%f - %f = %f \nthe remainder is: %f\n", number1, number2, sum, remainder);
 }
 
 void squaring()
 {
-
+    float number = 0;
+    float result = 0;
+	printf("Please enter a number: ");
+	fflush(stdin);
+	scanf("%f", &number);
+	result = pow(number, 2);
+	printf("%f", result);
 }
 
 void square_root()
@@ -72,117 +127,135 @@ void logarithm()
 }
 
 void binto()
-{
+{/*
     char buffer[20];
     int a = atoi(str);
 
     if(new_base == 2) {
         itoa(a, buffer, new_base);
         printf("The binary value of %s is %s.\n", str, buffer);
-    }
+    } */
 }
 
 void hexto()
-{
+{/*
     char buffer[20];
     int a = atoi(str);
 
     if(new_base == 2) {
         itoa(a, buffer, new_base);
         printf("The binary value of %s is %s.\n", str, buffer);
-    }
+    } */
 }
 
 void decto()
-{
+{/*
     char buffer[20];
     int a = atoi(str);
 
     if(new_base == 2) {
         itoa(a, buffer, new_base);
         printf("The binary value of %s is %s.\n", str, buffer);
+    }*/
+}
+
+void factorial()
+{
+    int number = 0;
+    scanf("%d", number);
+
+    if(number <= 1) {
+      printf("1\n");
+    } else {
+        printf("\n");
     }
+    //return number * factorial(number-1);
+
 }
-
-void binary_adder()
-{
-    int a;
-    a = strtol(bin_op_1, NULL, 2);
-    int b;
-    b = strtol(bin_op_2, NULL, 2);
-
-    char buffer[20];
-    int sum = a + b;
-    itoa(sum, buffer, 2);
-
-    printf("The binary numbers added together: %s\n", buffer);
-}
-
-void binary_adder()
-{
-    int a;
-    a = strtol(bin_op_1, NULL, 2);
-    int b;
-    b = strtol(bin_op_2, NULL, 2);
-
-    char buffer[20];
-    int sum = a + b;
-    itoa(sum, buffer, 2);
-
-    printf("The binary numbers added together: %s\n", buffer);
-}
-
-
 int main()
 {
     menu();
 
+    /*
     float number1 = 0;
     float number2 = 0;
-    float result = 0;
-    char operator1;
+    */
 
-    scanf("%f", &number1);
-    scanf(" %c ", &operator1);
-    scanf("%f", &number2);
+    /*
+    const char *searched_character = "+";
+   char mystring[10];
+   char *c = mystring;
+   while (*c)
+   {
+       if (strchr(icters, *c))
+       {
+          printf("%c is in \"%s\"\n", *c, mystring);
+       }
+
+       c++;
+   }  */
+
+    char calc_operator[10];
 
     while(1) {
-         switch(operator1) {
-        case '+':
+        scanf("%s", calc_operator);
+
+        int i = 0;
+        for(i = 0; i<10; i++) {
+            if(calc_operator[i] == "+") {
+            printf("ossze");
+            summation();
+            }
+            if(calc_operator[i] == "-") {
+            printf("minusz");
+            subtraction();
+            }
+        }
+    }
+
+  /*
+    while(1) {
+
+//        scanf("%f", &number1);
+        scanf("%c", calc_operator);
+//        scanf("%f", &number2);
+
+        switch(calc_operator) {
+        case '+':   summation();
                     break;
         case '-':
                     continue;
         case '*':
-            continue;
+                    continue;
         case '/':
-            continue;
+                    continue;
         case '%':
-            continue;
+                    continue;
         case '^':
-            continue;
+                    continue;
         case '<':
-            continue;
+                    continue;
         case 'l':
-            continue;
+                    continue;
         case 'b':
-            continue;
+                    continue;
         case 'x':
-            continue;
+                    continue;
         case 'd':
-            continue;
+                    continue;
          case '!':
-            continue;
+                    continue;
         case 'q':
-            continue;
+                    continue;
         case 'h':
-            continue;
+                    continue;
         case 'c':
-            continue;
-        default:
-            printf("wrong user input!\n");
-            continue;
+                    continue;
+        default:    printf("wrong user input!\n");
+                    continue;
         }
-    }
+    } */
+
 
     return 0;
 }
