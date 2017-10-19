@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <ctype.h>
 
 void menu()
 {
@@ -92,17 +93,17 @@ void division()
 
 void division_with_remainder()
 {
-    float number1 = 0;
-    float number2 = 0;
-    float sum = 0;
-    float remainder = 0;
+    int number1 = 0;
+    int number2 = 0;
+    int sum = 0;
+    int remainder = 0;
     printf("Write down the first number: ");
-    scanf("%f", number1);
+    scanf("%d", number1);
     printf("Write down the second number: ");
-    scanf("%f", number2);
+    scanf("%d", number2);
     sum = number1 / number2;
-//    remainder = number1 % number2;
-    printf("\n%f - %f = %f \nthe remainder is: %f\n", number1, number2, sum, remainder);
+    remainder = number1 % number2;
+    printf("\n%d - %d = %d \nthe remainder is: %d\n", number1, number2, sum, remainder);
 }
 
 void squaring()
@@ -172,31 +173,49 @@ void factorial()
     //return number * factorial(number-1);
 
 }
+
+
 int main()
 {
     menu();
 
-    /*
-    float number1 = 0;
-    float number2 = 0;
-    */
-
-    /*
-    const char *searched_character = "+";
-   char mystring[10];
-   char *c = mystring;
-   while (*c)
-   {
-       if (strchr(icters, *c))
-       {
-          printf("%c is in \"%s\"\n", *c, mystring);
-       }
-
-       c++;
-   }  */
-
     char calc_operator[10];
+    char s[2] = " ";
+    char *point;
 
+    char *point2;
+    char s2[2] = "+";
+    char c;
+
+
+    gets(calc_operator);
+    point = strtok(calc_operator, s);
+    point2 = strtok(calc_operator, s2);
+    while(1){
+        if(point == NULL) {
+        puts("Please use space between the operands!");
+        break;
+        }
+         while ((c = *inputS++) != '\0')
+        {
+            input[strnum++] = next;
+            if (isdigit(c))
+            {
+            printf("Digit: %c\n", c);
+            *next++ = c;
+            }
+            else
+            {
+            printf("Non-digit: %c\n", c);
+            *next++ = c;
+            *next++ = '\0';
+            }
+        }
+
+    }
+
+
+/*
     while(1) {
         scanf("%s", calc_operator);
 
@@ -210,8 +229,49 @@ int main()
             printf("minusz");
             subtraction();
             }
+            if(calc_operator[i] == "*") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "/") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "%") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "^") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "<") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "log") {
+            printf("minusz");
+            subtraction();
+            if(calc_operator[i] == "l" && calc_operator[i] = "o" && calc_operator[i] = "g") {  // ????????
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "binto") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "hexto") {
+            printf("minusz");
+            subtraction();
+            }
+            if(calc_operator[i] == "decto") {
+            printf("minusz");
+            subtraction();
+            }
         }
     }
+    */
+
 
   /*
     while(1) {
