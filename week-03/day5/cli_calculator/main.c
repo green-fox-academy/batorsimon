@@ -18,8 +18,13 @@ int main()
     }
 
     //with a for loop, print out each element of the array
-    for (i = 0; i < 3; ++i)
+    for (i = 0; i < 3; ++i){
         printf("%s\n", array[i]);
+    }
+
+        printf("asdsa asd\\
+                asdsad\\
+                 asd\\");
 
     return 0;
 }
