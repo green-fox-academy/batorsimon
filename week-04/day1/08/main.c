@@ -12,12 +12,11 @@ int main()
     // Please fix the problem and swap the value of the variables,
     // without using the "high_number" and the "low_number" variables.
 
-    int a = hight_number_pointer;
-    hight_number_pointer = low_number_pointer;
-    low_number_pointer = a;
+    int a = *hight_number_pointer;
+    *hight_number_pointer = *low_number_pointer;
+    *low_number_pointer = a;
 
-    printf("High number pointer: %d.\n", *hight_number_pointer);
-    printf("Low number pointer: %d.\n", *low_number_pointer);
-    printf("int a: %d.\n", a);
+    printf("High number: %d.\n", high_number);
+    printf("Low number: %d.\n", low_number);
     return 0;
 }
