@@ -18,6 +18,6 @@ void print_array(int *array, int size)
 {
     int i = 0;
     for(i = 0; i < size; i++) {
-        printf("%d\n", array[i]);
+        printf("The array %d. element is: %d.\n", i, array[i]);
     }
 }
