@@ -10,7 +10,7 @@ int main()
 	//TODO: write a function, which prints out the passed array's elements.
 
 	int a_size = sizeof(a) / sizeof(int);
-	print_array(&a, a_size);
+	print_array(a, a_size);
 	return 0;
 }
 

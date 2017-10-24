@@ -15,7 +15,7 @@ int main()
 	//Use 'output parameters'. Print out these values.
 
 
-    calc(&x, &y, sum, mul);
+    calc(x, y, &sum, &mul);
     printf("sum of x and y: %d and multiplicated: %d\n", sum, mul);
 
 	return 0;
