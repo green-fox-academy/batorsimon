@@ -19,4 +19,5 @@ void string_copy(char *dest, char *source)
         dest[i] = source[i];
         printf("The %d. element of source array: %c and destination: %c\n", i, source[i], dest[i]);
     }
+
 }
