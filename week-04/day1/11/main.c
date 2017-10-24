@@ -14,6 +14,7 @@ int main()
 	//TODO: write a void function which calculates the sum and multiplication of x and y according to the function prototype.
 	//Use 'output parameters'. Print out these values.
 
+
     calc(&x, &y, sum, mul);
     printf("sum of x and y: %d and multiplicated: %d\n", sum, mul);
 
