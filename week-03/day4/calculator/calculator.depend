@@ -1,6 +1,27 @@
 # depslib dependency file v1.0
-1508337957 source:d:\én\greenfox\week-03\day4\calculator\main.c
+1508502337 source:d:\én\greenfox\week-03\day4\calculator\main.c
 	<stdio.h>
 	<stdlib.h>
-	<ctype.h>
+	<math.h>
+	<windows.h>
+	"func.h"
+
+1508501820 source:d:\én\greenfox\week-03\day4\calculator\func.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<windows.h>
+	"func.h"
+
+1508501518 d:\én\greenfox\week-03\day4\calculator\func.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1508491926 d:\én\greenfox\week-03\day4\calculator\func.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<windows.h>
+	"func.h"
 

@@ -14,8 +14,11 @@ int main()
     point = strtok(string, s);
 
 
-    int number1[20]; //20 számjegyû
-    int number2[20];
+    int number1[2]; //2 számjegy megy bele
+    int number2[2];
+    int i = 0;
+    int j = 0;
+    int c = 0;
 
     if(point == NULL) {
         printf("%s\n", string);
@@ -25,18 +28,12 @@ int main()
 
     while(point != NULL ) {
       printf( "%s\n", point);
-      //pointot belekéne pakolni egy egy sztringbe hogy megkpajuk a számokat
-      number1[10] = point;
-      number2[10] = point;
-      //növelni kéne a tömbök számát minden eggyes betéréskor
       point = strtok(NULL, s);
-
-        //attól függõen milyen operátort talált végre hajtja a különbözõ mûveleteket
-        if(s == "+"){
-        printf("plusz");
-        }
-
     }
+
+    for(j = 0; j < 2; j++) {
+        printf("\n%d\n", number1[j]);
+      }
 
     return 0;
 }

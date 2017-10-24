@@ -21,7 +21,6 @@ void reverse_name(char *name, char *reversed_name)
     int i = 0;
     for(i = 0; name[i] != 32 ; i++) {
         temp[i] = name[i];
-        //printf("The %d. element of source array: %c and destination: %c\n", i, name[i], temp[i]);
     }
 
     //printf("%s\n %s\n %s\n", name, temp, reversed_name); //tempben = gipsz (first name) !
@@ -29,7 +28,6 @@ void reverse_name(char *name, char *reversed_name)
     int j = 0;
     for(i = i+1; name[i] != '\0'; i++) {
         reversed_name[j] = name[i];
-        //printf("The %d. element of source array: %c and destination: %c\n", i, name[i], reversed_name[j]);
         j++;
     }
     reversed_name[j] = ' ';

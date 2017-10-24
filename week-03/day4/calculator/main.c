@@ -1,127 +1,108 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include <math.h>
+#include <windows.h>
+#include "func.h"
 
-float summation(float a, float b){
-    return a + b;
-}
+void help()
+{
+        system("cls");
+        printf("           CLI Calculator\n");
+        printf("====================================\n");
+        printf("usage: [number][operation][number]\nCommands:\n\n");
+        printf("+	summation\n");
+        printf("-	subtraction\n");
+        printf("*	multiplication\n");
+        printf("/	division\n");
+        printf("%	division with remainder\n");
+        printf("^	squaring\n<	square root\n");
+        printf("log	logarithm\n");
+        printf("into	binary to hex or dec\n");
+        printf("hexto	hexadecimal to bin or dec\n");
+        printf("decto	decimal to bin or hex\n");
+        printf("====================================\n");
+        printf("exit	exiting from the program\nclear	clear the screen\n");
+        printf("help	print usage\n");
+        printf("====================================\n");
 
-float subtraction(float a, float b){
-    return a - b;
 }
-
-float multiplication(float a, float b){
-    return a * b;
-}
-
-float division(float a, float b){
-    return a / b;
-}
-
-float division_with_reminder(float a, float b){
-    int c = 0;
-    c = a % b;
-     printf("%f % %f = %f\n",c);
-}
-
-float squaring(float a, float b){
-    return a / b;
-}
-
-float square_root(float a, float b){
-    return a / b;
-}
-
-float logarithm(float a, float b){
-    return a / b;
-}
-float binto(float a, float b){
-    return a / b;
-}
-int decto(float a, float b){
-    return a / b;
-}
-int hexto(float a, float b){
-    return a / b;
-}
-
-
-
 int main()
 {
-    printf("           CLI Calculator\n====================================\nusage: [number] [operation] [number]\nCommands:\n\n+	summation\n-	subtraction\n*	multiplication\n/	division\n%	division with remainder\n^	squaring\n<	square root\nlog	logarithm\nbinto	binary to hex or dec\nhexto	hexadecimal to bin or dec\ndecto	decimal to bin or hex\n====================================\nexit	exiting from the program\nclear	clear the screen\nhelp	print usage\n====================================\nHit enter to start!\n====================================\n");
+    char number_arr1[20];
+    char command[6];
+    char number_arr2[20];
+    char user_input[80];
+    int y = 0;
 
-    int choice = 0;
-    float num_1 = 0;
-    float num_2 = 0;
+   help();
+   Sleep(5000);
+   system("cls");
 
-    printf("Please add two number (hit enter between them):\n");
-    scanf("%f %f", &num_1, &num_2);
+    do {
+        input(number_arr1, command, number_arr2, y);
 
-	printf("Please choose from the following options:\n\n");
-	printf("\tpress 1 for summation\n");
-	printf("\tpress 2 for subtraction\n");
-	printf("\tpress 3 for multiplication\n");
-	printf("\tpress 4 for division\n");
-	printf("\tpress 5 for division with reminder\n");
-	printf("\tpress 6 for squaring\n");
-	printf("\tpress 7 for square root\n");
-	printf("\tpress 8 for logarithm\n");
-	printf("\tpress 9 for binary to decimal or hexadecimal\n");
-	printf("\tpress 10 for decimal to binary or hexadecimal\n");
-	printf("\tpress 11 for hexadecimal to binary or decimal\n");
-	printf("\tpress 12 to exit the program\n");
+        float number1 = strtof(number_arr1, NULL);
+        float number2 = strtof(number_arr2, NULL);
+        int x = strlen(number_arr1) + strlen(command) + strlen(number_arr2) + 2;
 
-    while(choice != 12){
-        scanf("%d", &choice);
-        if(isalpha(choice)){
-            printf("wrong user input!");
-            choice = 12;
-            exit(0);
-        }
-
-        switch(choice){
-        case 1:
-            printf("%f + %f = %f\n",num_1, num_2, summation(num_1, num_2));
-            continue;
-        case 2:
-            printf("%f - %f = %f\n",num_1, num_2, subtraction(num_1, num_2));
-            continue;
-        case 3:
-            printf("%f * %f = %f\n",num_1, num_2, multiplication(num_1, num_2));
-            continue;
-        case 4:
-            printf("%f / %f = %f\n",num_1, num_2, division(num_1, num_2));
-            continue;
-         case 5:
-            printf("%f % %f = %f\n",num_1, num_2, division_with_reminder(num_1, num_2));
-            continue;
-         case 6:
-            printf("%f ^ %f = %f\n",num_1, num_2, square_root(num_1, num_2));
-            continue;
-         case 7:
-            printf("%f < %f = %f\n",num_1, num_2, square_root(num_1, num_2));
-            continue;
-         case 8:
-            printf("%f log %f = %f\n",num_1, num_2, logarithm(num_1, num_2));
-            continue;
-        case 9:
-            printf("%f binto %f = %f\n",num_1, num_2, binto(num_1, num_2));
-            continue;
-        case 10:
-            printf("%f decto %f = %f\n",num_1, num_2, decto(num_1, num_2));
-            continue;
-        case 11:
-            printf("%f hexto %f = %f\n",num_1, num_2, hexto(num_1, num_2));
-            continue;
-        case 12:
-            printf("program is over\n");
-            continue;
-        default:
-            printf("wrong user input!\n");
-            continue;
-        }
+        if (strcmp(command, "+") == 0) {
+            set_cursor_pos(x, y);
+            printf(" = %.2f\n", sum(number1, number2));
+        } else if (strcmp(command, "-") == 0) {
+            set_cursor_pos(x, y);
+            printf(" = %.2f\n", subt(number1, number2));
+        } else if (strcmp(command, "*") == 0) {
+            set_cursor_pos(x, y);
+            printf(" = %.2f\n", multiply(number1, number2));
+        } else if (strcmp(command, "/") == 0) {
+            set_cursor_pos(x, y);
+            if (zero_operand(number1, number2) == 0) {
+                printf(" = %.2f\n", divi(number1, number2));
+            }
+        } else if (strcmp(command, "%") == 0) {
+            set_cursor_pos(x, y);
+            if (zero_operand(number1, number2) == 0) {
+                printf(" = %d\n", divi_w_remainder(number1, number2));
+            }
+        } else if (strcmp(command, "sqr") == 0) {
+            set_cursor_pos(x, y);
+            printf(" = %.2f\n", sqr(number1));
+        } else if (strcmp(command, "sqr_root") == 0) {
+            set_cursor_pos(x, y);
+            if (zero_operand(number1, number2) == 0) {
+                printf(" = %.2f\n", sqr_root(number1));
+            }
+        } else if (strcmp(command, "log") == 0) {
+            set_cursor_pos(x, y);
+            if (zero_operand(number1, number2) == 0) {
+                printf(" = %f\n", logx(number2, number1));
+            }
+        } else if (strcmp(command, "binto") == 0) {
+            set_cursor_pos(x, y);
+            if (conversion_range(number2) == 0) {
+                printf(" = %s\n", binto(number_arr1, number2));
+            }
+        } else if (strcmp(command, "octto") == 0) {
+            set_cursor_pos(x, y);
+            if (conversion_range(number2) == 0) {
+                printf(" = %s\n", octto(number_arr1, number2));
+            }
+        } else if (strcmp(command, "decto") == 0) {
+            set_cursor_pos(x, y);
+            if (conversion_range(number2) == 0) {
+                printf(" = %s\n", decto(number_arr1, number2));
+            }
+        } else if (strcmp(command, "hexto") == 0) {
+            set_cursor_pos(x, y);
+            if (conversion_range(number2) == 0) {
+                printf(" = %s\n", hexto(number_arr1, number2));
+            }
+        }  else if (strcmp(command, "menu") == 0) {
+            set_cursor_pos(x, y);
+            //printf("%s", menu(number_arr1));
+            //menu(char* number_arr1);
+            }
+        y++;
     }
-
-    return 0;
+    while (strcmp(number_arr1, "exit") != 0);
 }
