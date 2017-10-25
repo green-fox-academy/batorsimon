@@ -1,19 +1,12 @@
 #include <stdio.h>
-#include <stdint.h>
+#include <stdlib.h>
 
-struct Computer {
-    float cpu_speed_GHz;
-    int ram_size_GB;
-    int bits;
-};
+int main()
+{
+     int number = 1234;
+    //TODO:
+    // print the memory address of the variable
 
-int main() {
-    struct Computer computer = {3.2, 8, 32};
-
-    //TODO: Change the bits to 64
-    //TODO: print out the structure members
-
-    computer.bits = 64;
-    printf(" cpu: %f\n ram: %d\n bits: %d\n", computer.cpu_speed_GHz, computer.ram_size_GB, computer.bits);
+    printf("%p\n", number);
     return 0;
 }
