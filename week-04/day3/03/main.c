@@ -11,7 +11,7 @@ typedef struct {
 // It should take it's x and y coordinate as parameter
 // Create a function that takes 2 Points as a pointer and returns the distance between them
 
-point_t point(int x, int y) {
+point_t point(int x, int y){
     point_t point;
     point.x = x;
     point.y = y;
