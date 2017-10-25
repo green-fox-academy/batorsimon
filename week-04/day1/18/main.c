@@ -14,3 +14,10 @@ int main()
 
     return 0;
 }
+
+int first_word(char *string, char *first)
+{
+    int length = 0;
+
+    return length;
+}
