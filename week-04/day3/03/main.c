@@ -28,6 +28,6 @@ int main()
     point_t point1 = {4, 8};
     point_t point2 = {10, 3};
 
-    printf("%f", distance(point1, point2));
+    printf("The distance between point1 and point2 is: %f.", distance(point1, point2));
     return 0;
 }
