@@ -18,6 +18,7 @@ void menu()
     printf(" -c    Completes a task\n");
     printf(" -p    Add priority to a task\n");
     printf(" -lp   Lists all the tasks by priority\n");
+    printf("=========================================\n");
     printf(" menu  Opens the main menu\n");
     printf(" clr  Clear command line\n");
     printf(" exit  Exiting from the program\n");
@@ -27,7 +28,7 @@ void menu()
 }
 
 struct task {
-	char name[50];
+	char user_input[50];
 	int done;
 	int prio;
 };
@@ -45,7 +46,6 @@ void input(char* user_input)
         menu();
         scanf("%s", user_input);
     }
-    scanf("%s", user_input);
 }
 
 void new_task(char* command)
@@ -103,7 +103,7 @@ void list_tasks_priority(char* command)
 }
 
 
-int main()
+int main(int argc, char** argv)
 {
     char user_input[80];
     char command[30];
@@ -141,8 +141,8 @@ int main()
             list_tasks_priority(command);
 
         } else {
-            printf("Wrong task name. Look at the possible tasks again.");
-            menu();
+            printf("Wrong task name. Look at the possible tasks again.\n");
+            //menu();
         }
 
 
