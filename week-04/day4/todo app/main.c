@@ -48,9 +48,65 @@ void input(char* user_input)
     scanf("%s", user_input);
 }
 
+void new_task(char* command)
+{
+    printf("Adds a new task!\n");
+
+}
+
+void write_to_file(char* command)
+{
+   printf("Write current todos to file!\n");
+
+}
+
+void read_from_file(char* command)
+{
+    printf("Read todos from a file!\n");
+
+}
+
+void list_tasks(char* command)
+{
+    printf("Lists all the tasks!\n");
+
+}
+
+void empty_task_list(char* command)
+{
+    printf("Empty the list!\n");
+
+}
+
+void remove_task(char* command)
+{
+    printf("Removes a task!\n");
+
+}
+
+void completes_task(char* command)
+{
+    printf("Completes a task!\n");
+
+}
+
+void priority_to_task(char* command)
+{
+    printf("Add priority to a task!\n");
+
+}
+
+void list_tasks_priority(char* command)
+{
+    printf("Lists all the tasks by priority!\n");
+
+}
+
+
 int main()
 {
     char user_input[80];
+    char command[30];
 
     menu();
 
@@ -58,31 +114,31 @@ int main()
         input(user_input);
 
         if (strcmp(user_input, "-a") == 0) {
-            printf("Adds a new task!\n");
+            new_task(command);
 
         } else if (strcmp(user_input, "-wr") == 0) {
-             printf("Write current todos to file!\n");
+             write_to_file(command);
 
         } else if (strcmp(user_input, "-rd") == 0) {
-            printf("Read todos from a file!\n");
+            read_from_file(command);
 
         } else if (strcmp(user_input, "-l") == 0) {
-             printf("Lists all the tasks!\n");
+             list_tasks(command);
 
         } else if (strcmp(user_input, "-e") == 0) {
-             printf("Empty the list!\n");
+             empty_task_list(command);
 
         } else if (strcmp(user_input, "-rm") == 0) {
-             printf("Removes a task!\n");
+             remove_task(command);
 
         } else if (strcmp(user_input, "-c") == 0) {
-            printf("Completes a task!\n");
+            completes_task(command);
 
         } else if (strcmp(user_input, "-p") == 0) {
-            printf("Add priority to a task!\n");
+            priority_to_task(command);
 
         } else if (strcmp(user_input, "-lp") == 0) {
-            printf("Lists all the tasks by priority!\n");
+            list_tasks_priority(command);
 
         } else {
             printf("Wrong task name. Look at the possible tasks again.");
