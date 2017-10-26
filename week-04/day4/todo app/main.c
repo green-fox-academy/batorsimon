@@ -12,7 +12,7 @@ void menu()
     printf("------------------------------------------\n");
     printf("|        Todo application                |\n");
     printf("------------------------------------------\n");
-    printf("|Commands:                               |\n");
+    printf("| Commands:                               |\n");
     printf("| -a    Adds a new task                  |\n");
     printf("| -wr   Write current todos to file      |\n");
     printf("| -rd   Read todos from a file           |\n");
@@ -39,7 +39,6 @@ typedef struct{
 
 void new_task(task *todo_arr, char *user_input)
 {
-    printf("Adds a new task!\n");
     printf("%s", user_input);
     strcpy(todo_arr[i].task_name, user_input);
     i++;
@@ -48,10 +47,10 @@ void new_task(task *todo_arr, char *user_input)
 
 void write_to_file(task *todo_arr, char *user_input)
 {
-
-   printf("Write current todos to file!\n");
-   /*
-   FILE *cd = fopen(command, "w+");
+    printf("%s", user_input);
+    printf("Write current todos to file!\n");
+    /*
+    FILE *cd = fopen(command, "w+");
     if (cd == NULL) {
         printf("Could not create file: %s", command);
         return;
@@ -59,7 +58,7 @@ void write_to_file(task *todo_arr, char *user_input)
 
     fprintf(cd, "10\tthis is the multi-word string");
     fclose(cd);
-   */
+    */
 }
 
 void read_from_file(task *todo_arr)
@@ -84,19 +83,19 @@ void read_from_file(task *todo_arr)
 void list_tasks(task *todo_arr, char *user_input)
 {
     printf("Lists all the tasks!\n");
-
+     printf("%s", user_input);
 }
 
 void empty_task_list(task *todo_arr, char *user_input)
 {
     printf("Empty the list!\n");
-
+     printf("%s", user_input);
 }
 
 void remove_task(task *todo_arr, char *user_input)
 {
     printf("Removes a task!\n");
-
+     printf("%s", user_input);
 }
 
 void completes_task(task *todo_arr, char *user_input)
@@ -127,16 +126,15 @@ void list_tasks_priority(task *todo_arr, char *user_input)
 int main(int argc, char** argv)
 {
     char user_input[80];
-    char command[80];
-
-    menu();
-
+    char command[4];
+    FILE *fp;
+    //menu();
     task todo_arr[10];
 
     do {
+        scanf("%s", command);
+        gets(user_input);
 
-        fgets("%s", command);
-        fgets("%s", user_input);
         if (strcmp(command, "exit") == 0) {
             printf("The program is exiting now. Goodbye!");
             exit(0);
