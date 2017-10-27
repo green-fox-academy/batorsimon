@@ -3,7 +3,6 @@
 #include <math.h>
 #include <windows.h>
 
-int i = 0;
 int counter = 0;
 
 void menu()
@@ -12,7 +11,7 @@ void menu()
     printf("------------------------------------------\n");
     printf("|        Todo application                |\n");
     printf("------------------------------------------\n");
-    printf("| Commands:                               |\n");
+    printf("| Commands:                              |\n");
     printf("| -a    Adds a new task                  |\n");
     printf("| -wr   Write current todos to file      |\n");
     printf("| -rd   Read todos from a file           |\n");
@@ -39,26 +38,25 @@ typedef struct{
 
 void new_task(task *todo_arr, char *user_input)
 {
-    printf("%s", user_input);
-    strcpy(todo_arr[i].task_name, user_input);
-    i++;
-
+    strcpy(todo_arr[counter].task_name, user_input);
+    counter++;
 }
 
-void write_to_file(task *todo_arr, char *user_input)
+int write_to_file(task *todo_arr, char *user_input)
 {
-    printf("%s", user_input);
-    printf("Write current todos to file!\n");
-    /*
-    FILE *cd = fopen(command, "w+");
+    FILE *cd = fopen("file.txt", "w+");
     if (cd == NULL) {
-        printf("Could not create file: %s", command);
-        return;
+        printf("Could not create file: %s", todo_arr);
+        return -1;
     }
 
-    fprintf(cd, "10\tthis is the multi-word string");
+    int i;
+    for(i = 0; i < counter; i++){
+         fprintf(cd, "%s\n", todo_arr[i].task_name);
+         //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio); csak akkor fog kelleni ha már lesz prio meg done
+    }
+
     fclose(cd);
-    */
 }
 
 void read_from_file(task *todo_arr)
@@ -82,20 +80,17 @@ void read_from_file(task *todo_arr)
 
 void list_tasks(task *todo_arr, char *user_input)
 {
-    printf("Lists all the tasks!\n");
-     printf("%s", user_input);
+
 }
 
 void empty_task_list(task *todo_arr, char *user_input)
 {
-    printf("Empty the list!\n");
-     printf("%s", user_input);
+
 }
 
 void remove_task(task *todo_arr, char *user_input)
 {
-    printf("Removes a task!\n");
-     printf("%s", user_input);
+
 }
 
 void completes_task(task *todo_arr, char *user_input)
@@ -112,28 +107,27 @@ void completes_task(task *todo_arr, char *user_input)
 
 void priority_to_task(task *todo_arr, char *user_input)
 {
-    printf("Add priority to a task!\n");
 
 }
 
 void list_tasks_priority(task *todo_arr, char *user_input)
 {
-    printf("Lists all the tasks by priority!\n");
+
 
 }
 
 
 int main(int argc, char** argv)
 {
-    char user_input[80];
-    char command[4];
-    FILE *fp;
-    //menu();
+    menu();
     task todo_arr[10];
+
+    char user_input[80];
+    char command[5];
 
     do {
         scanf("%s", command);
-        gets(user_input);
+        fgets(user_input, 80, stdin);
 
         if (strcmp(command, "exit") == 0) {
             printf("The program is exiting now. Goodbye!");
