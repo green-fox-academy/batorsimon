@@ -86,7 +86,7 @@ void list_tasks(task *todo_arr, char *user_input)
 {
     int i = 0;
     for(i = 0; i < counter; i++){
-        printf("%d. %s", i+1, todo_arr[i].task_name);
+        printf("%d. [ ] %s []", i+1, todo_arr[i].task_name);
     }
 
 }
@@ -111,15 +111,9 @@ void remove_task(task *todo_arr, char *user_input)
 void completes_task(task *todo_arr, char *user_input)
 {
     int i = 0;
-    // (strcmp(todo_arr[counter].done, user_input) == 1)
-
-    //int pos = user_input;
-
     int input_number = strtol(user_input, NULL, 10);
 
     for(i = 0; i < counter; i++){
-      //  todo_arr[i].done = user_input;
-      // todo_arr[i].task_name;
         if(i == input_number-1){
              printf("%d. [x] %s", i+1, todo_arr[i].task_name);
         } else {
@@ -127,13 +121,6 @@ void completes_task(task *todo_arr, char *user_input)
         }
 
     }
-
-    /*
-    -c 2
-    ha 2
-    printf(2. elem [x])
-    */
-
 }
 
 void priority_to_task(task *todo_arr, char *user_input)
