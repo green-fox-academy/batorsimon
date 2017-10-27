@@ -53,9 +53,9 @@ int write_to_file(task *todo_arr, char *user_input)
     int i;
     for(i = 0; i < counter; i++){
          fprintf(cd, "%s\n", todo_arr[i].task_name);
-         //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio); csak akkor fog kelleni ha már lesz prio meg done
+         //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio);
+         //csak akkor fog kelleni ha már lesz prio meg done, függvénybe is megkell hívni!!
     }
-
     fclose(cd);
 }
 
@@ -80,11 +80,10 @@ void read_from_file(task *todo_arr)
 
 void list_tasks(task *todo_arr, char *user_input)
 {
-
-}
-
-void empty_task_list(task *todo_arr, char *user_input)
-{
+    int i = 0;
+    for(i = 0; i < counter; i++){
+        printf("%s", todo_arr[i].task_name);
+    }
 
 }
 
