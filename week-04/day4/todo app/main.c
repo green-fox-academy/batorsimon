@@ -26,8 +26,9 @@ void menu()
     printf("| clr   Clear command line               |\n");
     printf("| exit  Exiting from the program         |\n");
     printf("------------------------------------------\n");
-    Sleep(5000);
+    system("pause");
     system("cls");
+
 }
 
 typedef struct{
@@ -52,30 +53,33 @@ int write_to_file(task *todo_arr, char *user_input)
 
     int i;
     for(i = 0; i < counter; i++){
-         fprintf(cd, "%s\n", todo_arr[i].task_name);
+         fprintf(cd, "%s", todo_arr[i].task_name);
          //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio);
          //csak akkor fog kelleni ha már lesz prio meg done, függvénybe is megkell hívni!!
     }
     fclose(cd);
 }
 
-void read_from_file(task *todo_arr)
+int read_from_file(task *todo_arr)
 {
-    /*
-    printf("Read todos from a file!\n");
-    FILE *cd = fopen(command, "r");
+    FILE *cd = fopen("file.txt", "r");
     if (cd == NULL) {
-        printf("The file %s does not exist!", command);
-        return;
+        printf("The file %s does not exist!", todo_arr);
+        return -1;
     }
 
+    int i;
+    for(i = 0; i < counter; i++){
+         printf(cd, "%s", todo_arr[i].task_name);
+    }
+
+    /*
     int num = 0;
     char str[255];
-
     fscanf(cd, "%d\t%s", &num, str);
     printf("read_file_fscanf() - number: %d, string: %s\n", num, str);
-    fclose(cd);
     */
+    fclose(cd);
 }
 
 void list_tasks(task *todo_arr, char *user_input)
@@ -89,7 +93,21 @@ void list_tasks(task *todo_arr, char *user_input)
 
 void remove_task(task *todo_arr, char *user_input)
 {
+    int pos = 0;
+    int i = 0;
+    counter--;
 
+    for(i = 0; i < counter; i++) {
+        if(strcmp(todo_arr[i].task_name, user_input) != 0){
+            printf("Element could not found!\n");
+        } else if(strcmp(todo_arr[i].task_name, user_input) == 0){
+                pos = i;
+                for(i = pos; i< counter; i++){
+                    strcpy(todo_arr[i].task_name, todo_arr[i+1].task_name);
+                }
+        }
+
+    }
 }
 
 void completes_task(task *todo_arr, char *user_input)
