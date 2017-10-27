@@ -85,8 +85,9 @@ int read_from_file(task *todo_arr)
 void list_tasks(task *todo_arr, char *user_input)
 {
     int i = 0;
+    printf("No. | Done? | Task priority | Task name \n");
     for(i = 0; i < counter; i++){
-        printf("%d. [ ] %s []", i+1, todo_arr[i].task_name);
+        printf("%d - [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
     }
 
 }
@@ -112,6 +113,39 @@ void completes_task(task *todo_arr, char *user_input)
 {
     int i = 0;
     int input_number = strtol(user_input, NULL, 10);
+    printf("No. | Done? | Task priority | Task name \n");
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             printf("%d. [x]   Priority: 1 %s", i+1, todo_arr[i].task_name);
+        } else {
+             printf("%d. [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
+        }
+
+    }
+}
+
+void priority_to_task(task *todo_arr, char *user_input)
+{
+    /*
+    int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
+
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
+        } else {
+             printf("%d. [ ] prio:  %s", i+1, todo_arr[i].task_name);
+        }
+
+    }
+    */
+}
+
+void list_tasks_priority(task *todo_arr, char *user_input)
+{
+    /*
+    int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
 
     for(i = 0; i < counter; i++){
         if(i == input_number-1){
@@ -121,16 +155,7 @@ void completes_task(task *todo_arr, char *user_input)
         }
 
     }
-}
-
-void priority_to_task(task *todo_arr, char *user_input)
-{
-
-}
-
-void list_tasks_priority(task *todo_arr, char *user_input)
-{
-
+    */
 
 }
 
@@ -152,7 +177,17 @@ int main(int argc, char** argv)
             exit(0);
         } else if (strcmp(command, "clr") == 0) {
             system("cls");
-            continue;
+            continue;int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
+
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             printf("%d. [x] %s", i+1, todo_arr[i].task_name);
+        } else {
+             printf("%d. [ ] %s", i+1, todo_arr[i].task_name);
+        }
+
+    }
         } else if (strcmp(command, "menu") == 0) {
             menu();
             continue;
@@ -178,6 +213,15 @@ int main(int argc, char** argv)
             completes_task(todo_arr, user_input);
 
         } else if (strcmp(command, "-p") == 0) {
+            printf("Write two numbers for every task: a task number and give priority to it!\n");
+            /*
+            i = 0;
+            for(i = 0; i < counter; i++){
+                scanf"(%d", tasknum);
+                scanf("%d", prio);
+                printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
+            }
+            */
             priority_to_task(todo_arr, user_input);
 
         } else if (strcmp(command, "-lp") == 0) {
