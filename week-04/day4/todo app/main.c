@@ -95,13 +95,6 @@ void remove_task(task *todo_arr, char *user_input)
 
 void completes_task(task *todo_arr, char *user_input)
 {
-    printf("Completes a task!\n");
-    printf("Num | Tasks | Prio\n");
-    printf("1 - [ ] Walk the dog\n");
-    printf("2 - [ ] Buy milk\n");
-    printf("3 - [x] Do homework\n");
-    printf("4 - [ ] Do something\n");
-    printf("5 - [ ] Feed the Monkey\n");
 
 }
 
@@ -150,7 +143,8 @@ int main(int argc, char** argv)
              list_tasks(todo_arr, user_input);
 
         } else if (strcmp(command, "-e") == 0) {
-             empty_task_list(todo_arr, user_input);
+             memset(&todo_arr, 0, sizeof(todo_arr));
+             write_to_file(todo_arr, user_input);
 
         } else if (strcmp(command, "-rm") == 0) {
              remove_task(todo_arr, user_input);
