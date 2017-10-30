@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1509353692 source:d:\én\greenfox\week-05\day1\array_01\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
