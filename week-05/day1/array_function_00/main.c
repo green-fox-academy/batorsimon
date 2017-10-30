@@ -45,7 +45,6 @@ int main()
         arr[j] = a;
         printf("%d |", arr[j]);
     }
-    //uint32_t length = sizeof arr / sizeof arr[0];
 
     printf("\n-------------\n");
 
