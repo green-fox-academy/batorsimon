@@ -14,6 +14,32 @@
 
 int main()
 {
-    printf("Hello world!\n");
+    char arr[] = "The";
+    char arr2[] = "Quick";
+    char arr3[] = "brown";
+    char arr4[] = "Dog";
+    char arr5[] = "jumps";
+    char arr6[] = "over";
+    char arr7[] = "the";
+    char arr8[] = "lazy";
+    char arr9[] = "fox";
+
+    char *pointers[] = {
+        "The",
+        "Quick",
+        "brown",
+        "Dog",
+        "jumps",
+        "over",
+        "the",
+        "lazy",
+        "fox"
+    };
+
+    int i = 0;
+    for(i = 0; i < 9; i++) {
+        printf("%s\n", pointers[i]);
+    }
+
     return 0;
 }
