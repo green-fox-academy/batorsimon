@@ -55,6 +55,69 @@ void setup_board(char arr[8][8])
 
 }
 
+void queen_move(char arr[8][8])
+{
+    /*
+    arr[i+x][j+x] = queen; vagy!
+    arr[i+x][j-x]
+    arr[i-x][j-x]
+    arr[i-x][j+x]
+    arr[i][j+x]
+    arr[i][j-x]
+    arr[i+x][j]
+    arr[i-x][j]
+    */
+}
+
+void king_move(char arr[8][8])
+{
+    /*
+    arr[i+1][j+1] = king;  vagy!!
+    arr[i+1][j-1]
+    arr[i-1][j+1]
+    arr[i-1][j+1]
+    arr[i+1][j]
+    arr[i][j+1]
+    */
+}
+
+void rook_move(char arr[8][8])
+{
+    /*
+    arr[i][j+x]= rook;  vagy!
+    arr[i][j-x]= rook;
+    arr[i+x][j]= rook;
+    arr[i-x][j]= rook;
+    */
+}
+
+void bishop_move(char arr[8][8])
+{
+    /*
+    arr[i+x][j+x] = bishop; vagy!
+    arr[i+x][j-x]
+    arr[i-x][j+x]
+    arr[i-x][j+x]
+    */
+}
+
+void knight_move(char arr[8][8])
+{
+    /*
+    arr[i+2][j+1] = knight; vagy!
+    arr[i+2][j-1]
+    arr[i-2][j+1]
+    arr[i-2][j-1]
+    */
+}
+
+void pawn_move(char arr[8][8])
+{
+    /*
+     arr[i+1][j]= pawn;  if(i == 8) change to queen;
+    */
+}
+
 void move(char arr[8][8])
 {
     char queen = 'Q';
@@ -68,40 +131,6 @@ void move(char arr[8][8])
     arr[0][1] = ' ';
 
     /*
-     //possible moves
-    arr[i+2][j+1] = knight; vagy!
-    arr[i+2][j-1]
-    arr[i-2][j+1]
-    arr[i-2][j-1]
-
-    arr[i+1][j]= pawn;  if(i == 8) change to queen;
-
-    arr[i+x][j+x] = bishop; vagy!
-    arr[i+x][j-x]
-    arr[i-x][j+x]
-    arr[i-x][j+x]
-
-    arr[i][j+x]= rook;  vagy!
-    arr[i][j-x]= rook;
-    arr[i+x][j]= rook;
-    arr[i-x][j]= rook;
-
-    arr[i+x][j+x] = queen; vagy!
-    arr[i+x][j-x]
-    arr[i-x][j-x]
-    arr[i-x][j+x]
-    arr[i][j+x]
-    arr[i][j-x]
-    arr[i+x][j]
-    arr[i-x][j]
-
-    arr[i+1][j+1] = king;  vagy!!
-    arr[i+1][j-1]
-    arr[i-1][j+1]
-    arr[i-1][j+1]
-    arr[i+1][j]
-    arr[i][j+1]
-
     int i = 0;
     int j = 0;
     for(i = 0; i < 8; i++) {
