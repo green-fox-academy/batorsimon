@@ -24,7 +24,7 @@ void setup_board(char arr[8][8])
 {
     char queen = 'Q';
     char king = 'K';
-    char rock = 'R';
+    char rook = 'R';
     char bishop = 'B';
     char knight = 'N';
     char pawn = 'p';
@@ -33,7 +33,7 @@ void setup_board(char arr[8][8])
     int j = 0;
 
 
-    arr[0][0] = arr[0][7] = arr[7][0] = arr[7][7] = rock;
+    arr[0][0] = arr[0][7] = arr[7][0] = arr[7][7] = rook;
     arr[0][1] = arr[0][6] = arr[7][1] = arr[7][6] = knight;
     arr[0][2] = arr[0][5] = arr[7][2] = arr[7][5] = bishop;
     arr[0][3] = arr[7][3] = queen;
@@ -44,7 +44,9 @@ void setup_board(char arr[8][8])
         arr[6][j] = pawn;
     }
 
+        printf("  12345678\n");
         for(i = 0; i < 8; i++) {
+                printf("%d ", i+1);
           for(j = 0; j < 8; j++) {
               printf("%c", arr[i][j]);
            }
@@ -55,16 +57,50 @@ void setup_board(char arr[8][8])
 
 void move(char arr[8][8])
 {
-     char queen = 'Q';
+    char queen = 'Q';
     char king = 'K';
-    char rock = 'R';
+    char rook = 'R';
     char bishop = 'B';
     char knight = 'N';
     char pawn = 'p';
 
-
     arr[2][0]= knight;
     arr[0][1] = ' ';
+
+    /*
+     //possible moves
+    arr[i+2][j+1] = knight; vagy!
+    arr[i+2][j-1]
+    arr[i-2][j+1]
+    arr[i-2][j-1]
+
+    arr[i+1][j]= pawn;  if(i == 8) change to queen;
+
+    arr[i+x][j+x] = bishop; vagy!
+    arr[i+x][j-x]
+    arr[i-x][j+x]
+    arr[i-x][j+x]
+
+    arr[i][j+x]= rook;  vagy!
+    arr[i][j-x]= rook;
+    arr[i+x][j]= rook;
+    arr[i-x][j]= rook;
+
+    arr[i+x][j+x] = queen; vagy!
+    arr[i+x][j-x]
+    arr[i-x][j-x]
+    arr[i-x][j+x]
+    arr[i][j+x]
+    arr[i][j-x]
+    arr[i+x][j]
+    arr[i-x][j]
+
+    arr[i+1][j+1] = king;  vagy!!
+    arr[i+1][j-1]
+    arr[i-1][j+1]
+    arr[i-1][j+1]
+    arr[i+1][j]
+    arr[i][j+1]
 
     int i = 0;
     int j = 0;
@@ -73,7 +109,7 @@ void move(char arr[8][8])
             printf("%c", arr[i][j]);
         }
         printf("\n");
-    }
+    } */
 }
 
 
@@ -106,7 +142,6 @@ int main()
         }
         //printf("\n");
     }
-
 
     setup_board(arr);
 
