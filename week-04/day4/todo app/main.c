@@ -213,7 +213,7 @@ int main(int argc, char** argv)
             completes_task(todo_arr, user_input);
 
         } else if (strcmp(command, "-p") == 0) {
-            printf("Write two numbers for every task: a task number and give priority to it!\n");
+            printf("Write two numbers: a task number and give priority to it!\n");
             /*
             i = 0;
             for(i = 0; i < counter; i++){
