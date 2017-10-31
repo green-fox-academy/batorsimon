@@ -18,7 +18,7 @@ int index_swap(char *arr1, char *arr2, int number)
 {
     int i = 0;
     for(i = 0; i < 6; i++) {
-        if(i == number) {
+        if(i >= number) {
             arr1[i] = arr2[i];
         }
     }

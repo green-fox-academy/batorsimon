@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "rlutil.h"
 
 /*
  * Create a representation of a chess board in the form of a two dimensional character array.
@@ -48,6 +49,7 @@ void setup_board(char arr[8][8])
         printf("%d ", i+1);
         for(j = 0; j < 8; j++) {
             printf("%c", arr[i][j]);
+
         }
         printf("\n");
     }
@@ -163,17 +165,18 @@ int main()
         for(j = 0; j < 8; j++) {
             if((i%2 == 0) || (i == 0)) {
                 if(j%2==0 || j==0){
-                     arr[i][j] = 'X';
+                    arr[i][j] = 'X';
                 }else{
-                    arr[i][j] = ' ';
-
+                    arr[i][j] = '0';
                 }
             }
             if(i%2 != 0) {
                 if(j%2 == 0){
-                     arr[i][j] = ' ';
+                     arr[i][j] = '0';
                 }else{
                     arr[i][j] = 'X';
+                    setBackgroundColor(WHITE);
+                    setColor(BLACK);
 
                 }
             }
@@ -188,21 +191,17 @@ int main()
 
     //move(arr);
 
+    /*
     printf("Usage: start position, space, end position. Like this: 11 21\nType q to quit.\n");
     while(1) {
-        char user_input1[];
-        scanf("%c", user_input1);
-        char user_input2;
-        scanf("%c", user_input2);
+        char user_input1[4];
+        scanf("%s", user_input1);
+        char user_input2[4];
+        scanf("%s", user_input2);
 
-        if(a == 'q'){
+        if (strcmp(user_input1, "q") == 0) {
+            printf("The program is exiting now. Goodbye!");
             exit(0);
-        } else if(a == 'w'){
-
-        } else if(a == 'a'){
-
-        } else if(a == 's'){
-
         } else{
             printf("Check the usage again!\n");
             continue;
@@ -210,6 +209,8 @@ int main()
 
 
     }
+
+    */
 
     return 0;
 }

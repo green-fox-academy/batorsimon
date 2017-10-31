@@ -1,5 +1,20 @@
 # depslib dependency file v1.0
-1509462104 source:d:\én\greenfox\week-05\day2\array_func_04\main.c
+1509466790 source:d:\én\greenfox\week-05\day2\array_func_04\main.c
 	<stdio.h>
 	<stdlib.h>
+	"rlutil.h"
+
+1509466155 d:\én\greenfox\week-05\day2\array_func_04\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
 
