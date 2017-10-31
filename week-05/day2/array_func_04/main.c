@@ -7,7 +7,7 @@
  *
  * Create a function which sets up the board.
  *
- * Create a function for checking the moves for each of the figurs. They should get coordinates for the figure and where to move it.
+ * Create a function for checking the moves for each of the figures. They should get coordinates for the figure and where to move it.
  * They should return 0 if the move is acceptable in chess and -1 if not.
  *
  * Create a function which moves figures by getting the initial coordinate and the target coordinate.
@@ -20,10 +20,62 @@
  * In the main functions set up the board and try them. Check if they work as intended.
  */
 
-void setup_board()
+void setup_board(char arr[8][8])
 {
+    char queen = 'Q';
+    char king = 'K';
+    char rock = 'R';
+    char bishop = 'B';
+    char knight = 'N';
+    char pawn = 'p';
+
+    int i = 0;
+    int j = 0;
+
+
+    arr[0][0] = arr[0][7] = arr[7][0] = arr[7][7] = rock;
+    arr[0][1] = arr[0][6] = arr[7][1] = arr[7][6] = knight;
+    arr[0][2] = arr[0][5] = arr[7][2] = arr[7][5] = bishop;
+    arr[0][3] = arr[7][3] = queen;
+    arr[0][4] = arr[7][4] = king;
+
+    for(j = 0; j < 8; j++) {
+        arr[1][j] = pawn;
+        arr[6][j] = pawn;
+    }
+
+        for(i = 0; i < 8; i++) {
+          for(j = 0; j < 8; j++) {
+              printf("%c", arr[i][j]);
+           }
+          printf("\n");
+        }
 
 }
+
+void move(char arr[8][8])
+{
+     char queen = 'Q';
+    char king = 'K';
+    char rock = 'R';
+    char bishop = 'B';
+    char knight = 'N';
+    char pawn = 'p';
+
+
+    arr[2][0]= knight;
+    arr[0][1] = ' ';
+
+    int i = 0;
+    int j = 0;
+    for(i = 0; i < 8; i++) {
+        for(j = 0; j < 8; j++) {
+            printf("%c", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 
 int main()
 {
@@ -50,55 +102,18 @@ int main()
 
                 }
             }
-            printf("%c", arr[i][j]);
+            //printf("%c", arr[i][j]);
         }
-        printf("\n");
+        //printf("\n");
     }
 
-    void setup_board();
 
-    /*
-    printf("\n-----------------------------\n\n");
+    setup_board(arr);
 
-    char queen = 'Q';
-    char king = 'K';
-    char rock = 'R';
-    char bishop = 'B';
-    char knight = 'N';
-    char pawn = 'p';
+    printf("\n");
 
-    int i = 0;
-    int j = 0;
+    move(arr);
 
-    char arr2[8][8] = {
-        {rock,knight,bishop,queen,king,bishop,knight,rock},
-        {pawn,pawn,pawn,pawn,pawn,pawn,pawn,pawn},
-        {'X',' ','X',' ','X',' ','X',' '},
-        {' ','X',' ','X',' ','X',' ','X'},
-        {'X',' ','X',' ','X',' ','X',' '},
-        {' ','X',' ','X',' ','X',' ','X'},
-        {pawn,pawn,pawn,pawn,pawn,pawn,pawn,pawn},
-        {rock,knight,bishop,queen,king,bishop,knight,rock}
-    };
-
-    for(i = 0; i < 8; i++) {
-          for(j = 0; j < 8; j++) {
-              printf("%c", arr2[i][j]);
-           }
-          printf("\n");
-    }
-
-    printf("\n-----------------------------\n\n");
-
-    arr2[2][0]= knight;
-    arr2[0][1] = ' ';
-    for(i = 0; i < 8; i++) {
-        for(j = 0; j < 8; j++) {
-            printf("%c", arr2[i][j]);
-        }
-        printf("\n");
-    }
-    */
 
     return 0;
 }
