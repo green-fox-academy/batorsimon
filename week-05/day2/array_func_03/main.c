@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
  * Create a function that takes an array of array of characters and returns an array of integers each representing the
@@ -10,51 +11,31 @@
  * So, "Good" as an array of characters would look like this: {'G', 'o', 'o', 'd', '\0'}.
  *
  * In the main function create code that demonstrates that Your function works approrpiately.
-
- char arr[] = "The";
-    char arr2[] = "Quick";
-    char arr3[] = "brown";
-    char arr4[] = "Dog";
-    char arr5[] = "jumps";
-    char arr6[] = "over";
-    char arr7[] = "the";
-    char arr8[] = "lazy";
-    char arr9[] = "fox";
-
-    char *pointers2[9];
-    pointers2[0] = arr;
-    pointers2[1] = arr2;
-    pointers2[2] = arr3;
-    pointers2[3] = arr4;
-    pointers2[4] = arr5;
-    pointers2[5] = arr6;
-    pointers2[6] = arr7;
-    pointers2[7] = arr8;
-    pointers2[8] = arr9;
-
  */
 
-int arr_length(arrs, length)
+int *arr_length(char *arr1, char *arr2, char *arr3)
 {
-    return 0;
+    int arr1_1 = strlen(arr1);
+    int arr2_2 = strlen(arr2);
+    int arr3_3 = strlen(arr3);
 
+    int arr_ossz[3] = {arr1_1, arr2_2, arr3_3};
+    return arr_ossz;
 }
 
 int main()
 {
-
     char arr1[] = {"Good"};
     char arr2[] = {"Morning"};
     char arr3[] = {"Vietnam"};
 
-    int length[4];
+    int *length;
+    length = arr_length(arr1, arr2, arr3);
 
-    char arrs[3] = {
-        arrs[0] = arr1,
-        arrs[1] = arr2,
-        arrs[2] = arr3
-    };
+    int i = 0;
+    for(i = 0; i < 3; i++) {
+        printf("%d, ", *(length + i));
+    }
 
-    arr_length(arrs, length);
     return 0;
 }

@@ -126,7 +126,7 @@ void pawn_move(char arr[8][8])
     */
 }
 
-void move(char arr[8][8])
+void move(char arr[8][8])  //just one move with the knight
 {
     char queen = 'Q';
     char king = 'K';
@@ -186,8 +186,30 @@ int main()
 
     printf("\n");
 
-    move(arr);
+    //move(arr);
 
+    printf("Usage: start position, space, end position. Like this: 11 21\nType q to quit.\n");
+    while(1) {
+        char user_input1[];
+        scanf("%c", user_input1);
+        char user_input2;
+        scanf("%c", user_input2);
+
+        if(a == 'q'){
+            exit(0);
+        } else if(a == 'w'){
+
+        } else if(a == 'a'){
+
+        } else if(a == 's'){
+
+        } else{
+            printf("Check the usage again!\n");
+            continue;
+        }
+
+
+    }
 
     return 0;
 }
