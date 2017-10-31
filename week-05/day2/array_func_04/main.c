@@ -32,7 +32,6 @@ void setup_board(char arr[8][8])
     int i = 0;
     int j = 0;
 
-
     arr[0][0] = arr[0][7] = arr[7][0] = arr[7][7] = rook;
     arr[0][1] = arr[0][6] = arr[7][1] = arr[7][6] = knight;
     arr[0][2] = arr[0][5] = arr[7][2] = arr[7][5] = bishop;
@@ -44,20 +43,24 @@ void setup_board(char arr[8][8])
         arr[6][j] = pawn;
     }
 
-        printf("  12345678\n");
-        for(i = 0; i < 8; i++) {
-                printf("%d ", i+1);
-          for(j = 0; j < 8; j++) {
-              printf("%c", arr[i][j]);
-           }
-          printf("\n");
+    printf("  12345678\n");
+    for(i = 0; i < 8; i++) {
+        printf("%d ", i+1);
+        for(j = 0; j < 8; j++) {
+            printf("%c", arr[i][j]);
         }
+        printf("\n");
+    }
 
 }
 
 void queen_move(char arr[8][8])
 {
     /*
+    kell még egy kezdeti hely és egy vég hely
+    mengézni a vég helyen saját bábú van e
+    ha ellenséges akkor elvégezni a "leütést"
+
     arr[i+x][j+x] = queen; vagy!
     arr[i+x][j-x]
     arr[i-x][j-x]
@@ -108,6 +111,11 @@ void knight_move(char arr[8][8])
     arr[i+2][j-1]
     arr[i-2][j+1]
     arr[i-2][j-1]
+
+    arr[i+1][j+2]
+    arr[i+1][j-2]
+    arr[i-1][j-2]
+    arr[i-1][j+2]
     */
 }
 
@@ -130,15 +138,17 @@ void move(char arr[8][8])
     arr[2][0]= knight;
     arr[0][1] = ' ';
 
-    /*
     int i = 0;
     int j = 0;
+
+    printf("  12345678\n");
     for(i = 0; i < 8; i++) {
+        printf("%d ", i+1);
         for(j = 0; j < 8; j++) {
             printf("%c", arr[i][j]);
         }
         printf("\n");
-    } */
+    }
 }
 
 
