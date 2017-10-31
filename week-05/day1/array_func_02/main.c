@@ -14,13 +14,12 @@
  * Write code in the main function to test all scenarios and write out the result You need to check whether this works.
  */
 
-int index_swap(char *arr1, char *arr2, int *number)
+int index_swap(char *arr1, char *arr2, int number)
 {
     int i = 0;
     for(i = 0; i < 6; i++) {
         if(i == number) {
             arr1[i] = arr2[i];
-            return 0;
         }
     }
 
@@ -38,6 +37,8 @@ int index_swap(char *arr1, char *arr2, int *number)
 
     if(number > i){
         return -1;
+    } else{
+        return 0;
     }
 
 }
@@ -46,7 +47,7 @@ int main()
 {
     char arr1[6] = {'a','b','c','d','e','f'};
     char arr2[6] = {'x','y','z','w','b','s'};
-    int number = 4;
+    int number = 3;
 
     int i = 0;
     for(i = 0; i < 6; i++) {
@@ -58,7 +59,7 @@ int main()
     }
     printf("------------------------------\n");
 
-    index_swap(*arr1, *arr2, number);
+    index_swap(arr1, arr2, number);
 
     return 0;
 }
