@@ -20,44 +20,42 @@
  * In the main functions set up the board and try them. Check if they work as intended.
  */
 
-void chess_board()
+void setup_board()
 {
 
 }
 
 int main()
 {
-    char arr[8][8] = {
-        /*
-        {'X',' ','X',' ','X',' ','X',' '}, 0
-        {' ','X',' ','X',' ','X',' ','X'}, 1
-        {'X',' ','X',' ','X',' ','X',' '}, 2
-        {' ','X',' ','X',' ','X',' ','X'}, 3
-        {'X',' ','X',' ','X',' ','X',' '}, 4
-        {' ','X',' ','X',' ','X',' ','X'}, 5
-        {'X',' ','X',' ','X',' ','X',' '}, 6
-        {' ','X',' ','X',' ','X',' ','X'}  7   */
-    };
+    char arr[8][8];
 
     int i = 0;
     int j = 0;
 
     for(i = 0; i < 8; i++) {
         for(j = 0; j < 8; j++) {
-            if((i%2 == 0) | (i == 0)) {
-                    arr[j] = 'X';
-                    arr[j+1] = ' ';
+            if((i%2 == 0) || (i == 0)) {
+                if(j%2==0 || j==0){
+                     arr[i][j] = 'X';
+                }else{
+                    arr[i][j] = ' ';
+
+                }
             }
             if(i%2 != 0) {
-                arr[j] = ' ';
-                arr[j+1] = 'X';
+                if(j%2 == 0){
+                     arr[i][j] = ' ';
+                }else{
+                    arr[i][j] = 'X';
+
+                }
             }
             printf("%c", arr[i][j]);
         }
         printf("\n");
     }
 
-    void chess_board();
+    void setup_board();
 
     /*
     printf("\n-----------------------------\n\n");
