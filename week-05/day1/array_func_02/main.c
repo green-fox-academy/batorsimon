@@ -22,7 +22,22 @@ int index_swap(char *arr1, char *arr2, int *number)
             arr1[i] = arr2[i];
             return 0;
         }
+    }
 
+    printf("------------------------------\n");
+
+    for(i = 0; i < 6; i++) {
+        printf("Arr1 %d. element: %c\n", i, arr1[i]);
+    }
+
+    printf("------------------------------\n");
+
+    for(i = 0; i < 6; i++) {
+        printf("Arr2 %d. element: %c\n", i, arr2[i]);
+    }
+
+    if(number > i){
+        return -1;
     }
 
 }
@@ -31,6 +46,7 @@ int main()
 {
     char arr1[6] = {'a','b','c','d','e','f'};
     char arr2[6] = {'x','y','z','w','b','s'};
+    int number = 4;
 
     int i = 0;
     for(i = 0; i < 6; i++) {
@@ -42,7 +58,7 @@ int main()
     }
     printf("------------------------------\n");
 
-    index_swap(*arr1, *arr2, 4);
+    index_swap(*arr1, *arr2, number);
 
     return 0;
 }
