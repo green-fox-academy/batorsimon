@@ -1,7 +1,7 @@
 # batorsimon
 
 
-### Hi! I'm part of the greenfox academy. You can watch my projects here.
+### Hi! I'm part of the Greenfox Academy. You can have a look at my projects here.
 
 <table border="2" cellspacing="10"  align="center">
 <tr>
