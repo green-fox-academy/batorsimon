@@ -5,7 +5,7 @@
 
 ![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/me.jpg)
 
-<table border="2" cellspacing="10"  align="center">
+<table border="10" cellspacing="10"  align="center">
 <tr>
 <td>
 WEEK-01
