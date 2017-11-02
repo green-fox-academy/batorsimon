@@ -22,12 +22,7 @@ typedef struct{
     char title[50];
     char author[50];
     int publishing_year;
-    } book;
-
-void create_new_book(book *library)
-{
-
-}
+} book;
 
 void change_title(book *library)
 {
@@ -57,7 +52,6 @@ int main()
 {
     book library[10] = {0};
 
-    create_new_book(library);
     change_title(library);
     change_author(library);
     change_publishing_year(library);
