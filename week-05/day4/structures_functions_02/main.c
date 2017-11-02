@@ -9,33 +9,69 @@
  *    * Replace a number at a given index if it exists.
  *
  * If the array is too small, create a new one, copy everything into it, add the new element and delete the old array.
- *
  * Test in the main function whether everything works.  */
 
  typedef struct{
-    int numbers[50];
-    int how_many;
+    int counter;
+    int numbers[];
 } numberlist;
 
-void add_number()
+int add_number(numberlist *arr, int number)
 {
+    numberlist.numbers[numberlist.counter] = number;
+    numberlist.counter++;
+}
+
+void get_number(numberlist *arr)
+{
+    int index = 1;
+    int i = 0;
+    for(i = 0; i < 20; i++){
+        if(i == index){
+            printf("The number is %d in the given index is: %d\n", numberlist.numbers[i], index);
+        }
+    }
 
 }
 
-void get_number()
+void replace_number(numberlist *arr)
 {
-
-}
-
-void replace_number()
-{
+    int index = 1;
+    int i = 0;
+    for(i = 0; i < 20; i++){
+        if(i == index){
+            printf("The number is %d in the given index is: %d\n", arr[i], index);
+        }
+    }
 
 }
 
 int main()
 {
-    add_number();
-    get_number();
-    replace_number();
+    int i = 0;
+    for(i = 0; i < 10; i++){
+        numberlist.numbers[i] = i;
+        numberlist.counter++;
+    }
+
+    add_number(numberlist arr, 5);
+
+    for(i = 0; i < numberlist.counter; i++){
+        printf("%d ", numberlist.numbers[i]);
+    }
+
+    int a = get_number(numberlist arr, 3);
+
+    for(i = 0; i < numberlist.counter; i++){
+        printf("%d ", numberlist.numbers[i]);
+    }
+
+    int b = replace_number(numberlist arr, 4, 12);
+
+    for(i = 0; i < numberlist.counter; i++){
+        printf("%d ", numberlist.numbers[i]);
+    }
+
+
     return 0;
 }
