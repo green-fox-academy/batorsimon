@@ -3,7 +3,7 @@
 
 ### Hi! I'm part of the Greenfox Academy. You can have a look at my projects here.
 
-![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/icons3.jpg)
+![](https://github.com/greenfox-academy/batorsimon/blob/master/batorsimon/me.jpg)
 
 <table border="2" cellspacing="10"  align="center">
 <tr>
