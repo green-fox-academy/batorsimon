@@ -18,25 +18,23 @@
 
 int add_number(numberlist *arr, int number)
 {
-    numberlist.numbers[numberlist.counter] = number;
-    numberlist.counter++;
+    arr->numbers[arr->counter] = number;
+    arr->counter++;
 }
 
-void get_number(numberlist *arr)
+void get_number(numberlist *arr, int index)
 {
-    int index = 1;
     int i = 0;
     for(i = 0; i < 20; i++){
-        if(i == index){
-            printf("The number is %d in the given index is: %d\n", numberlist.numbers[i], index);
+        if(arr->numbers[i] == index){
+            printf("The number is: %d in the given index is: %d\n", arr->numbers[i], index);
         }
     }
 
 }
 
-void replace_number(numberlist *arr)
+void replace_number(numberlist *arr, int index, int number)
 {
-    int index = 1;
     int i = 0;
     for(i = 0; i < 20; i++){
         if(i == index){
@@ -48,30 +46,24 @@ void replace_number(numberlist *arr)
 
 int main()
 {
+
+    numberlist arr[20];
+
     int i = 0;
     for(i = 0; i < 10; i++){
-        numberlist.numbers[i] = i;
-        numberlist.counter++;
+        arr->numbers[i] = i;
+        arr->counter++;
     }
 
     add_number(numberlist arr, 5);
 
-    for(i = 0; i < numberlist.counter; i++){
-        printf("%d ", numberlist.numbers[i]);
+    for(i = 0; i < arr->counter; i++){
+        printf("%d ", arr->numbers[i]);
     }
 
-    int a = get_number(numberlist arr, 3);
+    get_number(numberlist arr, 3);
 
-    for(i = 0; i < numberlist.counter; i++){
-        printf("%d ", numberlist.numbers[i]);
-    }
-
-    int b = replace_number(numberlist arr, 4, 12);
-
-    for(i = 0; i < numberlist.counter; i++){
-        printf("%d ", numberlist.numbers[i]);
-    }
-
+    int b = replace_number(4, 12);
 
     return 0;
 }
