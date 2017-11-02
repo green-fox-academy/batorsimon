@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1509631325 source:d:\én\greenfox\week-05\day4\structures_functions_00\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

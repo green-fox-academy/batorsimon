@@ -18,73 +18,56 @@
  * Create a main where You demonstrate that each of these works and print out the necessary info.
  * IMPORTANT: You should only print from the main function. All other functions should return the info needed.  */
 
-void create_new_book(struct Book books)
+typedef struct{
+    char title[50];
+    char author[50];
+    int publishing_year;
+    } book;
+
+void create_new_book(book *library)
 {
-    struct Book books1;
-    struct Book books2;
-    struct Book books3;
-    struct Book books4;
+
 }
 
-void change_title(struct Book books)
+void change_title(book *library)
 {
-    strcpy( books1.title, "one title");
-    strcpy( books2.title, "two title");
-    strcpy( books3.title, "three title");
-    strcpy( books4.title, "four title");
+    strcpy(library[0].title, "one title");
+    strcpy(library[1].title, "two title");
+    strcpy(library[2].title, "three title");
+    strcpy(library[3].title, "four title");
 }
 
-void change_author(struct Book books)
+void change_author(book *library)
 {
-    strcpy( books1.author, "Ali Baba");
-    strcpy( books2.author, "Dave Mirra");
-    strcpy( books3.author, "Chester Bennington");
-    strcpy( books4.author, "Matt Hoffman");
+    strcpy(library[0].author, "Ali Baba");
+    strcpy(library[1].author, "Dave Mirra");
+    strcpy(library[2].author, "Chester Bennington");
+    strcpy(library[3].author, "Matt Hoffman");
 }
 
-void change_publishing_year(struct Book books)
+void change_publishing_year(book *library)
 {
-    books1.publishing_year = 20160812;
-    books2.publishing_year = 20160731;
-    books3.publishing_year = 20170218;
-    books4.publishing_year = 20070421;
+    library[0].publishing_year = 20160812;
+    library[1].publishing_year = 20160731;
+    library[2].publishing_year = 20170218;
+    library[3].publishing_year = 20070421;
 }
 
 int main()
 {
-    struct Book {
-    char  title[50];
-    char  author[50];
-    int   publishing_year;
-    };
+    book library[10] = {0};
 
-    struct Book books1;
-    struct Book books2;
-    struct Book books3;
-    struct Book books4;
+    create_new_book(library);
+    change_title(library);
+    change_author(library);
+    change_publishing_year(library);
 
-
-    void create_new_book();
-    void change_title();
-    void change_author();
-    void change_publishing_year();
-
-
-    printf("Book 1 title : %s\n", books1.title);
-    printf("Book 1 author : %s\n", books1.author);
-    printf("Book 1 publishing year : %d\n", books1.publishing_year);
-
-    printf("Book 2 title : %s\n", books2.title);
-    printf("Book 2 author : %s\n", books2.author);
-    printf("Book 2 publishing year : %d\n", books2.publishing_year);
-
-    printf("Book 3 title : %s\n", books3.title);
-    printf("Book 3 author : %s\n", books3.author);
-    printf("Book 3 publishing year : %d\n", books3.publishing_year);
-
-    printf("Book 4 title : %s\n", books4.title);
-    printf("Book 4 author : %s\n", books4.author);
-    printf("Book 4 publishing year : %d\n", books4.publishing_year);
+    int i = 0;
+    for(i = 0; i< 4; i++){
+        printf("Book %d title : %s\n", i+1, library[i].title);
+        printf("Book %d author : %s\n", i+1, library[i].author);
+        printf("Book %d publishing year : %d\n", i+1, library[i].publishing_year);
+    }
 
     return 0;
 }
