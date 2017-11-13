@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1510609614 source:d:\én\greenfox\week-06\day1\vector 03\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<random>
+	<ctime>
+
