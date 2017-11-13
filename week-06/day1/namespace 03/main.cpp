@@ -31,6 +31,7 @@ int main()
     func();
 
     int year_main = returning(age);
-    cout << "The year i was born in: " << year_main <<endl;
+    cout << "The year I was born in: " << year_main <<endl;
+
     return 0;
 }
