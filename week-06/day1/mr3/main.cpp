@@ -23,11 +23,12 @@ int main()
     cout << "-----" << endl;
 
 
-    for(unsigned int i = 0; i < int_vector.size() + 1; ++i) {
+    for(unsigned int i = 0; i < int_vector.size() +1; ++i) { //size+1 miatt írja ki az utolsó elemet is
         cout << int_vector[i] << endl;
     }
 
-    int_vector.insert(int_vector.begin() + 1, 111);
+    int_vector.insert(int_vector.begin() + 1, 111); //begin+1: második helyre beteszi az adott szamot
+    // dinamikusan noveli keretet tehát plusz elemet berakva minden további elem eggyel tobább ugrik
     cout << "--------------" << endl;
 
 
