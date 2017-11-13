@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -10,6 +11,22 @@ using namespace std;
 
 int main() {
 
+    string *name = NULL;
+    int *age = NULL;
+    int *slice_of_pizza_i_can_eat = NULL;
 
-  return 0;
+    name = new string;
+    age = new int;
+    slice_of_pizza_i_can_eat = new int;
+
+    *name = "Simon";
+    *age = 24;
+    *slice_of_pizza_i_can_eat = 10;
+
+    cout << "My name is: " << *name << ". My age is: " << *age << ". The slice_of_pizza_i_can_eat is: " << *slice_of_pizza_i_can_eat << endl;
+    delete name;
+    delete age;
+    delete slice_of_pizza_i_can_eat;
+
+    return 0;
 }
