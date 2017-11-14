@@ -5,10 +5,11 @@ using namespace std;
 //namespace dinamikusan huzogatja be amire szöüksége van
 
 class BankAcc{
-public:
+private:
     int pin_code;
     float money;
 
+public:
     BankAcc(int pin_code, float money){
         this->pin_code = pin_code;
         this->money = money;
@@ -19,6 +20,14 @@ public:
         cout << "My pin is " << pin_code << " and I have " << money << " forint." << endl;
     }
 
+    void set_money(int pin_code, float money){
+        if(this->pin_code == pin_code){
+            this->money = money;
+        } else {
+            cout << "Nice try hacker!" << endl;
+        }
+    }
+
 };
 
 int main()
@@ -26,7 +35,7 @@ int main()
     BankAcc ba(1234, 33.33);
     ba.print_data();
 
-    ba.money = 100;
+    ba.set_money(123, 1000);
     ba.print_data();
 
     return 0;
