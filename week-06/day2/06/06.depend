@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1510668681 source:d:\én\greenfox\week-06\day2\06\car.cpp
+	"Car.h"
+
+1510667825 d:\én\greenfox\week-06\day2\06\car.h
+	<iostream>
+
+1510668416 source:d:\én\greenfox\week-06\day2\06\main.cpp
+	<iostream>
+	<string>
+	"Car.h"
+
