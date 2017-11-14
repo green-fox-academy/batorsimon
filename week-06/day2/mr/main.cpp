@@ -9,10 +9,14 @@ public:
     int pin_code;
     float money;
 
-    BankAcc(int given_pin_code, float given_money){
-        cout << "I have moneeeey" << endl;
-        pin_code = given_pin_code;
-        money = given_money;
+    BankAcc(int pin_code, float money){
+        this->pin_code = pin_code;
+        this->money = money;
+        //this szinte egy pointer ami a classon kívûlre mutat
+    }
+
+    void print_data(){
+        cout << "My pin is " << pin_code << " and I have " << money << " forint." << endl;
     }
 
 };
@@ -20,8 +24,10 @@ public:
 int main()
 {
     BankAcc ba(1234, 33.33);
+    ba.print_data();
 
-    cout << "My pin is " << ba.pin_code << " and I have " << ba.money << " forint." << endl;
+    ba.money = 100;
+    ba.print_data();
 
     return 0;
 }
