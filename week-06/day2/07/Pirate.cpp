@@ -1,25 +1,30 @@
 #include "Pirate.h"
 
-Pirate::Pirate()
+Pirate::Pirate(int counter)
 {
-    //ctor
+  this->counter = counter;
 }
 
 Pirate::~Pirate()
 {
-    cout << "Drink anouther one!!" << endl;
+    cout << endl << "Drink anouther one!!" << endl;
 }
-
 
 void Pirate::drink_rum()
 {
-    i++;
+    counter++;
+}
 
+void Pirate::run()
+{
+    for(int i = 0; i < counter; i++){
+        drink_rum();
+    }
 }
 
 const char* Pirate::hows_goin_mate()
 {
-    if(i >= 5){
+    if(counter >= 5){
         return "Arrrr!";
     } else{
         return "Nothin'  ";

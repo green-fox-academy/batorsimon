@@ -1,7 +1,12 @@
 # depslib dependency file v1.0
-1510669447 source:d:\én\greenfox\week-06\day2\07\pirate.cpp
+1510672140 source:d:\én\greenfox\week-06\day2\07\pirate.cpp
 	"Pirate.h"
 
-1510669447 d:\én\greenfox\week-06\day2\07\pirate.h
+1510671964 d:\én\greenfox\week-06\day2\07\pirate.h
 	<iostream>
+
+1510672194 source:d:\én\greenfox\week-06\day2\07\main.cpp
+	<iostream>
+	<string>
+	"Pirate.h"
 

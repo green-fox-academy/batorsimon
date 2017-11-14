@@ -7,14 +7,16 @@ using namespace std;
 class Pirate
 {
     public:
-        Pirate();
+        Pirate(int counter);
         virtual ~Pirate();
         void drink_rum();
-        void hows_goin_mate();
+        const char* hows_goin_mate();
+        void run();
 
     protected:
 
     private:
+        int counter;
 };
 
 #endif // PIRATE_H

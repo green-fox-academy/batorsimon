@@ -13,11 +13,9 @@ int main() {
     // hows_goin_mate should return "Arrrr!"
     // "Nothin'" otherwise
 
-    Pirate Pe();
+    cout << "hows goin mate?" << endl;
+    Pirate Pe(6);
+    cout << Pe.hows_goin_mate();
 
-    for(int i = 0; i < 10; i++){
-        Pe.drink_rum();
-
-    }
     return 0;
 }
