@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1510656027 source:d:\én\greenfox\week-06\day2\mr2\bankacc.cpp
+	"bankacc.h"
+
+1510656180 d:\én\greenfox\week-06\day2\mr2\bankacc.h
+	<iostream>
+
