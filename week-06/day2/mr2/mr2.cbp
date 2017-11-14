@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="bankacc.cpp" />
+		<Unit filename="bankacc.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
