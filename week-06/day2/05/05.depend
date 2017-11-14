@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1510665133 source:d:\én\greenfox\week-06\day2\05\circle.cpp
+	"Circle.h"
+
+1510665108 d:\én\greenfox\week-06\day2\05\circle.h
+	<iostream>
+
+1510665355 source:d:\én\greenfox\week-06\day2\05\main.cpp
+	<iostream>
+	<string>
+	"Circle.h"
+

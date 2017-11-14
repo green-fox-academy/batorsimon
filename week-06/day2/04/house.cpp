@@ -10,7 +10,7 @@ house::house(string address, unsigned int area)
 
 house::~house()
 {
-    cout << "Calculate another houses price!" << endl;
+    cout << "Calculate another house's price!" << endl;
 }
 
 

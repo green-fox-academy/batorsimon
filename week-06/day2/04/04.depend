@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1510661885 source:d:\én\greenfox\week-06\day2\04\main.cpp
+1510663109 source:d:\én\greenfox\week-06\day2\04\main.cpp
 	<iostream>
 	<string>
+	"house.h"
 
-1510663096 source:d:\én\greenfox\week-06\day2\04\house.cpp
+1510663211 source:d:\én\greenfox\week-06\day2\04\house.cpp
 	"house.h"
 
 1510663086 d:\én\greenfox\week-06\day2\04\house.h
