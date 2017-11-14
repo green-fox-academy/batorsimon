@@ -2,12 +2,25 @@
 
 using namespace std;
 
-house::house()
+house::house(string address, unsigned int area)
 {
-    //ctor
+    this->address = address;
+    this->area = area;
 }
 
 house::~house()
 {
-    //dtor
+    cout << "Calculate another houses price!" << endl;
+}
+
+
+int house::get_price()
+{
+    price = area * 400;
+    return price;
+}
+
+void house::print()
+{
+    cout << "The price of the house is: " << get_price() << endl;
 }
