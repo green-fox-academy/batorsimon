@@ -16,6 +16,10 @@ public:
         //this szinte egy pointer ami a classon kívûlre mutat
     }
 
+    ~BankAcc(){
+        cout << "sms with acc data have been sent" << endl;
+    }
+
     void print_data(){
         cout << "My pin is " << pin_code << " and I have " << money << " forint." << endl;
     }
