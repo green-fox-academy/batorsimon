@@ -39,22 +39,28 @@ class ChildClass: public ParentClass{
 int main()
 {
     ParentClass pc;
-
     ChildClass cc;
 
     ParentClass* a = new ChildClass();
     cout << "ParentClass* a = new ChildClass()" << endl;
     cout << "The first pointer first : " << a->func1() << endl;
     cout << "The first pointer second : " << a->func2() << endl;
-    delete a;
+
+    /*
+    cout << endl;
+    char* result = a->func1();
+    char* result2 = a->func2();
+    cout << "ParentClass* a = new ChildClass()" << endl;
+    cout << "The first pointer first : " << result << endl;
+    cout << "The first pointer second : " << result2 << endl;
+    */
 
     cout << endl;
 
-    ChildClass* b = new ChildClass();
-    cout << "ChildClass* b = new ChildClass() " << endl;
-    cout << "The first pointer first : " << b->func1() << endl;
-    cout << "The first pointer second : " << b->func2() << endl;
-    delete b;
+    cout << "ChildClass* a = new ChildClass() " << endl;
+    cout << "The first pointer first : " << ((ChildClass*)a)->func1() << endl;
+    cout << "The first pointer second : " <<  ((ChildClass*)a)->func2() << endl;
+    delete a;
 
     return 0;
 }
