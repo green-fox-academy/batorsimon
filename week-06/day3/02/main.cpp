@@ -33,15 +33,16 @@ class Circle: public Shape{
 class Triangle: public Shape{
     public:
         void calc_area(){
-            int triangle_area = (base+height)/2;
-            //cout << "The area of the triangle is: " << triangle_area <<endl;
+            this->triangle_area = float(base+height)/2;
         }
 
         void set_base(int base){
             this->base = base;
+            calc_area();
         }
         void set_height(int height){
             this->height = height;
+            calc_area();
         }
 
         void get_base(){
@@ -56,9 +57,9 @@ class Triangle: public Shape{
         }
 
     private:
-        int triangle_area;
-        int base;
-        int height;
+        float triangle_area;
+        float base;
+        float height;
 };
 
 
