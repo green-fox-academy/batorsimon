@@ -39,16 +39,22 @@ class ChildClass: public ParentClass{
 int main()
 {
     ParentClass pc;
-    pc.func1();
-    pc.func2();
 
     ChildClass cc;
-    cc.func1();
-    cc.func2();
 
-   ParentClass* a = new ChildClass();
+    ParentClass* a = new ChildClass();
+    cout << "ParentClass* a = new ChildClass()" << endl;
+    cout << "The first pointer first : " << a->func1() << endl;
+    cout << "The first pointer second : " << a->func2() << endl;
+    delete a;
 
-// Print out the result of both functions on this a ponter.
-// Print out the result of both functions if You first cast pointer a to be interpreted as of type ChildClass*
+    cout << endl;
+
+    ChildClass* b = new ChildClass();
+    cout << "ChildClass* b = new ChildClass() " << endl;
+    cout << "The first pointer first : " << b->func1() << endl;
+    cout << "The first pointer second : " << b->func2() << endl;
+    delete b;
+
     return 0;
 }
