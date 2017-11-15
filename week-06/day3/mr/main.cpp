@@ -19,6 +19,9 @@ class vehicle{
 class ElectricVehicle: public vehicle{
     public:
         int consumtion;
+        void move() {
+            cout << "Silently going away...." << endl;
+        }
 
 };
 
@@ -29,8 +32,10 @@ class EAuto: public ElectricVehicle{
 
 class Tesla: public ElectricVehicle{
 public:
-    void autopilot();
+    void sautopilot();
 };
+
+
 int main()
 {
     vehicle v;
@@ -42,10 +47,8 @@ int main()
 
     cout << "EA properities" << endl;
     ea.move();
-    cout << " - has consumation" << ea.consumtion << endl;
-    cout << " - has range" << ea.range << endl;
-
-
+    cout << " - has consumation: " << ea.consumtion << endl;
+    cout << " - has range: " << ea.range << endl;
 
     return 0;
 }
