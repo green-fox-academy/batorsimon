@@ -130,6 +130,7 @@ void Storage::completes_task()
     cin >> user_input;
     cout << endl;
 
+    storage.at(user_input+1)
     for(int i = 0; i < storage.size(); i++){
         cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << "[x]" << "\t" << storage.at(i).get_prio() << "\t" <<endl;
     }
@@ -264,6 +265,8 @@ void Storage::menu() {
     system("pause");
     system("cls");
 }
+
+
 int main()
 {
     Storage s;
