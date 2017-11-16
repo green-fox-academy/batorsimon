@@ -29,10 +29,145 @@ void menu() {
     system("cls");
 }
 
+class todo{
+public:
+
+private:
+
+};
+
+
+void new_task()
+{
+    //strcpy(todo_arr[counter].task_name, user_input);
+    //todo_arr[counter].task_name = user_input;
+    counter++;
+}
+
+int write_to_file()
+{
+    /*
+    FILE *cd = fopen("file.txt", "w+");
+    if (cd == NULL) {
+        printf("Could not create file: %s", todo_arr);
+        return -1;
+    }
+
+    int i;
+    for(i = 0; i < counter; i++){
+         fprintf(cd, "%s", todo_arr[i].task_name);
+         //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio);
+         //csak akkor fog kelleni ha már lesz prio meg done, függvénybe is megkell hívni!!
+    }
+    fclose(cd);
+    */
+}
+
+int read_from_file()
+{
+    /*
+    FILE *cd = fopen("file.txt", "r");
+    if (cd == NULL) {
+        printf("The file %s does not exist!", todo_arr);
+        return -1;
+    }
+
+    int i;
+    for(i = 0; i < counter; i++){
+         printf(cd, "%s", todo_arr[i].task_name);
+    }
+
+    /*
+    int num = 0;
+    char str[255];
+    fscanf(cd, "%d\t%s", &num, str);
+    printf("read_file_fscanf() - number: %d, string: %s\n", num, str);
+
+    fclose(cd);
+    */
+}
+
+void list_tasks()
+{
+    int i = 0;
+    //printf("No. | Done? | Task priority | Task name \n");
+    for(i = 0; i < counter; i++){
+        //printf("%d - [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
+    }
+
+}
+
+void remove_task()
+{
+    /*
+    int pos = 0;
+    int i = 0;
+    counter--;
+
+    for(i = 0; i < counter; i++) {
+        if(strcmp(todo_arr[i].task_name, user_input) == 0){
+            pos = i;
+            for(i = pos; i< counter; i++){
+                strcpy(todo_arr[i].task_name, todo_arr[i+1].task_name);
+            }
+        }
+
+    }
+    */
+}
+
+void completes_task()
+{
+    /*
+    int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
+    printf("No. | Done? | Task priority | Task name \n");
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             //printf("%d. [x]   Priority: 1 %s", i+1, todo_arr[i].task_name);
+        } else {
+             //printf("%d. [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
+        }
+
+    }
+    */
+}
+
+void priority_to_task()
+{
+    /*
+    int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
+        } else {
+             printf("%d. [ ] prio:  %s", i+1, todo_arr[i].task_name);
+        }
+    }
+    */
+}
+
+void list_tasks_priority(){
+    /*
+    int i = 0;
+    int input_number = strtol(user_input, NULL, 10);
+    for(i = 0; i < counter; i++){
+        if(i == input_number-1){
+             printf("%d. [x] %s", i+1, todo_arr[i].task_name);
+        } else {
+             printf("%d. [ ] %s", i+1, todo_arr[i].task_name);
+        }
+    }
+    */
+
+}
+
 
 int main()
 {
     menu();
+    //task todo_arr[10];
 
     string user_input;
     string command;
@@ -50,8 +185,8 @@ int main()
             menu();
             continue;
         } else if(command == "-a"){
-            cin >> user_input;
-           //new_task(todo_arr, user_input);
+            getline(cin, user_input);
+            new_task();
 
         } else if (command == "-wr") {
             cin >> user_input;
