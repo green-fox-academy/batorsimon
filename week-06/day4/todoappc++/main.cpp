@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -39,6 +40,8 @@ private:
 
 void new_task()
 {
+    string user_input;
+    getline(cin, user_input);
     //strcpy(todo_arr[counter].task_name, user_input);
     //todo_arr[counter].task_name = user_input;
     counter++;
@@ -46,45 +49,34 @@ void new_task()
 
 int write_to_file()
 {
-    /*
-    FILE *cd = fopen("file.txt", "w+");
-    if (cd == NULL) {
-        printf("Could not create file: %s", todo_arr);
-        return -1;
-    }
+    ofstream outfile;
+    outfile.open("probe.txt");
 
-    int i;
-    for(i = 0; i < counter; i++){
-         fprintf(cd, "%s", todo_arr[i].task_name);
-         //fprintf(cd, "%s %d %d\n", todo_arr[i].task_name, todo_arr[i].done, todo_arr[i].prio);
-         //csak akkor fog kelleni ha már lesz prio meg done, függvénybe is megkell hívni!!
-    }
-    fclose(cd);
-    */
+    string user_input;
+    getline(cin, user_input);
+    outfile << user_input << endl;
+
+    outfile.close();
+    //cin.getline(user_input, 100);
 }
 
 int read_from_file()
 {
-    /*
-    FILE *cd = fopen("file.txt", "r");
-    if (cd == NULL) {
-        printf("The file %s does not exist!", todo_arr);
-        return -1;
+    string user_input;
+
+    ifstream infile;
+    infile.open("probe.txt");
+
+    for(int i = 0; i < counter; i++){
+         cout << user_input << endl;
     }
+    infile >> user_input;
 
-    int i;
-    for(i = 0; i < counter; i++){
-         printf(cd, "%s", todo_arr[i].task_name);
-    }
+    cout << user_input << endl;
 
-    /*
-    int num = 0;
-    char str[255];
-    fscanf(cd, "%d\t%s", &num, str);
-    printf("read_file_fscanf() - number: %d, string: %s\n", num, str);
-
-    fclose(cd);
-    */
+    infile >> user_input;
+    cout << user_input << endl;
+    infile.close();
 }
 
 void list_tasks()
@@ -169,8 +161,8 @@ int main()
     menu();
     //task todo_arr[10];
 
-    string user_input;
     string command;
+    string user_input;
 
     do {
         cin >> command;
@@ -185,7 +177,7 @@ int main()
             menu();
             continue;
         } else if(command == "-a"){
-            getline(cin, user_input);
+
             new_task();
 
         } else if (command == "-wr") {
@@ -216,8 +208,7 @@ int main()
         } else if (command == "-p") {
             cin >> user_input;
             /*
-            printf("Write two numbers: a task number and give priority to it!\n");
-
+            cout << "Write two numbers: a task number and give priority to it!" << endl;
             i = 0;
             for(i = 0; i < counter; i++){
                 scanf"(%d", tasknum);
