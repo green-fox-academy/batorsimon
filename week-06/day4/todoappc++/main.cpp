@@ -3,8 +3,7 @@
 
 using namespace std;
 
-int main()
-{
+void menu() {
     system("cls");
     cout << "------------------------------------------" << endl;
     cout << "|        Todo application                |" << endl;
@@ -26,6 +25,12 @@ int main()
     cout << "------------------------------------------" << endl;
     system("pause");
     system("cls");
+}
+
+
+int main()
+{
+    menu();
 
 
     return 0;
