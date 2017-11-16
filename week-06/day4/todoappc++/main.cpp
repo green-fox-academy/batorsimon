@@ -1,10 +1,9 @@
 #include <iostream>
 #include <windows.h>
 #include <fstream>
+#include <vector>
 
 using namespace std;
-
-int counter = 0;
 
 void menu() {
     system("cls");
@@ -30,21 +29,43 @@ void menu() {
     system("cls");
 }
 
-class todo{
-public:
+class Todo{
+    public:
+        Todo(string x, int prio, bool done){
+            x = x;
 
-private:
+        };
+
+    private:
+
+        int counter;
+        bool done;
+        int prio;
 
 };
 
+class storage{
+    public:
+        void new_task();
+        int write_to_file();
+        int read_from_file();
+        void list_tasks();
+        void remove_task();
+        void completes_task();
+        void priority_to_task();
+        void list_tasks_priority();
 
+
+    private:
+         vector<Todo> asd;
+
+};
 void new_task()
 {
     string user_input;
     getline(cin, user_input);
     //strcpy(todo_arr[counter].task_name, user_input);
     //todo_arr[counter].task_name = user_input;
-    counter++;
 }
 
 int write_to_file()
@@ -66,10 +87,11 @@ int read_from_file()
 
     ifstream infile;
     infile.open("probe.txt");
-
+    /*
     for(int i = 0; i < counter; i++){
          cout << user_input << endl;
     }
+    */
     infile >> user_input;
 
     cout << user_input << endl;
@@ -81,11 +103,8 @@ int read_from_file()
 
 void list_tasks()
 {
-    int i = 0;
-    //printf("No. | Done? | Task priority | Task name \n");
-    for(i = 0; i < counter; i++){
-        //printf("%d - [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
-    }
+   // No. | Done? | Task priority | Task name \n
+   // %d - [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name
 
 }
 
@@ -138,6 +157,18 @@ void priority_to_task()
         }
     }
     */
+
+      /*
+            cout << "Write two numbers: a task number and give priority to it!" << endl;
+            i = 0;
+            for(i = 0; i < counter; i++){
+                scanf"(%d", tasknum);
+                scanf("%d", prio);
+                printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
+            }
+
+            priority_to_task(todo_arr, user_input);
+            */
 }
 
 void list_tasks_priority(){
@@ -156,17 +187,11 @@ void list_tasks_priority(){
 }
 
 
-int main()
-{
-    menu();
-    //task todo_arr[10];
-
-    string command;
-    string user_input;
+void command(){
+  string command;
 
     do {
         cin >> command;
-
         if (command == "exit") {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
@@ -177,57 +202,45 @@ int main()
             menu();
             continue;
         } else if(command == "-a"){
-
             new_task();
 
         } else if (command == "-wr") {
-            cin >> user_input;
-            // write_to_file(todo_arr, user_input);
+            write_to_file();
 
         } else if (command == "-rd") {
-            cin >> user_input;
-           // read_from_file(todo_arr);
+           read_from_file();
 
         } else if (command == "-l") {
-            cin >> user_input;
-            // list_tasks(todo_arr, user_input);
+            list_tasks();
 
         } else if (command == "-e") {
-            cin >> user_input;
-          //   memset(&todo_arr, 0, sizeof(todo_arr));
-          //   write_to_file(todo_arr, user_input);
+            write_to_file();
 
         } else if (command == "-rm") {
-            cin >> user_input;
-           //  remove_task(todo_arr, user_input);
+            remove_task();
 
         } else if (command == "-c") {
-            cin >> user_input;
-           // completes_task(todo_arr, user_input);
+           completes_task();
 
         } else if (command == "-p") {
-            cin >> user_input;
-            /*
-            cout << "Write two numbers: a task number and give priority to it!" << endl;
-            i = 0;
-            for(i = 0; i < counter; i++){
-                scanf"(%d", tasknum);
-                scanf("%d", prio);
-                printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
-            }
-
-            priority_to_task(todo_arr, user_input);
-            */
+            priority_to_task();
 
         } else if (command == "-lp") {
-            cin >> user_input;
-           // list_tasks_priority(todo_arr, user_input);
+            list_tasks_priority();
 
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
         }
 
-    } while (user_input != "exit");
+    } while (command != "exit");
+
+}
+
+int main()
+{
+    menu();
+    command();
+
 
 
     return 0;
