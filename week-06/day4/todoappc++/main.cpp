@@ -46,8 +46,8 @@ class Storage{
         void menu();
         void command();
         void new_task();
-        int write_to_file();
-        int read_from_file();
+        void write_to_file();
+        void read_from_file();
         void list_tasks();
         void remove_task();
         void completes_task();
@@ -71,27 +71,27 @@ void Storage::new_task()
 
 }
 
-int Storage::write_to_file()
+void Storage::write_to_file()
 {
     ofstream outfile;
     outfile.open("probe.txt");
 
     outfile << "No. | Task name | Task priority | Done? |" <<endl;
-    for(int i = 0; i < storage.size(); i++){
+    for(unsigned int i = 0; i < storage.size(); i++){
         outfile << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << endl;
     }
 
     outfile.close();
 }
 
-int Storage::read_from_file()
+void Storage::read_from_file()
 {
     ifstream infile;
     infile.open("probe.txt");
 
     cout << "List tasks by number" <<endl;
     cout << "No. | Task name | Task priority | Done? |" <<endl;
-    for(int i = 0; i < storage.size(); i++){
+    for(unsigned int i = 0; i < storage.size(); i++){
         cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" <<endl;
     }
 
@@ -102,7 +102,7 @@ void Storage::list_tasks()
 {
     cout << "List tasks by number" <<endl;
     cout << "No. | Task name | Task priority | Done? |" <<endl;
-    for(int i = 0; i < storage.size(); i++){
+    for(unsigned int i = 0; i < storage.size(); i++){
         cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" <<endl;
     }
 
@@ -112,83 +112,74 @@ void Storage::remove_task()
 {
     int size1 = 0;
     int user_input;
-
-    cout << "Remove task int given number: ";
     cin >> user_input;
     cout << endl;
 
     size1 = storage.size();
-    storage.erase(storage.begin()+user_input-1);
-    storage.resize(size1-1);
+
+    if(!cin || size1 < user_input || 1 > user_input){
+        cout << "Give in a valid number!" << endl;
+        cin.clear();
+    } else{
+        storage.erase(storage.begin()+user_input-1);
+        storage.resize(size1-1);
+    }
+
 }
 
 void Storage::completes_task()
 {
+    string yes = yes;
     int user_input;
-
-    cout << "Remove task int given number: ";
     cin >> user_input;
     cout << endl;
 
-    storage.at(user_input+1)
-    for(int i = 0; i < storage.size(); i++){
-        cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << "[x]" << "\t" << storage.at(i).get_prio() << "\t" <<endl;
+    int size1 = storage.size();
+    if(!cin || size1 < user_input || 1 > user_input){
+        cout << "Give in a valid number!" << endl;
+        cin.clear();
+    } else{
+        storage.at(user_input-1).set_done(yes);
     }
-
-    /*
-    int i = 0;
-    int input_number = strtol(user_input, NULL, 10);
-    printf("No. | Done? | Task priority | Task name \n");
-    for(i = 0; i < counter; i++){
-        if(i == input_number-1){
-             //printf("%d. [x]   Priority: 1 %s", i+1, todo_arr[i].task_name);
-        } else {
-             //printf("%d. [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name);
-        }
-
-    }
-    */
 }
 
 void Storage::priority_to_task()
 {
-    /*
-    int i = 0;
-    int input_number = strtol(user_input, NULL, 10);
-    for(i = 0; i < counter; i++){
-        if(i == input_number-1){
-             printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
-        } else {
-             printf("%d. [ ] prio:  %s", i+1, todo_arr[i].task_name);
+    int user_input;
+    int user_input2;
+    cin >> user_input;
+    cout << endl;
+
+    int size1 = storage.size();
+    cin >> user_input;
+    if(!cin || size1 < user_input || 1 > user_input){
+        cout << "Give in a valid number!" << endl;
+        cin.clear();
+    } else{
+        cout << "Give in a number for priority:";
+        cin >> user_input2;
+        if(!cin || size1 < user_input || 1 > user_input){
+            cout << "Give in a valid number!" << endl;
+            cin.clear();
+        }else{
+            storage.at(user_input-1).set_prio(user_input2);
         }
     }
-    */
 
-      /*
-            cout << "Write two numbers: a task number and give priority to it!" << endl;
-            i = 0;
-            for(i = 0; i < counter; i++){
-                scanf"(%d", tasknum);
-                scanf("%d", prio);
-                printf("%d. [x] prio:  %d %s", i+1, input_number, todo_arr[i].task_name);
-            }
-
-            priority_to_task(todo_arr, user_input);
-            */
 }
 
-void Storage::list_tasks_priority(){
-    /*
-    int i = 0;
-    int input_number = strtol(user_input, NULL, 10);
-    for(i = 0; i < counter; i++){
-        if(i == input_number-1){
-             printf("%d. [x] %s", i+1, todo_arr[i].task_name);
+void Storage::list_tasks_priority()
+{
+    for(unsigned int i = 0; i < storage.size(); i++){
+        if(storage.at(i).get_prio() > storage.at(i+1).get_prio()){
+            int temp;
+            temp = storage.at(i).get_prio();
+            storage.at(i).get_prio() = storage.at(i+1).get_prio();
+            storage.at(i+1).get_prio() = temp;
         } else {
-             printf("%d. [ ] %s", i+1, todo_arr[i].task_name);
+            cout << "List already listed by priority." << endl;
         }
     }
-    */
 
 }
 
