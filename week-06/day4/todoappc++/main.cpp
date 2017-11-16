@@ -5,47 +5,46 @@
 
 using namespace std;
 
-void menu() {
-    system("cls");
-    cout << "------------------------------------------" << endl;
-    cout << "|        Todo application                |" << endl;
-    cout << "------------------------------------------" << endl;
-    cout << "| Commands:                              |" << endl;
-    cout << "| -a    Adds a new task                  |" << endl;
-    cout << "| -wr   Write current todos to file      |" << endl;
-    cout << "| -rd   Read todos from a file           |" << endl;
-    cout << "| -l    Lists all the tasks              |" << endl;
-    cout << "| -e    Empty the list                   |" << endl;
-    cout << "| -rm   Removes a task                   |" << endl;
-    cout << "| -c    Completes a task                 |" << endl;
-    cout << "| -p    Add priority to a task           |" << endl;
-    cout << "| -lp   Lists all the tasks by priority  |" << endl;
-    cout << "------------------------------------------" << endl;
-    cout << "| menu  Opens the main menu              |" << endl;
-    cout << "| clr   Clear command line               |" << endl;
-    cout << "| exit  Exiting from the program         |" << endl;
-    cout << "------------------------------------------" << endl;
-    system("pause");
-    system("cls");
-}
-
 class Todo{
     public:
-        Todo(string x, int prio, bool done){
-            x = x;
+        Todo() {}
 
-        };
+        Todo(string x){
+            this->x = x;
+        }
+
+        void set_x(string x){
+            this->x = x;
+        }
+        string get_x(){
+            return x;
+        }
+
+        void set_prio(int prio){
+            this->prio = prio;
+        }
+        int get_prio(){
+            return prio;
+        }
+
+        void set_done(string done){
+            this->done = done;
+        }
+        string get_done(){
+            return done;
+        }
 
     private:
-
-        int counter;
-        bool done;
+        string x;
+        string done;
         int prio;
 
 };
 
-class storage{
+class Storage{
     public:
+        void menu();
+        void command();
         void new_task();
         int write_to_file();
         int read_from_file();
@@ -55,80 +54,86 @@ class storage{
         void priority_to_task();
         void list_tasks_priority();
 
-
     private:
-         vector<Todo> asd;
+         vector<Todo> storage;
+         Todo t;
 
 };
-void new_task()
+
+
+void Storage::new_task()
 {
     string user_input;
     getline(cin, user_input);
-    //strcpy(todo_arr[counter].task_name, user_input);
-    //todo_arr[counter].task_name = user_input;
+
+    t = Todo(user_input);
+    storage.push_back(t);
+
 }
 
-int write_to_file()
+int Storage::write_to_file()
 {
     ofstream outfile;
     outfile.open("probe.txt");
 
-    string user_input;
-    getline(cin, user_input);
-    outfile << user_input << endl;
+    outfile << "No. | Task name | Task priority | Done? |" <<endl;
+    for(int i = 0; i < storage.size(); i++){
+        outfile << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << endl;
+    }
 
     outfile.close();
-    //cin.getline(user_input, 100);
 }
 
-int read_from_file()
+int Storage::read_from_file()
 {
-    string user_input;
-
     ifstream infile;
     infile.open("probe.txt");
-    /*
-    for(int i = 0; i < counter; i++){
-         cout << user_input << endl;
+
+    cout << "List tasks by number" <<endl;
+    cout << "No. | Task name | Task priority | Done? |" <<endl;
+    for(int i = 0; i < storage.size(); i++){
+        cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" <<endl;
     }
-    */
-    infile >> user_input;
 
-    cout << user_input << endl;
-
-    infile >> user_input;
-    cout << user_input << endl;
     infile.close();
 }
 
-void list_tasks()
+void Storage::list_tasks()
 {
-   // No. | Done? | Task priority | Task name \n
-   // %d - [ ]   Priority: 1 %s", i+1, todo_arr[i].task_name
-
-}
-
-void remove_task()
-{
-    /*
-    int pos = 0;
-    int i = 0;
-    counter--;
-
-    for(i = 0; i < counter; i++) {
-        if(strcmp(todo_arr[i].task_name, user_input) == 0){
-            pos = i;
-            for(i = pos; i< counter; i++){
-                strcpy(todo_arr[i].task_name, todo_arr[i+1].task_name);
-            }
-        }
-
+    cout << "List tasks by number" <<endl;
+    cout << "No. | Task name | Task priority | Done? |" <<endl;
+    for(int i = 0; i < storage.size(); i++){
+        cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" <<endl;
     }
-    */
+
 }
 
-void completes_task()
+void Storage::remove_task()
 {
+    int size1 = 0;
+    int user_input;
+
+    cout << "Remove task int given number: ";
+    cin >> user_input;
+    cout << endl;
+
+    size1 = storage.size();
+    storage.erase(storage.begin()+user_input-1);
+    storage.resize(size1-1);
+}
+
+void Storage::completes_task()
+{
+    int user_input;
+
+    cout << "Remove task int given number: ";
+    cin >> user_input;
+    cout << endl;
+
+    for(int i = 0; i < storage.size(); i++){
+        cout << i+1 << "\t" <<storage.at(i).get_x() << "\t" << "[x]" << "\t" << storage.at(i).get_prio() << "\t" <<endl;
+    }
+
     /*
     int i = 0;
     int input_number = strtol(user_input, NULL, 10);
@@ -144,7 +149,7 @@ void completes_task()
     */
 }
 
-void priority_to_task()
+void Storage::priority_to_task()
 {
     /*
     int i = 0;
@@ -171,7 +176,7 @@ void priority_to_task()
             */
 }
 
-void list_tasks_priority(){
+void Storage::list_tasks_priority(){
     /*
     int i = 0;
     int input_number = strtol(user_input, NULL, 10);
@@ -187,7 +192,7 @@ void list_tasks_priority(){
 }
 
 
-void command(){
+void Storage::command(){
   string command;
 
     do {
@@ -236,12 +241,33 @@ void command(){
 
 }
 
+void Storage::menu() {
+    system("cls");
+    cout << "------------------------------------------" << endl;
+    cout << "|        Todo application                |" << endl;
+    cout << "------------------------------------------" << endl;
+    cout << "| Commands:                              |" << endl;
+    cout << "| -a    Adds a new task                  |" << endl;
+    cout << "| -wr   Write current todos to file      |" << endl;
+    cout << "| -rd   Read todos from a file           |" << endl;
+    cout << "| -l    Lists all the tasks              |" << endl;
+    cout << "| -e    Empty the list                   |" << endl;
+    cout << "| -rm   Removes a task                   |" << endl;
+    cout << "| -c    Completes a task                 |" << endl;
+    cout << "| -p    Add priority to a task           |" << endl;
+    cout << "| -lp   Lists all the tasks by priority  |" << endl;
+    cout << "------------------------------------------" << endl;
+    cout << "| menu  Opens the main menu              |" << endl;
+    cout << "| clr   Clear command line               |" << endl;
+    cout << "| exit  Exiting from the program         |" << endl;
+    cout << "------------------------------------------" << endl;
+    system("pause");
+    system("cls");
+}
 int main()
 {
-    menu();
-    command();
-
-
-
+    Storage s;
+    s.menu();
+    s.command();
     return 0;
 }
