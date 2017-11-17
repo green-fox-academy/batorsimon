@@ -1,4 +1,5 @@
-No. | Task name | Task priority | Done? |
-1	 bulika	0	no	
-2	 heheh	0	no	
-3	 hihi	0	no	
+No. | Done? | Priority | Task name |
+1	no	1	 feed	
+2	yes	3	 set	
+3	no	5	 wake	
+4	no	4	 fasz
