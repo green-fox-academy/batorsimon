@@ -7,8 +7,7 @@ using namespace std;
 
 class Todo{
     public:
-        Todo() {}
-
+        Todo() {};
         Todo(string x, int prio, string done){
             this->x = x;
             this->prio = prio;
@@ -35,7 +34,6 @@ class Todo{
         string get_done(){
             return done;
         }
-
 
     private:
         string x;
@@ -104,9 +102,9 @@ void Storage::read_from_file()
 void Storage::list_tasks()
 {
     cout << "List tasks by number" <<endl;
-    cout << "No. | Task name | Task priority | Done? |" <<endl;
+    cout << "No.| Task name | | Task priority | | Done? |" <<endl;
     for(unsigned int i = 0; i < storage.size(); i++){
-        cout << i+1 << "\t" << storage.at(i).get_x() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_done() << "\t" << endl;
+        cout << i+1 << "\t" << storage.at(i).get_x() << "\t" "\t" << storage.at(i).get_prio() << "\t" "\t" << storage.at(i).get_done() << endl;
     }
 
 }
@@ -132,17 +130,17 @@ void Storage::remove_task()
 
 void Storage::completes_task()
 {
-    string yes = yes;
+    int size1 = 0;
     int user_input;
     cin >> user_input;
     cout << endl;
 
-    int size1 = storage.size();
+    size1 = storage.size();
     if(!cin || size1 < user_input || 1 > user_input){
         cout << "Give in a valid number!" << endl;
         cin.clear();
     } else{
-        storage.at(user_input-1).set_done(yes);
+        storage.at(user_input-1).set_done("yes");
     }
 }
 
@@ -150,9 +148,6 @@ void Storage::priority_to_task()
 {
     int user_input;
     int user_input2;
-    cin >> user_input;
-    cout << endl;
-
     int size1 = storage.size();
     cin >> user_input;
     if(!cin || size1 < user_input || 1 > user_input){
@@ -161,8 +156,7 @@ void Storage::priority_to_task()
     } else{
         cout << "Give in a number for priority:";
         cin >> user_input2;
-        if(!cin || size1 < user_input || 1 > user_input){
-            cout << "Give in a valid number!" << endl;
+        if(!cin){
             cin.clear();
         }else{
             storage.at(user_input-1).set_prio(user_input2);
@@ -177,8 +171,8 @@ void Storage::list_tasks_priority()
         if(storage.at(i).get_prio() > storage.at(i+1).get_prio()){
             int temp;
             temp = storage.at(i).get_prio();
-            storage.at(i).get_prio() = storage.at(i+1).get_prio();
-            storage.at(i+1).get_prio() = temp;
+//            storage.at(i).get_prio() = storage.at(i+1).get_prio();
+//            storage.at(i+1).get_prio() = temp;
         } else {
             cout << "List already listed by priority." << endl;
         }
