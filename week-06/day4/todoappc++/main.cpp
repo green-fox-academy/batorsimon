@@ -34,6 +34,7 @@ class Todo{
             return done;
         }
 
+
     private:
         string x;
         string done;
@@ -66,7 +67,7 @@ void Storage::new_task()
     string user_input;
     getline(cin, user_input);
 
-    t = Todo(user_input);
+    t = Todo(user_input, 0, "no");
     storage.push_back(t);
 
 }
@@ -78,7 +79,7 @@ void Storage::write_to_file()
 
     outfile << "No. | Task name | Task priority | Done? |" <<endl;
     for(unsigned int i = 0; i < storage.size(); i++){
-        outfile << i+1 << "\t" <<storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << endl;
+        outfile << i+1 << "\t" << storage.at(i).get_x() << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << endl;
     }
 
     outfile.close();
@@ -174,8 +175,8 @@ void Storage::list_tasks_priority()
         if(storage.at(i).get_prio() > storage.at(i+1).get_prio()){
             int temp;
             temp = storage.at(i).get_prio();
-            storage.at(i).get_prio() = storage.at(i+1).get_prio();
-            storage.at(i+1).get_prio() = temp;
+            //storage.at(i).get_prio() = storage.at(i+1).get_prio();
+            //storage.at(i+1).get_prio() = temp;
         } else {
             cout << "List already listed by priority." << endl;
         }
