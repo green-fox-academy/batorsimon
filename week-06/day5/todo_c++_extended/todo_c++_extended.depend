@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1510908803 source:d:\én\greenfox\week-06\day5\todo_c++_extended\main.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<vector>
+
