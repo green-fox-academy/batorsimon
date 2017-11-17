@@ -68,7 +68,7 @@ void Storage::new_task()
 {
     string user_input;
     getline(cin, user_input);
-    if(user_input.empty()){
+    if(user_input.empty() || string::npos == user_input.find_first_not_of(" ") ){
         cout << "Write something!" <<endl;
     } else {
         t = Todo(user_input, 0, "no");
