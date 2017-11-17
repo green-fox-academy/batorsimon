@@ -52,6 +52,8 @@ class Storage{
         void list_tasks();
         void remove_task();
         void completes_task();
+        void uncomplete_task();
+        void empty_tasks();
         void priority_to_task();
         void list_tasks_priority();
 
@@ -77,9 +79,9 @@ void Storage::write_to_file()
     ofstream outfile;
     outfile.open("probe.txt");
 
-    outfile << "No. | Task name | Task priority | Done? |" <<endl;
+    outfile << "No. | Done? | Priority | Task name |" <<endl;
     for(unsigned int i = 0; i < storage.size(); i++){
-        outfile << i+1 << "\t" << storage.at(i).get_x() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_done() << "\t" << endl;
+        outfile << i+1 << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_x() << "\t" << endl;
     }
 
     outfile.close();
@@ -91,9 +93,9 @@ void Storage::read_from_file()
     infile.open("probe.txt");
 
     cout << "List tasks by number" <<endl;
-    cout << "No. | Task name | Task priority | Done? |" <<endl;
+    cout << "No. | Done? | Priority | Task name |" <<endl;
     for(unsigned int i = 0; i < storage.size(); i++){
-        cout << i+1 << "\t" << storage.at(i).get_x() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_done() << "\t" << endl;
+        cout << i+1 << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_x() << "\t" << endl;
     }
 
     infile.close();
@@ -102,11 +104,10 @@ void Storage::read_from_file()
 void Storage::list_tasks()
 {
     cout << "List tasks by number" <<endl;
-    cout << "No.| Task name | | Task priority | | Done? |" <<endl;
+    cout << "No. | Done? | Priority | Task name |" <<endl;
     for(unsigned int i = 0; i < storage.size(); i++){
-        cout << i+1 << "\t" << storage.at(i).get_x() << "\t" "\t" << storage.at(i).get_prio() << "\t" "\t" << storage.at(i).get_done() << endl;
+        cout << i+1 << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_x() << "\t" << endl;
     }
-
 }
 
 void Storage::remove_task()
@@ -144,6 +145,28 @@ void Storage::completes_task()
     }
 }
 
+void Storage::uncomplete_task()
+{
+    int size1 = 0;
+    int user_input;
+    cin >> user_input;
+    cout << endl;
+
+    size1 = storage.size();
+    if(!cin || size1 < user_input || 1 > user_input){
+        cout << "Give in a valid number!" << endl;
+        cin.clear();
+    } else{
+        storage.at(user_input-1).set_done("no");
+    }
+
+}
+
+void Storage::empty_tasks()
+{
+    storage.clear();
+}
+
 void Storage::priority_to_task()
 {
     int user_input;
@@ -167,22 +190,20 @@ void Storage::priority_to_task()
 
 void Storage::list_tasks_priority()
 {
-    for(unsigned int i = 0; i < storage.size(); i++){
-        if(storage.at(i).get_prio() > storage.at(i+1).get_prio()){
-            int temp;
-            temp = storage.at(i).get_prio();
-//            storage.at(i).get_prio() = storage.at(i+1).get_prio();
-//            storage.at(i+1).get_prio() = temp;
-        } else {
-            cout << "List already listed by priority." << endl;
+    cout << "List tasks by priority" <<endl;
+    cout << "No. | Done? | Priority | Task name |" <<endl;
+    for(unsigned int j = 5; j > 0; j-- ){
+        for(unsigned int i = 0; i < storage.size(); i++){
+            if (storage.at(i).get_prio() == j){
+                cout << i+1 << "\t" << storage.at(i).get_done() << "\t" << storage.at(i).get_prio() << "\t" << storage.at(i).get_x() << "\t" << endl;
+            }
         }
     }
-
 }
 
 
 void Storage::command(){
-  string command;
+    string command;
 
     do {
         cin >> command;
@@ -208,13 +229,16 @@ void Storage::command(){
             list_tasks();
 
         } else if (command == "-e") {
-            write_to_file();
+            empty_tasks();
 
         } else if (command == "-rm") {
             remove_task();
 
         } else if (command == "-c") {
            completes_task();
+
+        } else if (command == "-uc") {
+           uncomplete_task();
 
         } else if (command == "-p") {
             priority_to_task();
@@ -243,6 +267,7 @@ void Storage::menu() {
     cout << "| -e    Empty the list                   |" << endl;
     cout << "| -rm   Removes a task                   |" << endl;
     cout << "| -c    Completes a task                 |" << endl;
+    cout << "| -uc   Uncompletes a task               |" << endl;
     cout << "| -p    Add priority to a task           |" << endl;
     cout << "| -lp   Lists all the tasks by priority  |" << endl;
     cout << "------------------------------------------" << endl;
