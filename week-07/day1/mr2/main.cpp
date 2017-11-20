@@ -1,64 +1,65 @@
 #include <iostream>
 #include <time.h>
+#include <windows.h>
+
 using namespace std;
 
-    /*
-    do{
-    do {
-        cout << "Type in your username: ";
-        getline(cin, user_name);
-        error_handling(user_name, finished1);
-    } while(finished1 == false);
-    continue;
-    do {
-        cout << "Type in your password: ";
-        getline(cin, password);
-        error_handling(password, finished2);
-    } while(finished2 == false);
-
-    }  while(user_name != password);
-
-    */
-
-    /*
-void user_input(string x){
-    cout << "Type in your " << x << " : " << endl;
-    getline(cin, x);
+bool error_handling(string x, bool finished){
+    while(finished == false){
+            if(x.length() > 5 && x.length() < 30){
+            return (finished = true);
+            }
+    }
 }
-*/
+
+string printing(string x){
+    if(x.length() < 5){
+        x = "is too short";
+        return x;
+    } else if(x.length() > 30){
+        x = "is too long";
+        return x;
+    } else {
+        return 0;
+    }
+}
 
 int main(){
     string user_name;
     string password;
-    bool finished1 = false;
-    bool finished2 = false;
+    while(1) {
+        bool finished1 = false;
+        bool finished2 = false;
 
-     do {
-        cout << "Type in your username: " << endl;
+        cout << "Type in your username: ";
         getline(cin, user_name);
-        if(user_name.length() < 5){
-            cout << "username is too short" << endl;
-        } else if (user_name.length() > 30){
-            cout << "username is too long" << endl;
-        } else{
-            finished1 == true;
+        if(user_name.length() > 5 && user_name.length() < 30){
+             finished1 = error_handling(user_name, finished1);
+        } else {
+            cout << "User name " << printing(user_name) << endl;
         }
 
-        cout << "Type in your password: " << endl;
+        cout << "Type in your password: ";
         getline(cin, password);
-         if(password.length() < 5){
-            cout << " is too short" << endl;
-        } else if(password.length() > 30){
-            cout << "is too long" << endl;
-        } else{
-            finished2 == true;
+        if(user_name.length() > 5 && user_name.length() < 30){
+             finished2 = error_handling(user_name, finished2);
+        } else {
+            cout << "Password " << printing(password) << endl;
         }
-    } while(finished1 == false && finished2 == false && user_name == password);
 
-    if(finished1 && finished2){
-        time_t now = time(0);
-        char *dt = ctime(&now);
-        cout << "Successful registration at: " << dt;
+        if(user_name == password){
+            cout << "user_name equals password" << endl;
+            finished1 = false;
+        }
+        if(finished1 == true && finished2 == true){
+            time_t now = time(0);
+            char *dt = ctime(&now);
+            cout << "Successful registration at: " << dt;
+            break;
+        } else {
+            Sleep(1000);
+            system("cls");
+        }
     }
 
     return 0;
