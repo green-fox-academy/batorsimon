@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1511213377 source:d:\én\greenfox\week-07\day1\03\main.cpp
+	<iostream>
+	<stdexcept>
+
