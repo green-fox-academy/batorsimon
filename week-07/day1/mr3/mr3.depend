@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1511268570 source:d:\én\greenfox\week-07\day1\mr3\main.cpp
+	<iostream>
+	<time.h>
+	<windows.h>
+
