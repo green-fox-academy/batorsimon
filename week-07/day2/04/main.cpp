@@ -34,8 +34,8 @@ class Intreger{
              this->member += obj1.member + obj2.member + obj3.member + obj4.member + obj5.member;
              return *this;
         }
-        int get()
-        {
+
+        int get(){
             return member;
         }
 };
@@ -46,14 +46,17 @@ int main() {
     Intreger c(33);
     Intreger d(44);
 
-    cout << a.get() << endl;
+    cout << "The variables are: a:" << a.get() << " b: " << b.get() << " c: " << c.get() << " d: " << d.get() << endl;
 
+    cout << a.get() << " + " << b.get() << " = ";
     a.add(b);
     cout << a.get() << endl;
 
+    cout << a.get() << " + " << c.get() << " = ";
     a.add(c);
     cout << a.get() << endl;
 
+    cout << a.get() << " + " << d.get() << " = ";
     a.add(d);
     cout << a.get() << endl;
 
