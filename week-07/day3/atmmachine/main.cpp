@@ -19,7 +19,7 @@ class Atm{
             this->atm_money = atm_money;
         }
 
-         int get_huszezer(){
+        int get_huszezer(){
             return huszezer;
         }
         int get_tizezer(){
@@ -46,33 +46,60 @@ class Atm{
 
 class Users{
     public:
-        User(string name, int pinCode, int balance) {
+        Users() {}
+        Users(string name, int pin, int balance) {
             this->name = name;
+            this->pin = pin;
+            this->balance = balance;
         };
-        string getName();
-        bool matchPin(string pinCode);
+
+        void set_name(){
+            this->name = name;
+        }
+        string get_name(){
+            return name;
+        }
+
+        void set_pin(int pin){
+            this->pin = pin;
+        }
+        int get_pin(){
+            return pin;
+        }
+
+        void set_balance(int balance){
+            this->balance = balance;
+        }
+        int get_balance(){
+            return balance;
+        }
 
         void main_menu();
+
      private:
-        string _name;
-        string _pinCode;
-        int _balance;
+        string name;
+        int pin;
+        int balance;
+        vector<Atm> users;
+        Atm ATM;
 
 };
 
 void Users::main_menu() {
-    /*
+    string user_name;
+    string user_pin;
+
     cout << " Please log in: " << endl;
     cout << " Enter your user name: ";
-    cin >> username;
+    cin >> user_name;
     cout << endl;
     cout << " Enter your password: ";
-    cin >> password;
+    cin >> user_pin;
     cout << endl;
-
+/*
     for(int i = 0; i < 2; i++){
-        for(int j = 0; j < sizeof vector<Atm> Costumer; j++ ){
-            if (user_name == vector(j).username && password == vector(j).password ) {
+        for(int j = 0; j < users.size(); j++ ){
+            if(user_name == users(j).name && user_pin == users(j).pin ) {
                 if(Administrator){
                         Administrator.administratormenu();
                     } else if(costumer){
@@ -85,18 +112,22 @@ void Users::main_menu() {
         }
 
     }
- */
+    */
+
 }
 
 class Costumer : public Users{
     private:
-        vector<Users> Costumer;
+        vector<Users> costumer;
+        Users u;
         int costumer_money;
     public:
-        int withdraw(int a);
+        void withdraw_money();
         void get_richest();
         void costumer_menu();
         void costumer_commands();
+        void check_balance();
+        void print_balance();
 
         void set_costumermoney(int costumer_money){
             this->costumer_money = costumer_money;
@@ -136,14 +167,13 @@ string command;
             costumer_menu();
             continue;
         } else if(command == "wm"){
-            //new_task();
+            withdraw_money();
 
         } else if (command == "check") {
-            // Costumer c;
-            //cout << "The money the costumer have: " << c.get_costumermoney() << endl;
+            check_balance();
 
         } else if (command == "print") {
-            //read_from_file
+            print_balance();
 
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
@@ -152,12 +182,19 @@ string command;
     } while (command != "exit");
 }
 
+void Costumer::withdraw_money() {
+}
 
+void Costumer::check_balance() {
+}
+
+void Costumer::print_balance() {
+}
 
 class Administrator : public Users{
     private:
-        vector<Users> Administrator;
-
+        vector<Users> administrator;
+        Users u;
         string user_name;
         string password;
     public:
@@ -210,6 +247,11 @@ void Administrator::load_up() {
 
 }
 
+/*
+void configure_users(Users *u) {
+    u->addUser(new USer(...));
+
+}; */
 
 int main()
 {
