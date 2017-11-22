@@ -98,9 +98,10 @@ class Atm{
         void withdraw_money(string x);
         void check_balance(string x);
 
-        void administrator_menu();
-        void administrator_commands();
+        void administrator_menu(string x);
+        void administrator_commands(string x);
         void load_up();
+        void check_atm();
 
 };
 
@@ -123,7 +124,7 @@ string Atm::main_menu() {
     while(1){
         for(unsigned int j = 0; j < users.size(); j++ ){
             if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 1) {
-                administrator_menu();
+                administrator_menu(user_name);
                 flag = 1;
                 return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 0) {
@@ -137,7 +138,6 @@ string Atm::main_menu() {
                 main_menu();
             } else if(flag == 1){
                 cout << "Wrong login flag 1" << endl;
-                //exit(0);
                 return 0;
             }
 
@@ -180,9 +180,6 @@ void Atm::costumer_commands(string x) {
         } else if (command == "check") {
             check_balance(x);
             continue;
-        } else if (command == "print") {
-            //print_balance();
-            continue;
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
         }
@@ -214,14 +211,15 @@ void Atm::check_balance(string x) {
 }
 
 
-void Atm::administrator_menu() {
+void Atm::administrator_menu(string x) {
     system("cls");
     cout << "------------------------------------------" << endl;
     cout << "|        Welcome to Brave Bank           |" << endl;
     cout << "------------------------------------------" << endl;
     cout << "| Logged in as administrator             |" << endl;
     cout << "| Commands:                              |" << endl;
-    cout << "| up     upload money                    |" << endl;
+    cout << "| up      upload money                   |" << endl;
+    cout << "| check   check money                    |" << endl;
     cout << "------------------------------------------" << endl;
     cout << "| menu  Opens the main menu              |" << endl;
     cout << "| exit  Exiting from the program         |" << endl;
@@ -229,10 +227,10 @@ void Atm::administrator_menu() {
     system("pause");
     system("cls");
 
-    administrator_commands();
+    administrator_commands(x);
 }
 
-void Atm::administrator_commands() {
+void Atm::administrator_commands(string x) {
     string command;
 
     do {
@@ -241,10 +239,10 @@ void Atm::administrator_commands() {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
         } else if (command == "menu") {
-            administrator_menu();
+            administrator_menu(x);
             continue;
         } else if(command == "up"){
-            //load_up();
+            load_up();
 
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
@@ -256,6 +254,16 @@ void Atm::administrator_commands() {
 }
 
 void Atm::load_up() {
+    int a;
+    cout << "Write down how much money you want to add: ";
+    cin >> a;
+    Atm.at().set_atmmoney(a);
+
+}
+
+void Atm::check_atm() {
+    cout << "how much money is in the Atm: ";
+    cout << Atm.at().get_atmmoney() << endl;
 
 }
 
