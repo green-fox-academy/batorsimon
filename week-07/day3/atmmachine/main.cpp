@@ -65,10 +65,13 @@ class Costumer : public Atm{
 
 class Administrator : public Atm{
     private:
-
+        vector<Atm> Administrator;
+        string user_name = "manager";
+        string password = "manager55";
     public:
-        load_up();
-        logging();
+        void load_up();
+        void logging();
+
 };
 
 void Costumer::menu() {
@@ -128,6 +131,17 @@ void Administrator::load_up() {
 
 void Administrator::logging() {
 
+    do {
+        cin >> user_name;
+        cin >> password;
+        if (user_name == "manager" && password == "manager55") {
+            cout << "Welcome!" << endl;
+
+        } else {
+            cout << "Wrong login!!" << endl;
+            exit(0);
+        }
+    } while(1);
 }
 
 int main()
