@@ -5,52 +5,14 @@
 
 using namespace std;
 
-class Atm{
-    private:
-        int huszezer = 20000;
-        int tizezer = 10000;
-        int otezer = 5000;
-        int ketezer = 2000;
-        int ezer = 1000;
-        int atm_money;
-    public:
-        Atm() {};
-        Atm(int atm_money){
-            this->atm_money = atm_money;
-        }
-
-        int get_huszezer(){
-            return huszezer;
-        }
-        int get_tizezer(){
-            return tizezer;
-        }
-        int get_otezer(){
-            return otezer;
-        }
-        int get_ketezer(){
-            return ketezer;
-        }
-        int get_ezer(){
-            return ezer;
-        }
-
-        void set_atmmoney(int atm_money){
-            this->atm_money = atm_money;
-        }
-        int get_atmmoney(){
-            return atm_money;
-        }
-
-};
-
 class Users{
     public:
         Users() {}
-        Users(string name, int pin, int balance) {
+        Users(string name, int pin, int balance, bool admin) {
             this->name = name;
             this->pin = pin;
             this->balance = balance;
+            this->admin = admin;
         };
 
         void set_name(){
@@ -80,10 +42,55 @@ class Users{
         string name;
         int pin;
         int balance;
-        vector<Atm> users;
-        Atm ATM;
+        bool admin;
 
 };
+
+class Atm{
+    private:
+        int huszezer = 20000;
+        int tizezer = 10000;
+        int otezer = 5000;
+        int ketezer = 2000;
+        int ezer = 1000;
+        int atm_money;
+        vector<Users> users;
+
+    public:
+        Atm() {};
+        Atm(int atm_money){
+            this->atm_money = atm_money;
+        };
+
+        void add(Users *user) {
+            users.push_back(*user);
+        };
+
+        int get_huszezer(){
+            return huszezer;
+        }
+        int get_tizezer(){
+            return tizezer;
+        }
+        int get_otezer(){
+            return otezer;
+        }
+        int get_ketezer(){
+            return ketezer;
+        }
+        int get_ezer(){
+            return ezer;
+        }
+
+        void set_atmmoney(int atm_money){
+            this->atm_money = atm_money;
+        }
+        int get_atmmoney(){
+            return atm_money;
+        }
+
+};
+
 
 void Users::main_menu() {
     string user_name;
@@ -92,17 +99,15 @@ void Users::main_menu() {
     cout << " Please log in: " << endl;
     cout << " Enter your user name: ";
     cin >> user_name;
-    cout << endl;
-    cout << " Enter your password: ";
+    cout << " Enter your PIN code: ";
     cin >> user_pin;
-    cout << endl;
-/*
+
     for(int i = 0; i < 2; i++){
         for(int j = 0; j < users.size(); j++ ){
             if(user_name == users(j).name && user_pin == users(j).pin ) {
-                if(Administrator){
+                if(users.admin == 1){
                         Administrator.administratormenu();
-                    } else if(costumer){
+                    } else if(users.admin == 0){
                         Costumer.costumermenu();
                     } else {
                         cout << "Wrong login!!" << endl;
@@ -112,15 +117,15 @@ void Users::main_menu() {
         }
 
     }
-    */
+
 
 }
 
 class Costumer : public Users{
     private:
         vector<Users> costumer;
-        Users u;
         int costumer_money;
+
     public:
         void withdraw_money();
         void get_richest();
@@ -156,7 +161,7 @@ void Costumer::costumer_menu() {
 }
 
 void Costumer::costumer_commands() {
-string command;
+    string command;
 
     do {
         cin >> command;
@@ -183,18 +188,22 @@ string command;
 }
 
 void Costumer::withdraw_money() {
+
 }
 
 void Costumer::check_balance() {
+
 }
 
 void Costumer::print_balance() {
+
 }
+
+
 
 class Administrator : public Users{
     private:
         vector<Users> administrator;
-        Users u;
         string user_name;
         string password;
     public:
@@ -247,16 +256,18 @@ void Administrator::load_up() {
 
 }
 
-/*
-void configure_users(Users *u) {
-    u->addUser(new USer(...));
-
-}; */
 
 int main()
 {
     Users u;
     u.main_menu();
+
+    Atm ATM;
+    ATM.add(new Users("Kiss Balazs", 1234, 2342342, 0));
+    ATM.add(new Users("John Wick", 4444, 235662, 0));
+    ATM.add(new Users("Pamela Anderson", 5555, 2964542, 0));
+    ATM.add(new Users("Brave Simon", 8888, 123456543, 1));
+    ATM.add(new Users("Elon Musk", 7777, 2634543, 0));
 
     return 0;
 }
