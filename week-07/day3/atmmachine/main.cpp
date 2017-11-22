@@ -127,7 +127,7 @@ string Atm::main_menu() {
                 flag = 1;
                 return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 0) {
-                costumer_menu(string x);
+                costumer_menu(user_name);
                 flag = 2;
                 return user_name;
             } else if(flag == 2 && i < 3){
@@ -160,7 +160,7 @@ void Atm::costumer_menu(string x) {
     system("pause");
     system("cls");
 
-    costumer_commands(string x);
+    costumer_commands(x);
 }
 
 void Atm::costumer_commands(string x) {
@@ -172,10 +172,10 @@ void Atm::costumer_commands(string x) {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
         } else if (command == "menu") {
-            costumer_menu(string x);
+            costumer_menu(x);
             continue;
         } else if(command == "wm"){
-            //withdraw_money();
+            withdraw_money(x);
             continue;
         } else if (command == "check") {
             check_balance(x);
@@ -198,9 +198,7 @@ void Atm::withdraw_money(string x) {
     for(unsigned int i = 0; i < users.size(); i++){
         if(users.at(i).get_name() == x){
           b = (users.at(i).get_balance() - a);
-          users.at(i).get_balance() = b;
-        } else {
-            cout << "cant withdraw the amount of money" << endl;
+          users.at(i).set_balance(b);
         }
     }
 }
@@ -210,8 +208,6 @@ void Atm::check_balance(string x) {
     for(unsigned int i = 0; i < users.size(); i++){
         if(users.at(i).get_name() == x){
             cout << "Your current balance is: " << users.at(i).get_balance() << endl;
-        } else {
-            cout << "cant check the balance" << endl;
         }
     }
 
