@@ -3,7 +3,13 @@
     Version 0.21, 11/10/2015
     -> LINUX and MacOS implementation
     -> rs232-linux.c
-
+    string line;
+    while(1){
+        serial->readLineFromPort(&line);
+        if (line.length() > 0){
+            cout << line << endl;
+        }
+    }
     The MIT License (MIT)
 
     Copyright (c) 2013-2015 Frédéric Meslin, Florent Touchard

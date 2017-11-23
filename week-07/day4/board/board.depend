@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1511441765 source:d:\én\greenfox\week-07\day4\board\main.cpp
+1511451793 source:d:\én\greenfox\week-07\day4\board\main.cpp
 	<iostream>
 	<string>
 	<vector>
+	<stdio.h>
+	<conio.h>
 	<windows.h>
 	"SerialPortWrapper.h"
 
@@ -10,7 +12,7 @@
 	<string>
 	<vector>
 
-1511372394 source:d:\én\greenfox\week-07\day4\board\rs232\rs232-linux.c
+1511446160 source:d:\én\greenfox\week-07\day4\board\rs232\rs232-linux.c
 	"rs232.h"
 	<unistd.h>
 	<termios.h>
