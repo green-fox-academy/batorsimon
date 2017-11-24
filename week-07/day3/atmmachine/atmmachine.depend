@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1511369850 source:d:\én\greenfox\week-07\day3\atmmachine\main.cpp
+1511527918 source:d:\én\greenfox\week-07\day3\atmmachine\main.cpp
 	<iostream>
 	<windows.h>
 	<fstream>
 	<vector>
+	<math.h>
 

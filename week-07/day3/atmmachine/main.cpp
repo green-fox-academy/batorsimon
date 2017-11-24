@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <fstream>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -50,41 +51,20 @@ class Users{
 
 class Atm{
     private:
-        int huszezer = 20000;
-        int tizezer = 10000;
-        int otezer = 5000;
-        int ketezer = 2000;
-        int ezer = 1000;
-        int atm_money;
+        double atm_money;
         vector<Users> users;
 
     public:
         Atm() {};
-        Atm(int atm_money){
-            this->atm_money = atm_money;
+        Atm(double atm_money){
+            this->atm_money = 2000000;
         };
 
         void add(Users *user) {
             users.push_back(*user);
         };
 
-        int get_huszezer(){
-            return huszezer;
-        }
-        int get_tizezer(){
-            return tizezer;
-        }
-        int get_otezer(){
-            return otezer;
-        }
-        int get_ketezer(){
-            return ketezer;
-        }
-        int get_ezer(){
-            return ezer;
-        }
-
-        void set_atmmoney(int atm_money){
+        void set_atmmoney(double atm_money){
             this->atm_money = atm_money;
         }
         int get_atmmoney(){
@@ -98,8 +78,8 @@ class Atm{
         void withdraw_money(string x);
         void check_balance(string x);
 
-        void administrator_menu(string x);
-        void administrator_commands(string x);
+        void administrator_menu();
+        void administrator_commands();
         void load_up();
         void check_atm();
 
@@ -111,12 +91,12 @@ string Atm::main_menu() {
     string user_name;
     int user_pin;
 
-    cout << " Please log in: " << endl;
+    cout << "Please log in: " << endl;
 
-    cout << " Enter your user name: ";
+    cout << "Enter your user name: ";
     getline(cin, user_name);
 
-    cout << " Enter your PIN code: ";
+    cout << "Enter your PIN code: ";
     cin >> user_pin;
 
     int i = 0;
@@ -124,7 +104,7 @@ string Atm::main_menu() {
     while(1){
         for(unsigned int j = 0; j < users.size(); j++ ){
             if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 1) {
-                administrator_menu(user_name);
+                administrator_menu();
                 flag = 1;
                 return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 0) {
@@ -188,16 +168,34 @@ void Atm::costumer_commands(string x) {
 }
 
 void Atm::withdraw_money(string x) {
-    cout << "Write down how much money you need: " << endl;
+
+    cout << "Write down how much money you need: ";
     int a;
     int b = 0;
     cin >> a;
+
+    unsigned int i = 0;
     for(unsigned int i = 0; i < users.size(); i++){
         if(users.at(i).get_name() == x){
-          b = (users.at(i).get_balance() - a);
-          users.at(i).set_balance(b);
+            //cout << "i: " << i << endl;
         }
     }
+
+    while(1){
+        if(!cin){
+            cout << "You can put in only numbers!" << endl;
+            cin.clear();
+            break;
+        } else if(a % 1000 == 0 && users.at(i).get_balance() > a){
+                b = (users.at(i).get_balance() - a);
+                users.at(i).set_balance(b);
+                break;
+        } else{
+            cout << "Invalid operation. " << endl;
+            break;
+        }
+    }
+
 }
 
 void Atm::check_balance(string x) {
@@ -211,7 +209,7 @@ void Atm::check_balance(string x) {
 }
 
 
-void Atm::administrator_menu(string x) {
+void Atm::administrator_menu() {
     system("cls");
     cout << "------------------------------------------" << endl;
     cout << "|        Welcome to Brave Bank           |" << endl;
@@ -227,10 +225,10 @@ void Atm::administrator_menu(string x) {
     system("pause");
     system("cls");
 
-    administrator_commands(x);
+    administrator_commands();
 }
 
-void Atm::administrator_commands(string x) {
+void Atm::administrator_commands() {
     string command;
 
     do {
@@ -239,10 +237,13 @@ void Atm::administrator_commands(string x) {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
         } else if (command == "menu") {
-            administrator_menu(x);
+            administrator_menu();
             continue;
         } else if(command == "up"){
             load_up();
+
+        } else if(command == "check"){
+            check_atm();
 
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
@@ -254,16 +255,35 @@ void Atm::administrator_commands(string x) {
 }
 
 void Atm::load_up() {
+
     int a;
-    cout << "Write down how much money you want to add: ";
+    int b;
+    //cout << "Write down how much money you want to add: ";
     cin >> a;
-    Atm.at().set_atmmoney(a);
+
+    while(1){
+        if(!cin){
+            cout << "not a number" << endl;
+            cin.clear();
+            break;
+        } else if(a % 1000 == 0) {
+            b = (get_atmmoney() +a);
+            set_atmmoney(b);
+            cout << "Operation done. " << endl;
+            break;
+        } else {
+            cout << "Invalid operation. " << endl;
+            break;
+        }
+    }
+
 
 }
 
 void Atm::check_atm() {
+
     cout << "how much money is in the Atm: ";
-    cout << Atm.at().get_atmmoney() << endl;
+    cout << get_atmmoney() << endl;
 
 }
 
@@ -275,7 +295,7 @@ int main()
     ATM.add(new Users("Kiss", 1234, 2342, 0));
     ATM.add(new Users("John", 1234, 235662, 0));
     ATM.add(new Users("Pamela", 1234, 2964542, 0));
-    ATM.add(new Users("Brave", 12345678, 123456543, 1));
+    ATM.add(new Users("Brave", 1234, 0, 1));
     ATM.add(new Users("Elon", 1234, 2634543, 0));
 
     ATM.main_menu();
