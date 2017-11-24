@@ -12,7 +12,7 @@ SerialPortWrapper *serial = new SerialPortWrapper("COM3", 115200);
 
 class Lines{
     private:
-       // vector<Port_vector> port_vector;
+       //vector<avector> avector11;
 
     public:
 
@@ -46,7 +46,6 @@ void menu(){
 }
 
 
-
 void open_port(){
      serial->openPort();
     cout << "The port has been opened." << endl;
@@ -58,6 +57,7 @@ void start_logging(){
         serial->readLineFromPort(&line);
         if (line.length() > 0){
             cout << line << endl;
+
 
             //log_vector->push_back(line);
         }
@@ -117,10 +117,26 @@ void maximum_temperature_by_temperatures(){
 
 }
 
+
+void port_info(){
+
+    vector<string> ports = SerialPortWrapper::listAvailablePorts();
+    cout << "Number of found serial ports: " << ports.size() << endl;
+    for (unsigned int i = 0; i < ports.size(); i++) {
+        cout << "\tPort name: " << ports.at(i) << endl;
+    }
+
+}
+
+
 void commands() {
     string command;
 
+
     do {
+
+        port_info();
+
         cin >> command;
         if (command == "e") {
             cout << "The program is exiting now. Goodbye!" << endl;
@@ -185,18 +201,10 @@ void commands() {
 
 }
 
-void port_info(){
-    vector<string> ports = SerialPortWrapper::listAvailablePorts();
-    cout << "Number of found serial ports: " << ports.size() << endl;
-    for (unsigned int i = 0; i < ports.size(); i++) {
-        cout << "\tPort name: " << ports.at(i) << endl;
-    }
-}
 
 int main()
 {
     menu();
-    port_info();
     commands();
 
     return 0;
