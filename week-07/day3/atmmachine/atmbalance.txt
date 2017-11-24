@@ -1,0 +1,47 @@
+         Brave Bank       
+ Atm code:  8542446       
+--------------------------
+Who made the changes: Brave
+The ATM actual balance: 34652000
+The changes were made at: Fri Nov 24 17:46:37 2017
+
+         Brave Bank       
+ Atm code:  8542446       
+--------------------------
+Who made the changes: Admin
+The ATM actual balance: 445666000
+The changes were made at: Fri Nov 24 17:50:12 2017
+
+         Brave Bank       
+ Atm code:  8542446       
+--------------------------
+Who made the changes: 
+Admin
+The ATM actual balance: 
+455663000
+The changes were made at: 
+Fri Nov 24 17:53:45 2017
+
+
+         Brave Bank       
+ Atm code:  8542446       
+--------------------------
+Who made the changes: 
+Brave
+The ATM actual balance: 
+46660000
+The changes were made at: 
+Fri Nov 24 17:58:46 2017
+
+
+         Brave Bank             
+      Atm code:  8542446        
+--------------------------------
+Who made the changes: 
+Admin
+The ATM actual balance: 
+44660000
+The changes were made at: 
+Fri Nov 24 18:00:38 2017
+
+

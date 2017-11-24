@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <math.h>
+#include <ctime>
 
 using namespace std;
 int fault = 0;
@@ -84,6 +85,7 @@ class Atm{
         void administrator_commands(string x);
         void load_up();
         void check_atm();
+        void print_atmBalance(string x);
 
 };
 
@@ -94,7 +96,6 @@ void Atm::main_menu() {
         system("cls");
         string user_name;
         int user_pin;
-        int flag = 0;
 
         cout << "Please log in: " << endl;
 
@@ -112,13 +113,15 @@ void Atm::main_menu() {
             } else if(user_name == users.at(j).get_name() && user_pin != users.at(j).get_pin() && users.at(j).get_admin() == 0 && fault < 3){
                 fault++;
                 continue;
-            } else{
+            } else if(j == users.size()-1 && user_pin != users.at(j).get_pin() ){
                 cout << "you moron22" << endl;
-                string x = "Wrong login flag 2";
-                //exit(0);
+                exit(0);
+            } else{
+                continue;
             }
 
         }
+
     }
 }
 
@@ -174,23 +177,29 @@ void Atm::withdraw_money(string x) {
     int a;
     int b = 0;
     cin >> a;
-
+/*
     unsigned int i = 0;
     for(unsigned int i = 0; i < users.size(); i++){
         if(users.at(i).get_name() == x){
             //cout << "i: " << i << endl;
         }
     }
+*/
 
     while(1){
         if(!cin){
             cout << "You can put in only numbers!" << endl;
             cin.clear();
             break;
-        } else if(a % 1000 == 0 && users.at(i).get_balance() > a){
-                b = (users.at(i).get_balance() - a);
-                users.at(i).set_balance(b);
-                break;
+        } else if(a % 1000 == 0){
+            for(unsigned int i = 0; i < users.size(); i++){
+                if(users.at(i).get_name() == x && users.at(i).get_balance() > a){
+                    b = (users.at(i).get_balance() - a);
+                    users.at(i).set_balance(b);
+                    break;
+                }
+            }
+
         } else{
             cout << "Invalid operation. " << endl;
             break;
@@ -201,15 +210,20 @@ void Atm::withdraw_money(string x) {
 
 void Atm::print_balance(string x) {
 
+    time_t now = time(0);
+    char* dt = ctime(&now);
+
     ofstream outfile;
     outfile.open("probe.txt");
 
-    outfile << "    Your bank receipt    " <<endl;
-    outfile << "--------------------------" <<endl;
+    outfile << "          Brave Bank         " <<endl;
+    outfile << "       Your bank receipt     " <<endl;
+    outfile << "-----------------------------" <<endl;
     for(unsigned int i = 0; i < users.size(); i++){
         if(users.at(i).get_name() == x){
-            outfile << "Your name: "<< "\t" << users.at(i).get_name() << endl;
-            outfile << "Your actual balance: " << "\t" << users.at(i).get_balance() << endl;
+            outfile << "Your name: "<< endl << users.at(i).get_name() << endl << endl;
+            outfile << "Your actual balance: " << endl << users.at(i).get_balance() << endl << endl;
+            outfile << "The changes were made at: " << endl << dt << endl << endl;
         }
     }
     outfile.close();
@@ -236,6 +250,7 @@ void Atm::administrator_menu(string x) {
     cout << "| Commands:                              |" << endl;
     cout << "| up      upload money                   |" << endl;
     cout << "| check   check money                    |" << endl;
+    cout << "| print   print Atm Balance              |" << endl;
     cout << "------------------------------------------" << endl;
     cout << "| menu  Opens the main menu              |" << endl;
     cout << "| exit  Exiting from the program         |" << endl;
@@ -263,6 +278,9 @@ void Atm::administrator_commands(string x) {
 
         } else if(command == "check"){
             check_atm();
+
+        } else if(command == "print"){
+            print_atmBalance(x);
 
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
@@ -306,6 +324,28 @@ void Atm::check_atm() {
 
 }
 
+void Atm::print_atmBalance(string x) {
+
+    time_t now = time(0);
+    char* dt = ctime(&now);
+
+    ofstream outfile;
+    outfile.open("atmbalance.txt", ios::app);
+
+    outfile << "         Brave Bank             " <<endl;
+    outfile << "      Atm code:  8542446        " <<endl;
+    outfile << "--------------------------------" <<endl;
+
+    for(unsigned int i = 0; i < users.size(); i++){
+        if(users.at(i).get_name() == x){
+            outfile << "Who made the changes: " << endl << users.at(i).get_name() << endl;
+            outfile << "The ATM actual balance: " << endl << get_atmmoney() << endl;
+            outfile << "The changes were made at: " << endl << dt << endl << endl;
+        }
+    }
+    outfile.close();
+}
+
 
 int main()
 {
@@ -315,6 +355,7 @@ int main()
     ATM.add(new Users("John", 1234, 235662, 0));
     ATM.add(new Users("Pamela Anderson", 1234, 2964542, 0));
     ATM.add(new Users("Brave", 12345678, 0, 1));
+    ATM.add(new Users("Admin", 12345678, 0, 1));
     ATM.add(new Users("Elon", 1234, 2634543, 0));
 
     ATM.main_menu();
