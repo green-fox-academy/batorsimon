@@ -5,6 +5,7 @@
 #include <math.h>
 
 using namespace std;
+int fault = 0;
 
 class Users{
     public:
@@ -78,8 +79,8 @@ class Atm{
         void withdraw_money(string x);
         void check_balance(string x);
 
-        void administrator_menu();
-        void administrator_commands();
+        void administrator_menu(string x);
+        void administrator_commands(string x);
         void load_up();
         void check_atm();
 
@@ -87,38 +88,34 @@ class Atm{
 
 
 string Atm::main_menu() {
-    system("cls");
-    string user_name;
-    int user_pin;
 
-    cout << "Please log in: " << endl;
-
-    cout << "Enter your user name: ";
-    getline(cin, user_name);
-
-    cout << "Enter your PIN code: ";
-    cin >> user_pin;
-
-    int i = 0;
-    int flag = 0;
     while(1){
+        system("cls");
+        string user_name;
+        int user_pin;
+
+        cout << "Please log in: " << endl;
+
+        cout << "Enter your user name: ";
+        getline(cin, user_name);
+
+        cout << "Enter your PIN code: ";
+        cin >> user_pin;
+
         for(unsigned int j = 0; j < users.size(); j++ ){
             if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 1) {
-                administrator_menu();
-                flag = 1;
+                administrator_menu(user_name);
                 return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 0) {
                 costumer_menu(user_name);
-                flag = 2;
                 return user_name;
-            } else if(flag == 2 && i < 3){
-                i++;
-                cout << "Wrong login flag 2" << endl;
+            } else if(user_name == users.at(j).get_name() && user_pin != users.at(j).get_pin() && users.at(j).get_admin() == 0 && fault < 3){
+                fault++;
                 continue;
-                main_menu();
-            } else if(flag == 1){
-                cout << "Wrong login flag 1" << endl;
-                return 0;
+            } else{
+                cout << "you moron22" << endl;
+                string x = "Wrong login flag 2";
+                return x;
             }
 
         }
@@ -209,7 +206,7 @@ void Atm::check_balance(string x) {
 }
 
 
-void Atm::administrator_menu() {
+void Atm::administrator_menu(string x) {
     system("cls");
     cout << "------------------------------------------" << endl;
     cout << "|        Welcome to Brave Bank           |" << endl;
@@ -225,10 +222,10 @@ void Atm::administrator_menu() {
     system("pause");
     system("cls");
 
-    administrator_commands();
+    administrator_commands(x);
 }
 
-void Atm::administrator_commands() {
+void Atm::administrator_commands(string x) {
     string command;
 
     do {
@@ -237,7 +234,7 @@ void Atm::administrator_commands() {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
         } else if (command == "menu") {
-            administrator_menu();
+            administrator_menu(x);
             continue;
         } else if(command == "up"){
             load_up();
@@ -267,7 +264,7 @@ void Atm::load_up() {
             cin.clear();
             break;
         } else if(a % 1000 == 0) {
-            b = (get_atmmoney() +a);
+            b = (get_atmmoney() + a);
             set_atmmoney(b);
             cout << "Operation done. " << endl;
             break;
