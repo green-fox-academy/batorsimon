@@ -1,0 +1,4 @@
+    Your bank receipt    
+--------------------------
+Your name: 	Pamela Anderson
+Your actual balance: 	2964542

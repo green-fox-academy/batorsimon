@@ -58,7 +58,7 @@ class Atm{
     public:
         Atm() {};
         Atm(double atm_money){
-            this->atm_money = 2000000;
+            this->atm_money = atm_money;
         };
 
         void add(Users *user) {
@@ -72,12 +72,13 @@ class Atm{
             return atm_money;
         }
 
-        string main_menu();
+        void main_menu();
 
         void costumer_menu(string x);
         void costumer_commands(string x);
         void withdraw_money(string x);
         void check_balance(string x);
+        void print_balance(string x);
 
         void administrator_menu(string x);
         void administrator_commands(string x);
@@ -87,12 +88,13 @@ class Atm{
 };
 
 
-string Atm::main_menu() {
+void Atm::main_menu() {
 
     while(1){
         system("cls");
         string user_name;
         int user_pin;
+        int flag = 0;
 
         cout << "Please log in: " << endl;
 
@@ -105,17 +107,15 @@ string Atm::main_menu() {
         for(unsigned int j = 0; j < users.size(); j++ ){
             if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 1) {
                 administrator_menu(user_name);
-                return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin == users.at(j).get_pin() && users.at(j).get_admin() == 0) {
                 costumer_menu(user_name);
-                return user_name;
             } else if(user_name == users.at(j).get_name() && user_pin != users.at(j).get_pin() && users.at(j).get_admin() == 0 && fault < 3){
                 fault++;
                 continue;
             } else{
                 cout << "you moron22" << endl;
                 string x = "Wrong login flag 2";
-                return x;
+                //exit(0);
             }
 
         }
@@ -130,6 +130,7 @@ void Atm::costumer_menu(string x) {
     cout << "| Commands:                               |" << endl;
     cout << "| wm      withdraw money                  |" << endl;
     cout << "| check   shows your current balance      |" << endl;
+    cout << "| print   prints you a receipt            |" << endl;
     cout << "-------------------------------------------" << endl;
     cout << "| menu  Opens the main menu               |" << endl;
     cout << "| exit  Exiting from the program          |" << endl;
@@ -156,6 +157,9 @@ void Atm::costumer_commands(string x) {
             continue;
         } else if (command == "check") {
             check_balance(x);
+            continue;
+        } else if (command == "print") {
+            print_balance(x);
             continue;
         } else {
             cout << "Wrong task name. Look at the possible tasks again." << endl;
@@ -195,6 +199,23 @@ void Atm::withdraw_money(string x) {
 
 }
 
+void Atm::print_balance(string x) {
+
+    ofstream outfile;
+    outfile.open("probe.txt");
+
+    outfile << "    Your bank receipt    " <<endl;
+    outfile << "--------------------------" <<endl;
+    for(unsigned int i = 0; i < users.size(); i++){
+        if(users.at(i).get_name() == x){
+            outfile << "Your name: "<< "\t" << users.at(i).get_name() << endl;
+            outfile << "Your actual balance: " << "\t" << users.at(i).get_balance() << endl;
+        }
+    }
+    outfile.close();
+}
+
+
 void Atm::check_balance(string x) {
 
     for(unsigned int i = 0; i < users.size(); i++){
@@ -233,9 +254,10 @@ void Atm::administrator_commands(string x) {
         if (command == "exit") {
             cout << "The program is exiting now. Goodbye!" << endl;
             exit(0);
+
         } else if (command == "menu") {
             administrator_menu(x);
-            continue;
+
         } else if(command == "up"){
             load_up();
 
@@ -289,10 +311,10 @@ int main()
 {
     Atm ATM;
 
-    ATM.add(new Users("Kiss", 1234, 2342, 0));
+    ATM.add(new Users("Kiss", 1234, 234256, 0));
     ATM.add(new Users("John", 1234, 235662, 0));
-    ATM.add(new Users("Pamela", 1234, 2964542, 0));
-    ATM.add(new Users("Brave", 1234, 0, 1));
+    ATM.add(new Users("Pamela Anderson", 1234, 2964542, 0));
+    ATM.add(new Users("Brave", 12345678, 0, 1));
     ATM.add(new Users("Elon", 1234, 2634543, 0));
 
     ATM.main_menu();
