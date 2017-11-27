@@ -98,7 +98,11 @@ int main(void)
   while (1)
   {
 	  //TODO:
-	  //Flash the ledwith 200 ms period time
+	  //Flash the led with 200 ms period time
+	  //BSP_LED_On(LED_GREEN);
+	  BSP_LED_Toggle(LED_GREEN);
+	  HAL_Delay(200);
+	  //BSP_LED_Off(LED_GREEN); when u use toogle dont need on and of functions
 
   }
 }
