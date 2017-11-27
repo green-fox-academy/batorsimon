@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1511525534 source:d:\én\greenfox\week-07\day5\sandbox\main.cpp
+	<iostream>
+	<windows.h>
+

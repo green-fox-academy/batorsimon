@@ -114,7 +114,7 @@ void Atm::main_menu() {
                 fault++;
                 continue;
             } else if(j == users.size()-1 && user_pin != users.at(j).get_pin() ){
-                cout << "you moron22" << endl;
+                cout << "you moron" << endl;
                 exit(0);
             } else{
                 continue;
@@ -177,14 +177,6 @@ void Atm::withdraw_money(string x) {
     int a;
     int b = 0;
     cin >> a;
-/*
-    unsigned int i = 0;
-    for(unsigned int i = 0; i < users.size(); i++){
-        if(users.at(i).get_name() == x){
-            //cout << "i: " << i << endl;
-        }
-    }
-*/
 
     while(1){
         if(!cin){
@@ -223,6 +215,7 @@ void Atm::print_balance(string x) {
         if(users.at(i).get_name() == x){
             outfile << "Your name: "<< endl << users.at(i).get_name() << endl << endl;
             outfile << "Your actual balance: " << endl << users.at(i).get_balance() << endl << endl;
+            //outfile << "Withdrawn money: " << endl << b << endl << endl;
             outfile << "The changes were made at: " << endl << dt << endl << endl;
         }
     }
@@ -295,12 +288,12 @@ void Atm::load_up() {
 
     int a;
     int b;
-    //cout << "Write down how much money you want to add: ";
+    cout << "Write down how much money you want to add: ";
     cin >> a;
 
     while(1){
         if(!cin){
-            cout << "not a number" << endl;
+            cout << "The given parameter was not a number" << endl;
             cin.clear();
             break;
         } else if(a % 1000 == 0) {
@@ -319,8 +312,7 @@ void Atm::load_up() {
 
 void Atm::check_atm() {
 
-    cout << "how much money is in the Atm: ";
-    cout << get_atmmoney() << endl;
+    cout << "How much money is in the Atm: " << get_atmmoney() << endl;
 
 }
 

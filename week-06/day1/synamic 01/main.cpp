@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <random>
 
 using namespace std;
 
@@ -6,8 +8,19 @@ using namespace std;
 // Please delete the array before the program exits
 
 int main() {
-  int* pointer = NULL;
+    int* pointer = NULL;
+    pointer = new int[5];
+    srand(time(0));
 
+    for(int i = 0; i < 5; i++) {
+        pointer[i] = rand() % 5;
+    }
 
-  return 0;
+    for(int i = 0; i < 5; i++) {
+        cout << pointer[i] << " ";
+    }
+
+    delete []pointer;
+
+    return 0;
 }

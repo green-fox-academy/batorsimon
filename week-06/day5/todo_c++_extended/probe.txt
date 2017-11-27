@@ -1,5 +1,5 @@
-No. | Done? | Priority | Task name |
-1	no	1	 feed	
-2	yes	3	 set	
-3	no	5	 wake	
-4	no	4	 fasz
+No.  | Done? | Priority | Task name |
+1	no	0	 feed the cat	
+2	yes	5	 feed the cat	
+3	no	0	 wash the car	
+4	no	0	 go for a walk	

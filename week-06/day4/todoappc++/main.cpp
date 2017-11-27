@@ -54,6 +54,7 @@ class Storage{
         void completes_task();
         void priority_to_task();
         void list_tasks_priority();
+        void empty_taks();
 
     private:
          vector<Todo> storage;
@@ -157,9 +158,9 @@ void Storage::priority_to_task()
         cout << "Give in a valid number!" << endl;
         cin.clear();
     } else{
-        cout << "Give in a number for priority:";
+        cout << "Give in a number for priority between 1 and 5:";
         cin >> user_input2;
-        if(!cin || size1 < user_input || 1 > user_input){
+        if(!cin || 5 < user_input || 1 > user_input){
             cout << "Give in a valid number!" << endl;
             cin.clear();
         }else{
