@@ -91,18 +91,72 @@ int main(void)
 
 
   /* Add your application code here     */
-  BSP_LED_Init(LED_GREEN);
-  BSP_LED_On(LED_GREEN);
+ // BSP_LED_Init(LED_GREEN);
+ // BSP_LED_On(LED_GREEN);
+
+  __HAL_RCC_GPIOA_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+
+  GPIO_InitTypeDef tda;            // create a config structure
+  tda.Pin = GPIO_PIN_0;            // this is about PIN 0
+  tda.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
+  tda.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
+  tda.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+
+  HAL_GPIO_Init(GPIOA, &tda);      // initialize the pin on GPIOA port with HAL
+
+  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+  GPIO_InitTypeDef tda1;
+   tda1.Pin = GPIO_PIN_10;
+   tda1.Mode = GPIO_MODE_OUTPUT_PP;
+   tda1.Pull = GPIO_PULLDOWN;
+   tda1.Speed = GPIO_SPEED_HIGH;
+
+   HAL_GPIO_Init(GPIOF, &tda1);
+
+   GPIO_InitTypeDef tda2;
+      tda2.Pin = GPIO_PIN_9;
+      tda2.Mode = GPIO_MODE_OUTPUT_PP;
+      tda2.Pull = GPIO_PULLDOWN;
+      tda2.Speed = GPIO_SPEED_HIGH;
+
+      HAL_GPIO_Init(GPIOF, &tda2);
+
+      GPIO_InitTypeDef tda3;
+         tda3.Pin = GPIO_PIN_8;
+         tda3.Mode = GPIO_MODE_OUTPUT_PP;
+         tda3.Pull = GPIO_PULLDOWN;
+         tda3.Speed = GPIO_SPEED_HIGH;
+
+         HAL_GPIO_Init(GPIOF, &tda3);
+
 
   /* Infinite loop */
   while (1)
   {
-	  //TODO:
-	  //Flash the led with 200 ms period time
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);   // setting the pin to 1
+	  HAL_Delay(300);                                      // wait a second
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET); // setting the pin to 0
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+	  HAL_Delay(300);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+	  HAL_Delay(300);
+
+	  //TODO:   Flash the led with 200 ms period time
 	  //BSP_LED_On(LED_GREEN);
-	  BSP_LED_Toggle(LED_GREEN);
-	  HAL_Delay(200);
+	  //HAL_Delay(200);
 	  //BSP_LED_Off(LED_GREEN); when u use toogle dont need on and of functions
+
+	  //BSP_LED_Toggle(LED_GREEN);
+	  //HAL_Delay(200);
 
   }
 }
