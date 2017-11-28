@@ -104,7 +104,7 @@ int main(void)
 
   HAL_GPIO_Init(GPIOA, &tda);      // initialize the pin on GPIOA port with HAL
 
-  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+  __HAL_RCC_GPIOF_CLK_ENABLE();    //  GPIOF port's first use so we need to declare
   GPIO_InitTypeDef tda1;
    tda1.Pin = GPIO_PIN_10;
    tda1.Mode = GPIO_MODE_OUTPUT_PP;
@@ -146,11 +146,126 @@ int main(void)
       HAL_GPIO_Init(GPIOF, &tda5);
        BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
 
+       // for the button,   button is in D00 -> pc7
+       __HAL_RCC_GPIOC_CLK_ENABLE();
+
+       GPIO_InitTypeDef tda6;
+         tda6.Pin = GPIO_PIN_7;
+         tda6.Mode = GPIO_MODE_INPUT;
+         tda6.Pull = GPIO_PULLUP;
+         tda6.Speed = GPIO_SPEED_HIGH;
+
+          HAL_GPIO_Init(GPIOC, &tda6);
+
+
+         GPIO_InitTypeDef tda7;
+         tda7.Pin = GPIO_PIN_6;
+         tda7.Mode = GPIO_MODE_INPUT;
+         tda7.Pull = GPIO_PULLUP;
+         tda7.Speed = GPIO_SPEED_HIGH;
+
+        HAL_GPIO_Init(GPIOC, &tda7);
+
+
+        __HAL_RCC_GPIOG_CLK_ENABLE();
+
+            GPIO_InitTypeDef tda8;
+              tda8.Pin = GPIO_PIN_6;
+              tda8.Mode = GPIO_MODE_INPUT;
+              tda8.Pull = GPIO_PULLUP;
+              tda8.Speed = GPIO_SPEED_HIGH;
+
+             HAL_GPIO_Init(GPIOG, &tda8);
+
   /* Infinite loop */
   while (1)
   {
+	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {   //when the not integrated button pressed all leds fleshes
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
+		 	  			  HAL_Delay(300);
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+		 	  			  HAL_Delay(300);
+
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
+		 	  			  HAL_Delay(300);
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+		 	  			  HAL_Delay(300);
+
+		 	  			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // 4.
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
+		 	  			  HAL_Delay(300);
+		 	  			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+		 	  			  HAL_Delay(300);
+		  }
+
+	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_6) == 0) {   //when the not integrated button2 pressed all leds fleshes
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);  // 4.
+			  } else {
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+			  	  }
+
+
+	  if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_6) == 0) {   //when the not integrated button3 pressed all leds fleshes
+	 		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+	 		 HAL_Delay(300);
+	 		 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+	 		HAL_Delay(300);
+	 		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
+	 			 	 HAL_Delay(300);
+	 			 	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+	 		 HAL_Delay(300);
+	 		 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
+	 		 HAL_Delay(300);
+	 		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+	 	 HAL_Delay(300);
+	 	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);  // 4.
+	 	 HAL_Delay(300);
+	 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	 		 HAL_Delay(300);
+	 		 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
+	 		 HAL_Delay(300);
+	 	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+	 	 HAL_Delay(300);
+	 		 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
+	 		 HAL_Delay(300);
+	 	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+	 	 HAL_Delay(300);
+	 	  }
+
 	  /*
-	  	  if(BSP_PB_GetState(BUTTON_KEY)) {
+	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {   //when the not integrated button pressed all leds fleshes
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);  // 4.
+	  } else {
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	  	  }
+*/
+	  /*
+	  	  if(BSP_PB_GetState(BUTTON_KEY)) {    //when button pressed all leds fleshes
 				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
 				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
 				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
@@ -166,7 +281,8 @@ int main(void)
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 	  	  	  }
 */
-	  	 if(BSP_PB_GetState(BUTTON_KEY)) {
+	  /*
+	  	 if(BSP_PB_GetState(BUTTON_KEY)) {    //when button pressed leds fleshes from the outside to the middle
 	  		 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
 	  			  HAL_Delay(300);
@@ -187,29 +303,9 @@ int main(void)
 	  			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
 	  			  HAL_Delay(300);
-	  	   	  }
-	  /*
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
-	  HAL_Delay(300);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-	  HAL_Delay(300);
+	  			  }
+	  			  */
 
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
-	  HAL_Delay(300);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
-	  HAL_Delay(300);
-
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // 4.
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
-	  HAL_Delay(300);
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
-	  HAL_Delay(300);
-*/
 
 	  //TODO:   Flash the led with 200 ms period time
 	  //BSP_LED_On(LED_GREEN);
