@@ -176,10 +176,21 @@ int main(void)
 
         HAL_GPIO_Init(GPIOG, &tda8);
 
+        __HAL_RCC_GPIOB_CLK_ENABLE();
+
+              GPIO_InitTypeDef tda9;
+              tda9.Pin = GPIO_PIN_4;
+              tda9.Mode = GPIO_MODE_INPUT;
+              tda9.Pull = GPIO_PULLUP;
+              tda9.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOG, &tda9);
+
 
   /* Infinite loop */
   while (1)
   {
+	  	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
 	  	  	 for(int i = 0;  i < 64; i++){
 	  	  		 	 	 int remain = 0;
 	  	  				int x = 0;
@@ -189,10 +200,8 @@ int main(void)
 
 	  	  		        if( x ==1 ){
 	  	  		        	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
-	  	  		          //  HAL_Delay(300);
 	  	  		        } else{
 	  	  		        	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
-	  	  		           // HAL_Delay(300);
 	  	  		        }
 
 	  	  		        x = remain / 16;
@@ -200,10 +209,8 @@ int main(void)
 
 	  	  		       if( x ==1 ){
 	  	  		        		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
-	  	  		        	//	HAL_Delay(300);
 	  	  		      } else{
 	  	  		        		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
-	  	  		        	//	HAL_Delay(300);
 	  	  		       }
 
 	  	  		         x = remain / 8;
@@ -211,10 +218,8 @@ int main(void)
 
 	  	  		       	if( x ==1 ){
 	  	  		        	 	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
-	  	  		        //	HAL_Delay(300);
 	  	  		        } else{
 	  	  		             	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
-	  	  		            //HAL_Delay(300);
 	  	  		          }
 
 	  	  		           x = remain / 4;
@@ -222,10 +227,8 @@ int main(void)
 
 	  	  		          if( x ==1 ){
 	  	  		        		  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // 4.
-	  	  		        		//HAL_Delay(300);
 	  	  		        	   } else{
 	  	  		        	         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	  	  		        	    // HAL_Delay(300);
 	  	  		        	}
 
 	  	  		          x = remain / 2;
@@ -233,10 +236,8 @@ int main(void)
 
 	  	  		         if( x ==1 ){
 	  	  		                 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
-	  	  		            // HAL_Delay(300);
 	  	  		         } else{
 	  	  		                   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
-	  	  		              // HAL_Delay(300);
 	  	  		      	}
 
 
@@ -245,10 +246,8 @@ int main(void)
 
 	  	  		         if( x ==1 ){
 	  	  		        		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
-	  	  		        	//HAL_Delay(300);
 	  	  		         } else{
 	  	  		        	 	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-	  	  		        	// HAL_Delay(300);
 	  	  		     	}
 
 	  	  		         HAL_Delay(500);
@@ -258,7 +257,8 @@ int main(void)
 						 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 						 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
 						 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-	  	  	 }
+	  	  	 	 }
+  	  	  	}
 
 	  	    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
 	  	  		  	  	  //when the not integrated button pressed all leds fleshes from outside to the middle
