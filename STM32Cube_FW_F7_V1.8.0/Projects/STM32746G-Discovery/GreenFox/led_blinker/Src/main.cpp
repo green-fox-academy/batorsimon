@@ -63,6 +63,7 @@ static void CPU_CACHE_Enable(void);
   * @param  None
   * @retval None
   */
+
 int main(void)
 {
 
@@ -175,67 +176,82 @@ int main(void)
 
         HAL_GPIO_Init(GPIOG, &tda8);
 
+
   /* Infinite loop */
   while (1)
   {
-	  	  	  int number = 63;
-	  	  	  int remain = 0;
-	  	  	  int x = 0;
+	  	  	 for(int i = 0;  i < 64; i++){
+	  	  		 	 	 int remain = 0;
+	  	  				int x = 0;
 
-	  	  	  x = number / 32;
-	  	  	  remain = number % 32;
+	  	  		         x = i / 32;
+	  	  		        remain = i % 32;
 
-	  	  	  if( x ==1 ){
-	  	  		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
-	  	  	  } else{
-	  	  		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
-	  	  	  }
+	  	  		        if( x ==1 ){
+	  	  		        	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+	  	  		            HAL_Delay(1000);
+	  	  		        } else{
+	  	  		        	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+	  	  		            HAL_Delay(1000);
+	  	  		        }
 
-	  	    x = remain / 16;
-	  	  	remain = remain % 16;
+	  	  		        x = remain / 16;
+	  	  		       remain = remain % 16;
 
-	  	  	  if( x ==1 ){
-	  	  		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
-	  	  	  } else{
-	  	  	  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
-	  	  	   }
+	  	  		       if( x ==1 ){
+	  	  		        		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET); // 2.
+	  	  		        		HAL_Delay(1000);
+	  	  		      } else{
+	  	  		        		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+	  	  		        		HAL_Delay(1000);
+	  	  		       }
 
-	  	  	  	  x = remain / 8;
-	  	  	  	remain = remain % 8;
+	  	  		         x = remain / 8;
+	  	  		     	remain = remain % 8;
 
-	  	  	  	if( x ==1 ){
-	  	  	  	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
-	  	  	     } else{
-	  	  	  		  	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
-	  	  	      }
+	  	  		       	if( x ==1 ){
+	  	  		        	 	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET); // 3.
+	  	  		        	HAL_Delay(1000);
+	  	  		        } else{
+	  	  		             	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+	  	  		            HAL_Delay(1000);
+	  	  		          }
 
-	  	  	    x = remain / 4;
-	  	  	  	remain = remain % 4;
+	  	  		           x = remain / 4;
+	  	  		         remain = remain % 4;
 
-	  	  	    if( x ==1 ){
-	  	  	    		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // 4.
-	  	  	     } else{
-	  	  	    	 	 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-	  	  	  	}
+	  	  		          if( x ==1 ){
+	  	  		        		  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // 4.
+	  	  		        		HAL_Delay(1000);
+	  	  		        	   } else{
+	  	  		        	         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	  	  		        	     HAL_Delay(1000);
+	  	  		        	}
 
-	  	  	  x = remain / 2;
-	  	      remain = remain % 2;
+	  	  		          x = remain / 2;
+	  	  		          remain = remain % 2;
 
-	  	      if( x ==1 ){
-	  	    	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
-	  	       } else{
-	  	  		  	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
-	  	   	}
+	  	  		         if( x ==1 ){
+	  	  		                 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_SET);  //5.
+	  	  		             HAL_Delay(1000);
+	  	  		         } else{
+	  	  		                   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_7, GPIO_PIN_RESET);
+	  	  		               HAL_Delay(1000);
+	  	  		      	}
 
 
-	  	      x = remain / 1;
-	  	  	 remain = remain % 1;
+	  	  		         x = remain / 1;
+	  	  		       	 remain = remain % 1;
 
-	  	  	  	  	    if( x ==1 ){
-	  	  	  	  	    		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
-	  	  	  	  	     } else{
-	  	  	  	  	    	 	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-	  	  	  	  	  	}
+	  	  		         if( x ==1 ){
+	  	  		        		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
+	  	  		        	HAL_Delay(1000);
+	  	  		         } else{
+	  	  		        	 	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+	  	  		        	 HAL_Delay(1000);
+	  	  		     	}
+
+	  	  	 }
 
 	  	    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
 	  	  		  	  	  //when the not integrated button pressed all leds fleshes from outside to the middle
