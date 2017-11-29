@@ -1,10 +1,10 @@
  /**
   ******************************************************************************
-  * @file    Templates/Src/main.c 
+  * @file    Templates/Src/main.c
   * @author  MCD Application Team
   * @version V1.0.3
-  * @date    22-April-2016 
-  * @brief   STM32F7xx HAL API Template project 
+  * @date    22-April-2016
+  * @brief   STM32F7xx HAL API Template project
   ******************************************************************************
   * @attention
   *
@@ -44,7 +44,7 @@
 
 /** @addtogroup Templates
   * @{
-  */ 
+  */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -67,12 +67,12 @@ static void CPU_CACHE_Enable(void);
 int main(void)
 {
 
-  /* This project template calls firstly two functions in order to configure MPU feature 
+  /* This project template calls firstly two functions in order to configure MPU feature
      and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
-     These functions are provided as template implementation that User may integrate 
-     in his application, to enhance the performance in case of use of AXI interface 
-     with several masters. */ 
-  
+     These functions are provided as template implementation that User may integrate
+     in his application, to enhance the performance in case of use of AXI interface
+     with several masters. */
+
   /* Configure the MPU attributes as Write Through */
   MPU_Config();
 
@@ -186,10 +186,267 @@ int main(void)
 
               HAL_GPIO_Init(GPIOG, &tda9);
 
+              //matrix     rows
+              GPIO_InitTypeDef tda10;
+              tda10.Pin = GPIO_PIN_8;
+              tda10.Mode = GPIO_MODE_OUTPUT_PP;
+              tda10.Pull = GPIO_PULLDOWN;
+              tda10.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOB, &tda10);
+
+              GPIO_InitTypeDef tda11;
+              tda11.Pin = GPIO_PIN_9;
+              tda11.Mode = GPIO_MODE_OUTPUT_PP;
+              tda11.Pull = GPIO_PULLDOWN;
+              tda11.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOB, &tda11);
+
+             GPIO_InitTypeDef tda12;
+             tda12.Pin = GPIO_PIN_14;
+             tda12.Mode = GPIO_MODE_OUTPUT_PP;
+             tda12.Pull = GPIO_PULLDOWN;
+             tda12.Speed = GPIO_SPEED_HIGH;
+
+             HAL_GPIO_Init(GPIOB, &tda12);
+
+             __HAL_RCC_GPIOI_CLK_ENABLE();
+
+             GPIO_InitTypeDef tda13;
+             tda13.Pin = GPIO_PIN_1;
+             tda13.Mode = GPIO_MODE_OUTPUT_PP;
+             tda13.Pull = GPIO_PULLDOWN;
+             tda13.Speed = GPIO_SPEED_HIGH;
+
+             HAL_GPIO_Init(GPIOI, &tda13);
+
+             GPIO_InitTypeDef tda14;
+             tda14.Pin = GPIO_PIN_15;
+             tda14.Mode = GPIO_MODE_OUTPUT_PP;
+             tda14.Pull = GPIO_PULLDOWN;
+              tda14.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOB, &tda14);
+
+
+
+
+              //matrix     columns
+              GPIO_InitTypeDef tda15;
+              tda15.Pin = GPIO_PIN_8;      // D10    PA8
+          tda15.Mode = GPIO_MODE_OUTPUT_PP;
+             tda15.Pull = GPIO_PULLDOWN;
+             tda15.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOA, &tda15);
+
+                            GPIO_InitTypeDef tda16;
+                       tda16.Pin = GPIO_PIN_15;    // D9   PA15
+                   tda16.Mode = GPIO_MODE_OUTPUT_PP;
+                    tda16.Pull = GPIO_PULLDOWN;
+                       tda16.Speed = GPIO_SPEED_HIGH;
+
+                     HAL_GPIO_Init(GPIOA, &tda16);
+
+
+                         GPIO_InitTypeDef tda17;
+                           tda17.Pin = GPIO_PIN_2;       // D8    PI2
+                          tda17.Mode = GPIO_MODE_OUTPUT_PP;
+                            tda17.Pull = GPIO_PULLDOWN;
+                        tda17.Speed = GPIO_SPEED_HIGH;
+
+                      HAL_GPIO_Init(GPIOI, &tda17);
+
+
+                       GPIO_InitTypeDef tda18;
+                           tda18.Pin = GPIO_PIN_3;     // D7    PI3
+                           tda18.Mode = GPIO_MODE_OUTPUT_PP;
+                         tda18.Pull = GPIO_PULLDOWN;
+                         tda18.Speed = GPIO_SPEED_HIGH;
+
+                          HAL_GPIO_Init(GPIOI, &tda18);
+
+                          __HAL_RCC_GPIOH_CLK_ENABLE();
+
+                         GPIO_InitTypeDef tda19;
+                      tda19.Pin = GPIO_PIN_6;  // D6    PH6
+                      tda19.Mode = GPIO_MODE_OUTPUT_PP;
+                      tda19.Pull = GPIO_PULLDOWN;
+                      tda19.Speed = GPIO_SPEED_HIGH;
+
+                  HAL_GPIO_Init(GPIOH, &tda19);
+
+
+                   GPIO_InitTypeDef tda20;
+                   tda20.Pin = GPIO_PIN_0;   //  D5   PI0
+                 tda20.Mode = GPIO_MODE_OUTPUT_PP;
+                 tda20.Pull = GPIO_PULLDOWN;
+              tda20.Speed = GPIO_SPEED_HIGH;
+
+              HAL_GPIO_Init(GPIOI, &tda20);
+
+
+              GPIO_InitTypeDef tda21;
+             tda21.Pin = GPIO_PIN_7;    // D4    PG7
+              tda21.Mode = GPIO_MODE_OUTPUT_PP;
+              tda21.Pull = GPIO_PULLDOWN;
+             tda21.Speed = GPIO_SPEED_HIGH;
+
+                HAL_GPIO_Init(GPIOG, &tda21);
+
+/*
+  GPIO_PinState led_matrix_state[LED_MATRIX_ROWS][LED_MATRIX_COLS];
+              const led_matrix_pin_t rows[] = {
+              		{GPIOA, GPIO_PIN_8},     //row[0]
+              		{GPIOA, GPIO_PIN_15},     //row[1]
+					{GPIOI, GPIO_PIN_2},     //row[2]
+					{GPIOI, GPIO_PIN_3},     //row[3]
+              		{GPIOH, GPIO_PIN_6},     //row[4]
+              		{GPIOI, GPIO_PIN_0},     //row[5]
+              		{GPIOG, GPIO_PIN_7}      //row[6]
+
+
+              };
+
+              const led_matrix_pin_t cols[] = {
+              		{GPIOB, GPIO_PIN_14},    //col[0]
+              		{GPIOB, GPIO_PIN_8},    //col[1]
+              		{GPIOB, GPIO_PIN_9},     //col[2]
+              		{GPIOB, GPIO_PIN_15},    //col[3]
+              		{GPIOI, GPIO_PIN_1}      //col[4]
+              };
+
+*/
+
 
   /* Infinite loop */
   while (1)
   {
+	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+	  	   	  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+	  	   	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+	  	   	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	  	   	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+	  	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	     	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	     	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	  	    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+	  	    //Flashes
+	  	  HAL_Delay(200);
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+	    HAL_Delay(200);
+	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	    	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	    	  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	    	    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+	    	    HAL_Delay(200);
+	    	   	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	    	   	    	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	    	   	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+	    	   	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);     //   4. oszlop
+	    	   	    	  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	    	   	    	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	    	   	    	    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+	    HAL_Delay(200);
+	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+	   	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+		    HAL_Delay(200);
+		    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+		    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+		  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+		   	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+		  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+		  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+		     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+
+			    HAL_Delay(200);
+			    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+			    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+			  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+			   	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+			  	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+			  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+			     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+			     HAL_Delay(200);
+
+			     // rows
+			     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+			     	  	   	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+			     	  	   	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+			     	  	  	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);     //   4. oszlop
+			     	     	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+			     	     	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+			     	  	    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+
+
+			     	  			   	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+			     	  			   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+			     	  			   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+			     	  			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+			     	  			  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+			     	  			 HAL_Delay(400);
+			     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+			     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+			     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+			     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+			     HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+			     HAL_Delay(400);
+		   	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+		   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+		   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+		  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+		  HAL_Delay(400);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+		  			    	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+		  			    	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+		  			    	  	  	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+		  			    	  	   	  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+
+		  						     HAL_Delay(400);
+		  					   	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+		  					   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+		  					   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+		  					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+		  					  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+
+	  						     HAL_Delay(400);
+	  					   	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+	  					   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+	  					   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+	  					  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+	  					  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+	  					 HAL_Delay(400);
+
 	  	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
 	  	  	 for(int i = 0;  i < 64; i++){
 	  	  		 	 	 int remain = 0;
@@ -429,7 +686,7 @@ int main(void)
 
 /**
   * @brief  System Clock Configuration
-  *         The system Clock is configured as follow : 
+  *         The system Clock is configured as follow :
   *            System Clock source            = PLL (HSE)
   *            SYSCLK(Hz)                     = 216000000
   *            HCLK(Hz)                       = 216000000
@@ -459,7 +716,7 @@ static void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 25;
-  RCC_OscInitStruct.PLL.PLLN = 432;  
+  RCC_OscInitStruct.PLL.PLLN = 432;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 9;
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -472,14 +729,14 @@ static void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  
-  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
+
+  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
      clocks dividers */
   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;  
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;  
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
     Error_Handler();
@@ -509,7 +766,7 @@ static void Error_Handler(void)
 static void MPU_Config(void)
 {
   MPU_Region_InitTypeDef MPU_InitStruct;
-  
+
   /* Disable the MPU */
   HAL_MPU_Disable();
 
@@ -556,7 +813,7 @@ static void CPU_CACHE_Enable(void)
   * @retval None
   */
 void assert_failed(uint8_t* file, uint32_t line)
-{ 
+{
   /* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 
@@ -569,10 +826,10 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}
-  */ 
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

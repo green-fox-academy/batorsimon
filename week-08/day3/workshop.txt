@@ -1,0 +1,5 @@
+4 buttons:
+1. leds flashes from the outside to the inside
+2. all leds flashes
+3. knight rider
+4. binary adder
