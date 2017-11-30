@@ -1,0 +1,4 @@
+5 X 7 matrix
+
+firstly: the 5 rows runs from the start to the end
+secondly the 7 cloumns flshes go out one by one
