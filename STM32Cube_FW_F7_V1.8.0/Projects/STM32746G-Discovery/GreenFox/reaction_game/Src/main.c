@@ -39,6 +39,18 @@
 #include "main.h"
 #include <string.h>
 
+UART_HandleTypeDef uart_handle;
+RNG_HandleTypeDef rnd;
+uint32_t rnd_num;
+uint32_t tickstart = 0;
+
+unsigned int results[10] = {0};
+  unsigned int results_length = 0;
+  unsigned int result_pos = 0;
+
+  int My_Delay(uint32_t delay);
+  unsigned int resultAverage(unsigned int *results, unsigned int results_length);
+
 
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
@@ -115,12 +127,102 @@ int main(void)
 
   BSP_COM_Init(COM1, &uart_handle);
 
+  rnd.Instance     = RNG;
+    HAL_RNG_Init(&rnd);
+    //HAL_RNG_GetRandomNumber(&rnd);
+
+  RNG_HandleTypeDef rnd;
+  uint32_t rnd_num;
+  uint32_t tickstart = 0;
+
+
+  rnd.Instance     = RNG;
+    HAL_RNG_Init(&rnd);
+    //HAL_RNG_GetRandomNumber(&rnd);
+
+
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  GPIO_InitTypeDef tda1;
+tda1.Pin = GPIO_PIN_4;
+tda1.Mode = GPIO_MODE_INPUT;
+tda1.Pull = GPIO_PULLUP;
+tda1.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOB, &tda1);
+
+__HAL_RCC_GPIOF_CLK_ENABLE();
+
+GPIO_InitTypeDef tda2;
+tda2.Pin = GPIO_PIN_8;
+tda2.Mode = GPIO_MODE_OUTPUT_PP;
+tda2.Pull = GPIO_PULLDOWN;
+tda2.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOF, &tda2);
+
+
   /* Output a message using printf function */
   printf("\n------------------WELCOME------------------\r\n");
   printf("**********in STATIC reaction game**********\r\n\n");
 
   while (1)
   {
+			  if(BSP_PB_GetState(BUTTON_KEY)) {
+					  BSP_LED_Toggle(LED_GREEN);
+					  HAL_Delay(200);
+				  } else {
+					  BSP_LED_Off(LED_GREEN);
+				  }
+
+
+			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
+				  BSP_LED_On(LED_GREEN);
+				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
+
+				  if (My_Delay(100) == 0) {
+				 			  BSP_LED_Off(LED_GREEN);
+				 			 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET); // 1.
+				 			  My_Delay(900);
+				 		  }
+			  } else {
+				 BSP_LED_Off(LED_GREEN);
+				 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET); // 1.
+			  }
+
+			  while(BSP_PB_GetState(BUTTON_KEY) == 1) {
+			 		  //do nothing
+			 	  }
+			 	  HAL_RNG_GenerateRandomNumber(&rnd, &rnd_num);
+			 	  rnd_num = rnd_num % 10000 + 1000;
+			 	  printf("WAIT!\n");
+			 	  tickstart = HAL_GetTick();
+			 	  if (My_Delay(rnd_num) == -1) {
+			 		  printf("Too fast... You lose!\n");
+			 	  } else {
+			 		  printf("PUSH!\n");
+			 		  BSP_LED_On(LED_GREEN);
+			 		  tickstart = HAL_GetTick();
+
+			 		  while(BSP_PB_GetState(BUTTON_KEY) == 0) {
+			 			  //do nothing
+			 		  }
+
+			 		  if (results_length < 10)
+			 			  ++results_length;
+			 		  results[result_pos] = HAL_GetTick() - tickstart;
+			 		  printf("Your reaction time was: %u msec.\n", results[result_pos]);
+			 		  printf("The average of the last %u tries is: %i msec\n", results_length, resultAverage(results, results_length));
+
+			 		  if (result_pos < 9)
+			 			  ++result_pos;
+			 		  else
+			 			  result_pos = 0;
+			 	  }
+
+			 	  while(BSP_PB_GetState(BUTTON_KEY) == 1) {
+			 		  //do nothing
+			 	  }
 
   }
 }
