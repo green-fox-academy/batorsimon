@@ -71,7 +71,6 @@ static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
 
 
-
 /* Private functions ---------------------------------------------------------*/
 
 //TIM_HandleTypeDef    TimHandle;
@@ -128,10 +127,9 @@ int main(void) {
 
 	   GPIO_InitTypeDef tda0;            // create a config structure
 	   tda0.Pin = GPIO_PIN_8;            // this is about PIN 8
-	   tda0.Mode = GPIO_MODE_AF_PP;  // Configure as output with push-up-down enabled
+	   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
 	   tda0.Pull = GPIO_NOPULL;        // the push-up-down should work as pulldown
 	   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
-	   tda0.Alternate = GPIO_AF1_TIM1;
 	   HAL_GPIO_Init(GPIOF, &tda0);
 
 // external button !!
@@ -160,7 +158,6 @@ int main(void) {
 
 
 	/* timer
-	// -----------------------
 	  __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
 
 	TimHandle.Instance               = TIM1;
@@ -173,9 +170,6 @@ int main(void) {
 
 	  HAL_TIM_Base_Start(&TimHandle);
 */
-	  /// timer ----------------------------
-
-
 
 	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0F, 0x00);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
