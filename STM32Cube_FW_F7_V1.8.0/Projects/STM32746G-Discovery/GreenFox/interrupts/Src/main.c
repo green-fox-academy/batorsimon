@@ -74,6 +74,8 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+//TIM_HandleTypeDef    TimHandle;
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	 HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_8);
 	}
@@ -126,9 +128,10 @@ int main(void) {
 
 	   GPIO_InitTypeDef tda0;            // create a config structure
 	   tda0.Pin = GPIO_PIN_8;            // this is about PIN 8
-	   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
-	   tda0.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
+	   tda0.Mode = GPIO_MODE_AF_PP;  // Configure as output with push-up-down enabled
+	   tda0.Pull = GPIO_NOPULL;        // the push-up-down should work as pulldown
 	   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+	   tda0.Alternate = GPIO_AF1_TIM1;
 	   HAL_GPIO_Init(GPIOF, &tda0);
 
 // external button !!
@@ -156,10 +159,26 @@ int main(void) {
 	HAL_GPIO_Init(GPIOI, &conf);          // call the HAL init
 
 
+	/* timer
+	// -----------------------
+	  __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+
+	TimHandle.Instance               = TIM1;
+	  TimHandle.Init.Period            = 3330;
+	  TimHandle.Init.Prescaler         = 65000;
+	  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+	  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+
+	  HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
+
+	  HAL_TIM_Base_Start(&TimHandle);
+*/
+	  /// timer ----------------------------
+
+
 
 	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0F, 0x00);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
 
 
 	printf("\n-----------------WELCOME-----------------\r\n");
@@ -168,13 +187,13 @@ int main(void) {
 
 	while (1) {
 
-		 if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
-			 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
-		 } else{
-			 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
-		 }
-
-
+		printf("%lu\r\n", TIM1->CNT);
+		/*
+		 	 	if(TIM1 < 3300){
+		 	 			HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+		 	 	} else{
+		 	 		HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+		 	 	}   */
 	}
 }
 
