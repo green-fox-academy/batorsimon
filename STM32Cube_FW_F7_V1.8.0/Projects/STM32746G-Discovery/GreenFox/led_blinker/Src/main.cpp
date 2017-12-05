@@ -2263,6 +2263,8 @@ typedef struct{
   	  	  			  					HAL_Delay(1);   */
 
   	  	  			  					// number 2: 2. led
+
+
   	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
   	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
   	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
@@ -2431,8 +2433,6 @@ typedef struct{
 	  	  	  			  continue;
 	  	  	  		  }
 	  	  	  	  }
-
-
 
 
 	  	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {

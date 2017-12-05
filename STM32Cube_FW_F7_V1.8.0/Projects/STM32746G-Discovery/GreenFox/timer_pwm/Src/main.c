@@ -118,7 +118,7 @@ int main(void)
   //char msg[] = "UART HAL Example\r\n";
   //HAL_UART_Transmit(&uart_handle, msg, strlen(msg), 100);
 
-  __HAL_RCC_GPIOA_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
    __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
 
 
@@ -158,7 +158,7 @@ int main(void)
   printf("\n-----------------WELCOME-----------------\r\n");
   printf("**********in STATIC timer & pwm WS**********\r\n\n");
 
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+
 
 	  while (1)
 	  {
@@ -172,9 +172,10 @@ int main(void)
           */
 
 		  printf("%lu\r\n", TIM1->CNT);
-
+		  BSP_LED_Toggle(LED_GREEN);
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
 		  HAL_Delay(1000);
-
+		  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
 	  }
 }
 
