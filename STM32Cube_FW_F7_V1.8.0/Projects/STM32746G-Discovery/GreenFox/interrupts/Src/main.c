@@ -137,7 +137,7 @@ int main(void) {
 
 		   GPIO_InitTypeDef tda1;            // create a config structure
 		   tda1.Pin = GPIO_PIN_7;            // this is about PIN 8
-		   tda1.Mode = GPIO_MODE_INPUT;  // Configure as output with push-up-down enabled
+		   tda1.Mode = GPIO_MODE_IT_FALLING;// Configure as output with push-up-down enabled
 		   tda1.Pull = GPIO_PULLUP;        // the push-up-down should work as pulldown
 		   tda1.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
 		   HAL_GPIO_Init(GPIOC, &tda1);
@@ -157,20 +157,6 @@ int main(void) {
 	HAL_GPIO_Init(GPIOI, &conf);          // call the HAL init
 
 
-	/* timer
-	  __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
-
-	TimHandle.Instance               = TIM1;
-	  TimHandle.Init.Period            = 3330;
-	  TimHandle.Init.Prescaler         = 65000;
-	  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
-	  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-
-	  HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
-
-	  HAL_TIM_Base_Start(&TimHandle);
-*/
-
 	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0F, 0x00);
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
@@ -181,7 +167,7 @@ int main(void) {
 
 	while (1) {
 
-		printf("%lu\r\n", TIM1->CNT);
+		//printf("%lu\r\n", TIM1->CNT);
 		/*
 		 	 	if(TIM1 < 3300){
 		 	 			HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
@@ -190,6 +176,19 @@ int main(void) {
 		 	 	}   */
 	}
 }
+
+/*
+void EXTI15_10_IRQHandler() {
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
+}
+
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+		//status
+	BSP_LED_Toggle(LED_GREEN);
+}
+*/
+
 
 /**
  * @brief  Retargets the C library printf function to the USART.

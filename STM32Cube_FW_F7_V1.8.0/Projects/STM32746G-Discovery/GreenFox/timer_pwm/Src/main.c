@@ -141,27 +141,6 @@ int main(void)
   	HAL_NVIC_SetPriority(TIM2_IRQn, 0x0f, 0x00);
   	HAL_NVIC_EnableIRQ(TIM2_IRQn);
 
- /*
-  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
-
-   GPIO_InitTypeDef tda0;            // create a config structure
-   tda0.Pin = GPIO_PIN_8;            // this is about PIN 0
-   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
-   tda0.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
-   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
-   HAL_GPIO_Init(GPIOF, &tda0);
-
-
-   __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
-  TimHandle.Instance               = TIM1;
-  TimHandle.Init.Period            = 1646;
-  TimHandle.Init.Prescaler         = 0xFFFF;
-  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
-  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-  HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
-  HAL_TIM_Base_Start(&TimHandle);
-*/
-
   uart_handle.Init.BaudRate   = 115200;
   uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
   uart_handle.Init.StopBits   = UART_STOPBITS_1;
@@ -184,8 +163,9 @@ int main(void)
   //int dirUp = 1;
 	  while (1)
 	  {
-		  HAL_Delay(1000);
+
 		  printf("%lu\r\n", TIM1->CNT);
+		  HAL_Delay(1000);
 
 		  /*
 		  		if (TIM1->CCR1 == 1646) {
@@ -195,7 +175,7 @@ int main(void)
 		  			dirUp = 1;
 		  		}
 		  		TIM2->CCR1 = dirUp ? (TIM1->CCR1 + 1) : (TIM1->CCR1 - 1);
-		  		HAL_Delay(1);*/
+		  		HAL_Delay(1);          */
 	  }
 }
 

@@ -172,16 +172,17 @@ tda5.Pull = GPIO_PULLDOWN;
 tda5.Speed = GPIO_SPEED_HIGH;
 
 HAL_GPIO_Init(GPIOF, &tda5);
-//BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
-BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
+
+BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
+//BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
 
 // for the button,   button is in D00 -> pc7
 __HAL_RCC_GPIOC_CLK_ENABLE();
 
 GPIO_InitTypeDef tda6;
 tda6.Pin = GPIO_PIN_7;
-//tda6.Mode = GPIO_MODE_IT_FALLING;
-tda6.Mode = GPIO_MODE_INPUT;
+tda6.Mode = GPIO_MODE_IT_FALLING;
+//tda6.Mode = GPIO_MODE_INPUT;
 tda6.Pull = GPIO_PULLUP;
 tda6.Speed = GPIO_SPEED_HIGH;
 
@@ -189,8 +190,8 @@ HAL_GPIO_Init(GPIOC, &tda6);
 
 GPIO_InitTypeDef tdb4;
 tdb4.Pin = GPIO_PIN_4;
-//tdb4.Mode = GPIO_MODE_IT_FALLING;
-tdb4.Mode =GPIO_MODE_INPUT;
+tdb4.Mode = GPIO_MODE_IT_FALLING;
+//tdb4.Mode =GPIO_MODE_INPUT;
 tdb4.Pull = GPIO_PULLUP;
 tdb4.Speed = GPIO_SPEED_HIGH;
 
@@ -199,8 +200,8 @@ HAL_GPIO_Init(GPIOB, &tdb4);
 
 GPIO_InitTypeDef tda7;
 tda7.Pin = GPIO_PIN_6;
-//tda7.Mode = GPIO_MODE_IT_FALLING;
-tda7.Mode = GPIO_MODE_INPUT;
+tda7.Mode = GPIO_MODE_IT_FALLING;
+//tda7.Mode = GPIO_MODE_INPUT;
 tda7.Pull = GPIO_PULLUP;
 tda7.Speed = GPIO_SPEED_HIGH;
 
@@ -359,8 +360,8 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
   /* Infinite loop */
   while (1)
   {
-	  	  	 if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
-	  	    //if(status == 1) {
+	  	  	// if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
+	  	    if(status == 1) {
 	  	  		  	  	  //button1  -    all leds fleshes from outside to the middle
 		  	  	  	  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
 		 	  			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
@@ -385,8 +386,8 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 	  	  	  }
 
 
-	  	   if (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_6) == 0) {
-	  	  	  //if(status == 2) {
+	  	   // if (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_6) == 0) {
+	  	  	 if(status == 2) {
 	  	  		  // button2   -   all leds fleshes
 		  	  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
 				  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);  //6.
@@ -403,8 +404,8 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 			  	}
 
-	  	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_6) == 0) {
-	  	  //	  if(status == 3) {
+	  	//  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_6) == 0) {
+	  	    if(status == 3) {
 	  	  		  	  //when the not integrated button3 pressed all leds fleshes in a row
 	  	  		  	 HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET); // 1.
 	 			 	 HAL_Delay(100);
@@ -458,8 +459,8 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 	 			 	HAL_Delay(100);
 	 	  }
 
-	  	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
-	  	//    if(status == 4) {
+	  //	if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
+	  	   if(status == 4) {
 	  	  	  		  //button 4   -    binary adder
 	  	  	  	  	 for(int i = 0;  i < 64; i++){
 	  	  	  	  		 	 	 int remain = 0;
@@ -530,8 +531,8 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 	  	  	  	  	 	 	 }
 	  	    	  	  	}
 
-	  	  if(BSP_PB_GetState(BUTTON_KEY) == 1) {
-		  	//  if(status == 5) {
+	  	  //if(BSP_PB_GetState(BUTTON_KEY) == 1) {
+		  	  if(status == 5) {
 		    //integrated blue button    -   matrix
 					 for (int k = 0;  k < 6; ){
 							 if(k == 0){
@@ -576,65 +577,32 @@ void EXTI15_10_IRQHandler() {
 }
 
 void EXTI9_5_IRQHandler(){
-	//decision
-			   if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == 0) {
-				  	//button 1     //when the not integrated button pressed all leds fleshes from outside to the middle
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_7) != RESET)
+	  {
+	    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_7);
+	    status = 1;
+	  }
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_6) != RESET)
+		  {
+		    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_6);
+		    status = 2;
+		  }
 
-				    	 HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
-				    }
-
-				    if (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_6) == 0) {
-				  	  		 //button2    	//all leds fleshes
-				  	  		 HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
-				  	  	}
-
-				    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_6) == 0) {
-				  		    //button 3 		//knight rider
-				  		  	 HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
-				  	  }
-
-				    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {
-							//button 4     //binary adder
-							 HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
-				    }
-
-				  if(BSP_PB_GetState(BUTTON_KEY) == 1) {
-							  //integrated button       //matrix
-							  HAL_GPIO_EXTI_IRQHandler(BUTTON_KEY);
-					  }
-
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-//status
-	BSP_LED_Toggle(LED_GREEN);
-	 //   if(HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7) ) {
-	    if( GPIO_PIN_7 == GPIO_Pin) {
-	    	//button 1     //when the not integrated button pressed all leds fleshes from outside to the middle
-	    	status = 1;
-	    }
-
-	    if (GPIO_PIN_6 == GPIO_Pin) {
-	    	if(HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_6) == 0)
-	    	 //button2    	//all leds fleshes
-	  	  		  status = 2;
-	  	  	} else {
-	  	  	 status = 3;
-	  	  	}
-
-	    if(GPIO_PIN_4 == GPIO_Pin) {
-	    	//button 4     //binary adder
-				status = 4;
-	    }
-	  if(BSP_PB_GetState(BUTTON_KEY) == 1) { // nem jo 25sre
-		  	  //integrated button       //matrix
-				  status = 5;
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_4) != RESET)
+		  {
+		    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_4);
+		    status = 4;
 		  }
 
 }
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	 if(BSP_PB_GetState(GPIO_PIN_11) == 1) { //
+			  	  //integrated button       //matrix
+					  status = 5;
+			  }
 
-
+}
 
 void zero(){
 	//   number 0
