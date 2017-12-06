@@ -75,16 +75,13 @@ static void CPU_CACHE_Enable(void);
 
 //TIM_HandleTypeDef    TimHandle;
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	 HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_8);
-	}
-
 
 /**
  * @brief  Main program
  * @param  None
  * @retval None
  */
+
 int main(void) {
 	/* This project template calls firstly two functions in order to configure MPU feature
 	 and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
@@ -124,34 +121,31 @@ int main(void) {
 
 // First LED!!
 	__HAL_RCC_GPIOF_CLK_ENABLE();
+	   GPIO_InitTypeDef led;            // create a config structure
+	   led.Pin = GPIO_PIN_8;            // this is about PIN 8
+	   led.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
+	   led.Pull = GPIO_NOPULL;        // the push-up-down should work as pulldown
+	   led.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+	   HAL_GPIO_Init(GPIOF, &led);
 
-	   GPIO_InitTypeDef tda0;            // create a config structure
-	   tda0.Pin = GPIO_PIN_8;            // this is about PIN 8
-	   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
-	   tda0.Pull = GPIO_NOPULL;        // the push-up-down should work as pulldown
-	   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
-	   HAL_GPIO_Init(GPIOF, &tda0);
 
 // external button !!
 		__HAL_RCC_GPIOC_CLK_ENABLE();
+		   GPIO_InitTypeDef button;            // create a config structure
+		   button.Pin = GPIO_PIN_7;            // this is about PIN 8
+		   button.Mode = GPIO_MODE_IT_FALLING;// Configure as output with push-up-down enabled
+		   button.Pull = GPIO_PULLUP;        // the push-up-down should work as pulldown
+		   button.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+		   HAL_GPIO_Init(GPIOC, &button);
 
-		   GPIO_InitTypeDef tda1;            // create a config structure
-		   tda1.Pin = GPIO_PIN_7;            // this is about PIN 8
-		   tda1.Mode = GPIO_MODE_IT_FALLING;// Configure as output with push-up-down enabled
-		   tda1.Pull = GPIO_PULLUP;        // the push-up-down should work as pulldown
-		   tda1.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
-		   HAL_GPIO_Init(GPIOC, &tda1);
 
 // configure of the button !!
 	__HAL_RCC_GPIOI_CLK_ENABLE();         // enable the GPIOI clock
-
 	GPIO_InitTypeDef conf;                // create the configuration struct
 	conf.Pin = GPIO_PIN_11;               // the pin is the 11
-
 	/* We know from the board's datasheet that a resistor is already installed externally for this button (so it's not floating), we don't want to use the internal pull feature */
 	conf.Pull = GPIO_NOPULL;
 	conf.Speed = GPIO_SPEED_FAST;         // port speed to fast
-
 	/* Here is the trick: our mode is interrupt on rising edge */
 	conf.Mode = GPIO_MODE_IT_RISING;
 	HAL_GPIO_Init(GPIOI, &conf);          // call the HAL init
@@ -177,7 +171,7 @@ int main(void) {
 	}
 }
 
-/*
+
 void EXTI15_10_IRQHandler() {
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
 }
@@ -187,7 +181,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		//status
 	BSP_LED_Toggle(LED_GREEN);
 }
-*/
+
 
 
 /**
