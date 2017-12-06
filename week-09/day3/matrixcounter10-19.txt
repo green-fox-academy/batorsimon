@@ -1,0 +1,117 @@
+  if(i==10){
+  	  	  			  	  for(int j = 0; j < 200;){
+  	  	  			  		  	  leftone();
+  	  	  			  		  	  zero();
+  	  	  			  		  	  j++;
+  	  	  		  	  	  	  }
+  	   	  	  			  	i++;
+
+	  	  	  		  } else{
+	  	  	  			  continue;
+	  	  	  		  }
+
+	  	  	  		  if(i==11){
+  	  	  			  	  for(int j = 0; j < 200;){
+									leftone();
+									one();
+  	  	  			  	  	  j++;
+  	  	  		  	  	  	  }
+  	   	  	  			  	i++;
+
+	  	  	  		  } else{
+	  	  	  			  continue;
+	  	  	  		  }
+
+	  	  	  		  if(i==12){
+  	  	  			  	  for(int j = 0; j < 200;){
+								leftone();
+								two();
+								j++;
+  	  	  		  	  	  }
+  	  	  			  	  i++;
+
+	  	  	  		  } else{
+	  	  	  			  continue;
+	  	  	  		  }
+
+
+	  	  	  if(i==13){
+	  	  	   	  	   for(int j = 0; j < 200;){
+	  	  						leftone();
+	  	  						three();
+	  	  	 					j++;
+	  	  	   	  	   }
+	  	  	   	  	   i++;
+	  	  	  } else{
+ 	  	  			  continue;
+	  	  	  }
+
+
+  	  	  	  if(i==14){
+   	  	  			  	for(int j = 0; j < 200;){
+   	  	  			  			leftone();
+ 								four();
+ 								j++;
+   	  	  		  	  	  }
+   	  	  			  	  i++;
+
+ 	  	  	  		  } else{
+ 	  	  	  			  continue;
+ 	  	  	  		  }
+
+
+			if(i==15){
+ 	  	  			 for(int j = 0; j < 200;){
+								leftone();
+								five();
+								j++;
+ 	  	  		  	  }
+ 	  	  			 i++;
+	  	  	 } else{
+	   			  continue;
+	  	  	 }
+
+			if(i==16){
+ 	  	  			 for(int j = 0; j < 200;){
+								leftone();
+								six();
+								j++;
+ 	  	  		  	  }
+ 	  	  			 i++;
+	  	  	 } else{
+	   			  continue;
+	  	  	 }
+
+			if(i==17){
+ 	  	  			 for(int j = 0; j < 200;){
+								leftone();
+								seven();
+								j++;
+ 	  	  		  	  }
+ 	  	  			 i++;
+	  	  	 } else{
+	   			  continue;
+	  	  	 }
+
+			if(i==18){
+ 	  	  			 for(int j = 0; j < 200;){
+								leftone();
+								eight();
+								j++;
+ 	  	  		  	  }
+ 	  	  			 i++;
+	  	  	 } else{
+	   			  continue;
+	  	  	 }
+
+
+			if(i==19){
+		 	  	  			 for(int j = 0; j < 200;){
+										leftone();
+										nine();
+										j++;
+		 	  	  		  	  }
+		 	  	  			 i++;
+			  	  	 } else{
+			   			  continue;
+			  	  	 }

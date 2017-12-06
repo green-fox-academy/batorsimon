@@ -58,6 +58,819 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+void zero(){
+	//   number 0
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void one(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led2
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void two(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//3.rd part
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void three(){
+//   number 3 : 1.led
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void four(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led2
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void five(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//3.rd part
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void six(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//3.rd part
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+		HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+		HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+		HAL_Delay(1);
+
+}
+
+void seven(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+
+//other led2
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void eight(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+}
+
+void nine(){
+// 3 rows lighting
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+// 2 other leds
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+
+//3.rd part
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
+HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
+HAL_Delay(1);
+}
+
+void leftone(){
+	 for(int j = 0; j < 400; j++){
+						//   number 1 : 1.led
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+						HAL_Delay(1);
+
+						//other led
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+						HAL_Delay(1);
+
+						//other led2
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+						HAL_Delay(1);
+		}
+}
+
+void lefttwo(){
+	 for(int j = 0; j < 400; j++){
+	// 3 rows lighting
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+	HAL_Delay(1);
+
+	// 2 other leds
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+	HAL_Delay(1);
+
+	//3.rd part
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+	HAL_Delay(1);
+	}
+}
+
+void leftthree(){
+	 for(int j = 0; j < 400; j++){
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+	HAL_Delay(1);
+
+	// 2 other leds
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+	HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+	HAL_Delay(1);
+	}
+}
+
+void leftfour(){
+	 for(int j = 0; j < 400; j++){
+			// 3 rows lighting
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+			HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+			HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+			HAL_Delay(1);
+
+			//other led
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+			HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+			HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+			HAL_Delay(1);
+
+			//other led2
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+			HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+			HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+			HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+			HAL_Delay(1);
+		}
+}
+
+void leftfive(){
+	 for(int j = 0; j < 400; j++){
+					// 3 rows lighting
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
+
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+					HAL_Delay(1);
+
+					// 2 other leds
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+					HAL_Delay(1);
+
+					//3.rd part
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
+
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
+					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
+					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
+					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
+					HAL_Delay(1);
+			}
+}
+
+void decimalcounter(){
+	  for(int i = 0; i < 10; ){
+
+		  	  	  		  if(i == 0){
+		  	  	  			  	  for(int j = 0; j < 400;){
+		  	  	  			  		  	  	  	  	  	   zero();
+		  	  	  			  		  		  				j++;
+		  	  	  		  	  	   }
+		  	  	  			  		i++;
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==1){
+		  	  	  			  	  for(int j = 0; j < 400;){
+		  	  	  			  		  	  	  	  one();
+		  	  	  			  			  		j++;
+		  	  	  			  	  }
+		  	  	  			  	i++;
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==2){
+		  	  	  			  	  for(int j = 0; j < 400;){
+		  	  	  			  		  	  	  	two();
+		  	  	  			  	  	  			j++;
+		  	  	  		  	  	    	  }
+		  	  	  		  			 	 i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i == 3){
+		  	  	  			  	  for(int j = 0; j < 400;){
+		  	  	  			  		  	three();
+		  	  	  			  	  	  	j++;
+		  	  	  		  	  	  	  }
+		  	  	  			  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==4){
+		  	  	  			  	  for(int j = 0; j < 400;){
+		  	  	  			  		  	  	  four();
+		  	  	  			  		  	  	  j++;
+		  	  	  		  	  	  	  }
+		  	  	  			  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==5){
+	  	  	  			  	  for(int j = 0; j < 400;){
+	  	  	  			  		  	  five();
+	  	  	  			  		  	  j++;
+	  	  	  		  	  	  	  }
+	  	  	  			  	  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==6){
+	  	  	  			  	  for(int j = 0; j < 400;){
+	  	  	  			  		  	  	  six();
+	  	  	  			  		  	  	  j++;
+	  	  	  		  	  	  	  }
+	  	  	  			  	  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==7){
+	  	  	  			  	  for(int j = 0; j < 400;){
+	  	  	  			  		  	  seven();
+	  	  	  			  		  	  j++;
+	  	  	  		  	  	  	  }
+	  	  	  			  	  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==8){
+	  	  	  			  	  for(int j = 0; j < 400;){
+	  	  	  			  		  	  	  eight();
+	  	  	  			  					j++;
+	  	  	  		  	  	  	  }
+	  	  	  			  	  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	  		  if(i==9){
+	  	  	  			  	  for(int j = 0; j < 400;){
+	  	  	  			  		  	  nine();
+	  	  	  			  		  	  j++;
+	  	  	  		  	  	  	  }
+	  	  	  			  	  	  i++;
+
+		  	  	  		  } else{
+		  	  	  			  continue;
+		  	  	  		  }
+
+		  	  	   }
+
+}
+
 /**
   * @brief  Main program
   * @param  None
@@ -95,207 +908,207 @@ int main(void)
  // BSP_LED_Init(LED_GREEN);
  // BSP_LED_On(LED_GREEN);
 
-		  __HAL_RCC_GPIOA_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+__HAL_RCC_GPIOA_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
 
-		  GPIO_InitTypeDef tda;            // create a config structure
-		  tda.Pin = GPIO_PIN_0;            // this is about PIN 0
-		  tda.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
-		  tda.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
-		  tda.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+GPIO_InitTypeDef tda;            // create a config structure
+tda.Pin = GPIO_PIN_0;            // this is about PIN 0
+tda.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
+tda.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
+tda.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
 
-		  HAL_GPIO_Init(GPIOA, &tda);      // initialize the pin on GPIOA port with HAL
+HAL_GPIO_Init(GPIOA, &tda);      // initialize the pin on GPIOA port with HAL
 
-		  __HAL_RCC_GPIOF_CLK_ENABLE();    //  GPIOF port's first use so we need to declare
-		  GPIO_InitTypeDef tda1;
-		   tda1.Pin = GPIO_PIN_10;
-		   tda1.Mode = GPIO_MODE_OUTPUT_PP;
-		   tda1.Pull = GPIO_PULLDOWN;
-		   tda1.Speed = GPIO_SPEED_HIGH;
+__HAL_RCC_GPIOF_CLK_ENABLE();    //  GPIOF port's first use so we need to declare
+GPIO_InitTypeDef tda1;
+tda1.Pin = GPIO_PIN_10;
+tda1.Mode = GPIO_MODE_OUTPUT_PP;
+tda1.Pull = GPIO_PULLDOWN;
+tda1.Speed = GPIO_SPEED_HIGH;
 
-   	   	   HAL_GPIO_Init(GPIOF, &tda1);
+HAL_GPIO_Init(GPIOF, &tda1);
 
-   	   	  GPIO_InitTypeDef tda2;
-   	   	  tda2.Pin = GPIO_PIN_9;
-   	   	  tda2.Mode = GPIO_MODE_OUTPUT_PP;
-      	  tda2.Pull = GPIO_PULLDOWN;
-      	  tda2.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda2;
+tda2.Pin = GPIO_PIN_9;
+tda2.Mode = GPIO_MODE_OUTPUT_PP;
+tda2.Pull = GPIO_PULLDOWN;
+tda2.Speed = GPIO_SPEED_HIGH;
 
-      	  HAL_GPIO_Init(GPIOF, &tda2);
+HAL_GPIO_Init(GPIOF, &tda2);
 
-      	   GPIO_InitTypeDef tda3;
-       	   tda3.Pin = GPIO_PIN_8;
-       	   tda3.Mode = GPIO_MODE_OUTPUT_PP;
-       	   tda3.Pull = GPIO_PULLDOWN;
-       	   tda3.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda3;
+tda3.Pin = GPIO_PIN_8;
+tda3.Mode = GPIO_MODE_OUTPUT_PP;
+tda3.Pull = GPIO_PULLDOWN;
+tda3.Speed = GPIO_SPEED_HIGH;
 
-       	   HAL_GPIO_Init(GPIOF, &tda3);
+HAL_GPIO_Init(GPIOF, &tda3);
 
-       	   GPIO_InitTypeDef tda4;
-       	   tda4.Pin = GPIO_PIN_7;
-       	   tda4.Mode = GPIO_MODE_OUTPUT_PP;
-       	   tda4.Pull = GPIO_PULLDOWN;
-       	   tda4.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda4;
+tda4.Pin = GPIO_PIN_7;
+tda4.Mode = GPIO_MODE_OUTPUT_PP;
+tda4.Pull = GPIO_PULLDOWN;
+tda4.Speed = GPIO_SPEED_HIGH;
 
-       	  HAL_GPIO_Init(GPIOF, &tda4);
+HAL_GPIO_Init(GPIOF, &tda4);
 
-      	  GPIO_InitTypeDef tda5;
-      	  tda5.Pin = GPIO_PIN_6;
-      	  tda5.Mode = GPIO_MODE_OUTPUT_PP;
-      	  tda5.Pull = GPIO_PULLDOWN;
-      	  tda5.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda5;
+tda5.Pin = GPIO_PIN_6;
+tda5.Mode = GPIO_MODE_OUTPUT_PP;
+tda5.Pull = GPIO_PULLDOWN;
+tda5.Speed = GPIO_SPEED_HIGH;
 
-      	  HAL_GPIO_Init(GPIOF, &tda5);
-      	  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
+HAL_GPIO_Init(GPIOF, &tda5);
+BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
 
-       // for the button,   button is in D00 -> pc7
-       __HAL_RCC_GPIOC_CLK_ENABLE();
+// for the button,   button is in D00 -> pc7
+__HAL_RCC_GPIOC_CLK_ENABLE();
 
-       	 GPIO_InitTypeDef tda6;
-         tda6.Pin = GPIO_PIN_7;
-         tda6.Mode = GPIO_MODE_INPUT;
-         tda6.Pull = GPIO_PULLUP;
-         tda6.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda6;
+tda6.Pin = GPIO_PIN_7;
+tda6.Mode = GPIO_MODE_INPUT;
+tda6.Pull = GPIO_PULLUP;
+tda6.Speed = GPIO_SPEED_HIGH;
 
-         HAL_GPIO_Init(GPIOC, &tda6);
+HAL_GPIO_Init(GPIOC, &tda6);
 
-         GPIO_InitTypeDef tda7;
-         tda7.Pin = GPIO_PIN_6;
-         tda7.Mode = GPIO_MODE_INPUT;
-         tda7.Pull = GPIO_PULLUP;
-         tda7.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda7;
+tda7.Pin = GPIO_PIN_6;
+tda7.Mode = GPIO_MODE_INPUT;
+tda7.Pull = GPIO_PULLUP;
+tda7.Speed = GPIO_SPEED_HIGH;
 
-        HAL_GPIO_Init(GPIOC, &tda7);
+HAL_GPIO_Init(GPIOC, &tda7);
 
-        __HAL_RCC_GPIOG_CLK_ENABLE();
+__HAL_RCC_GPIOG_CLK_ENABLE();
 
-        GPIO_InitTypeDef tda8;
-        tda8.Pin = GPIO_PIN_6;
-        tda8.Mode = GPIO_MODE_INPUT;
-        tda8.Pull = GPIO_PULLUP;
-        tda8.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda8;
+tda8.Pin = GPIO_PIN_6;
+tda8.Mode = GPIO_MODE_INPUT;
+tda8.Pull = GPIO_PULLUP;
+tda8.Speed = GPIO_SPEED_HIGH;
 
-        HAL_GPIO_Init(GPIOG, &tda8);
+HAL_GPIO_Init(GPIOG, &tda8);
 
-        __HAL_RCC_GPIOB_CLK_ENABLE();
+__HAL_RCC_GPIOB_CLK_ENABLE();
 
-              GPIO_InitTypeDef tda9;
-              tda9.Pin = GPIO_PIN_4;
-              tda9.Mode = GPIO_MODE_INPUT;
-              tda9.Pull = GPIO_PULLUP;
-              tda9.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda9;
+tda9.Pin = GPIO_PIN_4;
+tda9.Mode = GPIO_MODE_INPUT;
+tda9.Pull = GPIO_PULLUP;
+tda9.Speed = GPIO_SPEED_HIGH;
 
-              HAL_GPIO_Init(GPIOG, &tda9);
+HAL_GPIO_Init(GPIOG, &tda9);
 
-              //matrix     rows
-              GPIO_InitTypeDef tda10;
-              tda10.Pin = GPIO_PIN_8;
-              tda10.Mode = GPIO_MODE_OUTPUT_PP;
-              tda10.Pull = GPIO_PULLDOWN;
-              tda10.Speed = GPIO_SPEED_HIGH;
+//matrix     rows
+GPIO_InitTypeDef tda10;
+tda10.Pin = GPIO_PIN_8;
+tda10.Mode = GPIO_MODE_OUTPUT_PP;
+tda10.Pull = GPIO_PULLDOWN;
+tda10.Speed = GPIO_SPEED_HIGH;
 
-              HAL_GPIO_Init(GPIOB, &tda10);
+HAL_GPIO_Init(GPIOB, &tda10);
 
-              GPIO_InitTypeDef tda11;
-              tda11.Pin = GPIO_PIN_9;
-              tda11.Mode = GPIO_MODE_OUTPUT_PP;
-              tda11.Pull = GPIO_PULLDOWN;
-              tda11.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda11;
+tda11.Pin = GPIO_PIN_9;
+tda11.Mode = GPIO_MODE_OUTPUT_PP;
+tda11.Pull = GPIO_PULLDOWN;
+tda11.Speed = GPIO_SPEED_HIGH;
 
-              HAL_GPIO_Init(GPIOB, &tda11);
+HAL_GPIO_Init(GPIOB, &tda11);
 
-             GPIO_InitTypeDef tda12;
-             tda12.Pin = GPIO_PIN_14;
-             tda12.Mode = GPIO_MODE_OUTPUT_PP;
-             tda12.Pull = GPIO_PULLDOWN;
-             tda12.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda12;
+tda12.Pin = GPIO_PIN_14;
+tda12.Mode = GPIO_MODE_OUTPUT_PP;
+tda12.Pull = GPIO_PULLDOWN;
+tda12.Speed = GPIO_SPEED_HIGH;
 
-             HAL_GPIO_Init(GPIOB, &tda12);
+HAL_GPIO_Init(GPIOB, &tda12);
 
-             __HAL_RCC_GPIOI_CLK_ENABLE();
+__HAL_RCC_GPIOI_CLK_ENABLE();
 
-             GPIO_InitTypeDef tda13;
-             tda13.Pin = GPIO_PIN_1;
-             tda13.Mode = GPIO_MODE_OUTPUT_PP;
-             tda13.Pull = GPIO_PULLDOWN;
-             tda13.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda13;
+tda13.Pin = GPIO_PIN_1;
+tda13.Mode = GPIO_MODE_OUTPUT_PP;
+tda13.Pull = GPIO_PULLDOWN;
+tda13.Speed = GPIO_SPEED_HIGH;
 
-             HAL_GPIO_Init(GPIOI, &tda13);
+HAL_GPIO_Init(GPIOI, &tda13);
 
-             GPIO_InitTypeDef tda14;
-             tda14.Pin = GPIO_PIN_15;
-             tda14.Mode = GPIO_MODE_OUTPUT_PP;
-             tda14.Pull = GPIO_PULLDOWN;
-              tda14.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda14;
+tda14.Pin = GPIO_PIN_15;
+tda14.Mode = GPIO_MODE_OUTPUT_PP;
+tda14.Pull = GPIO_PULLDOWN;
+tda14.Speed = GPIO_SPEED_HIGH;
 
-              HAL_GPIO_Init(GPIOB, &tda14);
-
-
+HAL_GPIO_Init(GPIOB, &tda14);
 
 
-              //matrix     columns
-              GPIO_InitTypeDef tda15;
-              tda15.Pin = GPIO_PIN_8;      // D10    PA8
-          tda15.Mode = GPIO_MODE_OUTPUT_PP;
-             tda15.Pull = GPIO_PULLDOWN;
-             tda15.Speed = GPIO_SPEED_HIGH;
-
-              HAL_GPIO_Init(GPIOA, &tda15);
-
-                            GPIO_InitTypeDef tda16;
-                       tda16.Pin = GPIO_PIN_15;    // D9   PA15
-                   tda16.Mode = GPIO_MODE_OUTPUT_PP;
-                    tda16.Pull = GPIO_PULLDOWN;
-                       tda16.Speed = GPIO_SPEED_HIGH;
-
-                     HAL_GPIO_Init(GPIOA, &tda16);
 
 
-                         GPIO_InitTypeDef tda17;
-                           tda17.Pin = GPIO_PIN_2;       // D8    PI2
-                          tda17.Mode = GPIO_MODE_OUTPUT_PP;
-                            tda17.Pull = GPIO_PULLDOWN;
-                        tda17.Speed = GPIO_SPEED_HIGH;
+//matrix     columns
+GPIO_InitTypeDef tda15;
+tda15.Pin = GPIO_PIN_8;      // D10    PA8
+tda15.Mode = GPIO_MODE_OUTPUT_PP;
+tda15.Pull = GPIO_PULLDOWN;
+tda15.Speed = GPIO_SPEED_HIGH;
 
-                      HAL_GPIO_Init(GPIOI, &tda17);
+HAL_GPIO_Init(GPIOA, &tda15);
 
+GPIO_InitTypeDef tda16;
+tda16.Pin = GPIO_PIN_15;    // D9   PA15
+tda16.Mode = GPIO_MODE_OUTPUT_PP;
+tda16.Pull = GPIO_PULLDOWN;
+tda16.Speed = GPIO_SPEED_HIGH;
 
-                       GPIO_InitTypeDef tda18;
-                           tda18.Pin = GPIO_PIN_3;     // D7    PI3
-                           tda18.Mode = GPIO_MODE_OUTPUT_PP;
-                         tda18.Pull = GPIO_PULLDOWN;
-                         tda18.Speed = GPIO_SPEED_HIGH;
-
-                          HAL_GPIO_Init(GPIOI, &tda18);
-
-                          __HAL_RCC_GPIOH_CLK_ENABLE();
-
-                         GPIO_InitTypeDef tda19;
-                      tda19.Pin = GPIO_PIN_6;  // D6    PH6
-                      tda19.Mode = GPIO_MODE_OUTPUT_PP;
-                      tda19.Pull = GPIO_PULLDOWN;
-                      tda19.Speed = GPIO_SPEED_HIGH;
-
-                  HAL_GPIO_Init(GPIOH, &tda19);
+HAL_GPIO_Init(GPIOA, &tda16);
 
 
-                   GPIO_InitTypeDef tda20;
-                   tda20.Pin = GPIO_PIN_0;   //  D5   PI0
-                 tda20.Mode = GPIO_MODE_OUTPUT_PP;
-                 tda20.Pull = GPIO_PULLDOWN;
-              tda20.Speed = GPIO_SPEED_HIGH;
+GPIO_InitTypeDef tda17;
+tda17.Pin = GPIO_PIN_2;       // D8    PI2
+tda17.Mode = GPIO_MODE_OUTPUT_PP;
+tda17.Pull = GPIO_PULLDOWN;
+tda17.Speed = GPIO_SPEED_HIGH;
 
-              HAL_GPIO_Init(GPIOI, &tda20);
-
-
-              GPIO_InitTypeDef tda21;
-             tda21.Pin = GPIO_PIN_7;    // D4    PG7
-              tda21.Mode = GPIO_MODE_OUTPUT_PP;
-              tda21.Pull = GPIO_PULLDOWN;
-             tda21.Speed = GPIO_SPEED_HIGH;
-
-                HAL_GPIO_Init(GPIOG, &tda21);
+HAL_GPIO_Init(GPIOI, &tda17);
 
 
+GPIO_InitTypeDef tda18;
+tda18.Pin = GPIO_PIN_3;     // D7    PI3
+tda18.Mode = GPIO_MODE_OUTPUT_PP;
+tda18.Pull = GPIO_PULLDOWN;
+tda18.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOI, &tda18);
+
+__HAL_RCC_GPIOH_CLK_ENABLE();
+
+GPIO_InitTypeDef tda19;
+tda19.Pin = GPIO_PIN_6;  // D6    PH6
+tda19.Mode = GPIO_MODE_OUTPUT_PP;
+tda19.Pull = GPIO_PULLDOWN;
+tda19.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOH, &tda19);
+
+
+GPIO_InitTypeDef tda20;
+tda20.Pin = GPIO_PIN_0;   //  D5   PI0
+tda20.Mode = GPIO_MODE_OUTPUT_PP;
+tda20.Pull = GPIO_PULLDOWN;
+tda20.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOI, &tda20);
+
+
+GPIO_InitTypeDef tda21;
+tda21.Pin = GPIO_PIN_7;    // D4    PG7
+tda21.Mode = GPIO_MODE_OUTPUT_PP;
+tda21.Pull = GPIO_PULLDOWN;
+tda21.Speed = GPIO_SPEED_HIGH;
+
+HAL_GPIO_Init(GPIOG, &tda21);
+
+/*
 typedef struct{
 	    GPIO_TypeDef *port;
 		uint32_t pin;
@@ -335,880 +1148,45 @@ typedef struct{
 				   {0, 0, 0, 0, 1, 0, 0},
 				   {0, 0, 0, 0, 1, 1, 1}
 			   };
-
+*/
 
   /* Infinite loop */
   while (1)
   {
+	 // int counter = 0;
+
+	  	 for (int k = 0;  k < 6; ){
+				 if(k == 0){
+					decimalcounter();
+					k++;
+				 } else if(k == 1){
+						leftone();
+						decimalcounter();
+						k++;
+				} else if(k == 2){
+						lefttwo();
+						decimalcounter();
+						k++;
+				} else if(k == 3){
+						leftthree();
+						decimalcounter();
+						k++;
+				} else if(k == 4){
+						leftfour();
+						decimalcounter();
+						k++;
+				} else if(k ==5){
+						leftfive();
+						decimalcounter();
+						k++;
+				} else{
+						k = 0;
+				}
+
+	  	 }
 
-	  	  	  	  for(int i = 0; i < 13;  ){
 
-	  	  	  		  if(i == 0){
-	  	  	  			  	  for(int j = 0; j < 400;){
 
-	  	  	  			  	//   number 0
-	  	  	  			    				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-	  	  	  			    				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			    				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-	  	  	  			    				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-	  	  	  			    				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			    				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-	  	  	  			    				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			    				HAL_Delay(1);
-
-	  	  	  			    				// 2 other leds
-	  	  	  			    				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			  				HAL_Delay(1);
-
-	  	  	  			  		  		  				j++;
-	  	  	  		  	  	  	  	  	  	  	  }
-
-	  	  	  			  		i++;
-	  	  	  		  } else{
-	  	  	  			  //continue;
-	  	  	  			  break;
-	  	  	  		  }
-
-	  	  	  		  if(i==1){
-	  	  	  			  	  for(int j = 0; j < 400;){
-
-	  	  	  			  		  	  // 3 rows lighting
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			  		  				HAL_Delay(1);
-
-	  	  	  			  		  				//other led
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-	  	  	  			  						HAL_Delay(1);
-
-	  	  	  			  						//other led2
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-	  	  	  			  						HAL_Delay(1);
-
-	  	  	  			  			  					j++;
-	  	  	  			  	  }
-	  	  	  			  	i++;
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==2){
-	  	  	  			  	  for(int j = 0; j < 400;){
-
-	  	  	  			  		  	  // 3 rows lighting
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-										HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-										HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-										HAL_Delay(1);
-
-	  	  	  			    				// 2 other leds
-	  	  	  			    			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-	  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-	  	  	  			  				HAL_Delay(1);
-
-	  	  	  			  				//3.rd part
-	  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-										HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-										HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-										HAL_Delay(1);
-
-	  	  	  			  	  	  			j++;
-	  	  	  		  	  	    	  }
-	  	  	  		  			 	 i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i == 3){
-	  	  	  			  	  for(int j = 0; j < 400;){
-
-	  	  	  			  	//   number 3 : 1.led
-	  	  	  			    // 3 rows lighting
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			  	  				HAL_Delay(1);
-
-	  	  	  			  	  				// 2 other leds
-	  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-	  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-	  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-	  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			  					HAL_Delay(1);
-
-
-	  	  	  			  	  	  	j++;
-	  	  	  		  	  	  	  }
-	  	  	  			  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==4){
-	  	  	  			  	  for(int j = 0; j < 400;){
-
-	  	  	  			  		  	  	  	  // 3 rows lighting
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-	  	  	  			  		  				HAL_Delay(1);
-
-	  	  	  			  		  				//other led
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-	  	  	  			  						HAL_Delay(1);
-
-	  	  	  			  						//other led2
-	  	  	  			  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-	  	  	  			  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-	  	  	  			  						HAL_Delay(1);
-
-	  	  	  			  	  	  j++;
-	  	  	  		  	  	  	  }
-	  	  	  			  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==5){
-  	  	  			  	  for(int j = 0; j < 400;){
-
-  	  	  	  	  	  	  // 3 rows lighting
-  	  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  				HAL_Delay(1);
-
-  	  	  				// 2 other leds
-  	  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  					HAL_Delay(1);
-
-  	  					//3.rd part
-  	  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  									HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  									HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  									HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  									HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  									HAL_Delay(1);
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	  	  			  	  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==6){
-  	  	  			  	  for(int j = 0; j < 400;){
-
-  	  	  			    // 3 rows lighting
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  	  				HAL_Delay(1);
-
-  	  	  			  	  				// 2 other leds
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  					HAL_Delay(1);
-
-  	  	  			  					//3.rd part
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  									HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  									HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  									HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  									HAL_Delay(1);
-
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	  	  			  	  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==7){
-  	  	  			  	  for(int j = 0; j < 400;){
-
-  	  	  			  	  // 3 rows lighting
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  				  				HAL_Delay(1);
-
-  	  	  				  				//other led
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  								HAL_Delay(1);
-
-  	  	  								//other led2
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  								HAL_Delay(1);
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	  	  			  	  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==8){
-  	  	  			  	  for(int j = 0; j < 400;){
-
-  	  	  			  	 // 3 rows lighting
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  	  				HAL_Delay(1);
-
-  	  	  			  	  				// 2 other leds
-  	  	  			  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  					HAL_Delay(1);
-
-  	  	  			  					j++;
-  	  	  		  	  	  	  }
-  	  	  			  	  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==9){
-  	  	  			  	  for(int j = 0; j < 400;){
-  	  	  				  // 3 rows lighting
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  				  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  				  				HAL_Delay(1);
-
-  	  	  				  				// 2 other leds
-  	  	  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  								HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  								HAL_Delay(1);
-
-  	  	  								//3.rd part
-  	  	  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-										HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-										HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-										HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-										HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-										HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-										HAL_Delay(1);
-
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	  	  			  	  	  i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==10){
-  	  	  			  	  for(int j = 0; j < 200;){
-
-  	  	  			  	  //Number 10
-  	  	  				  //   number 1 : 1.led
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  				  	  				HAL_Delay(1);
-
-  	  	  				  	  				//other led
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  				  					HAL_Delay(1);
-
-  	  	  				  					//other led2
-  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  				  					HAL_Delay(1);
-
-
-  	  	  				  //   number 0 : 1.led
-
-  	  	  			  // 3 rows lighting
-  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  			  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  				HAL_Delay(1);
-
-  	  	  			  				// 2 other leds
-  	  	  			  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  							HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  							HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  							HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  							HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  							HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  							HAL_Delay(1);
-
-
-
-
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	   	  	  			  	i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==11){
-  	  	  			  	  for(int j = 0; j < 200;){
-
-
-  	  	  			  	// number 11
-  	  	  			  	//   number 1 : 1.led
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  				  	  				HAL_Delay(1);
-
-  	  	  			  	  	  	  				  	  				//other led
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  				  					HAL_Delay(1);
-
-  	  	  			  	  	  	  				  					//other led2
-  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  				  					HAL_Delay(1);
-
-
-  	  	  			  	//   number 1(second part) : 1.led
-
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  	  	  	  				  		  				HAL_Delay(1);
-
-  	  	  			  	  	  	  				  		  				//other led
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  				  						HAL_Delay(1);
-
-  	  	  			  	  	  	  				  						//other led2
-  	  	  			  	  	  	  				  		  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  				  						HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  				  						HAL_Delay(1);
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	   	  	  			  	i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-
-	  	  	  		  if(i==12){
-  	  	  			  	  for(int j = 0; j < 200;){
-
-  	  	  			  	//  12 pattern
-  	  	  			  	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_RESET);   //   3. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_Delay(1);
-
-  	  	  			  	  	  	  			  	  	  	  				  	  				//other led
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET);  //  2. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_Delay(1);
-
-  	  	  			  	  	  	  			  	  	  	  				  					//other led2
-  	  	  			  	  	  	  			  	  	  	  				  	  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);   //   1. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  	  	  	  			  	  	  	  				  					HAL_Delay(1);
-
-
-
-  	  	  			  					//   number 2 : 1.led
-  	  	  			  				  // 3 rows lighting
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);   // 1.sor
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);  // 3. sor
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_SET);     // 5. sor
-
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_RESET);   //   6. oszlop
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  				  				HAL_Delay(1);
-
-  	  	  			  				  				// 2 other leds
-  	  	  			  				  				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);   // 2. SOR
-  	  	  			  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET);  // 4. sor
-  	  	  			  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_RESET);  //   5. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  								HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_SET);   //   7. oszlop
-  	  	  			  								HAL_Delay(1);
-
-  	  	  			  								//3.rd part
-  	  	  			  								HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);   // 1.sor
-  	  	  			  												HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);   // 2. SOR
-  	  	  			  												HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);  // 3. sor
-  	  	  			  												HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);  // 4. sor
-  	  	  			  												HAL_GPIO_WritePin(GPIOI, GPIO_PIN_1, GPIO_PIN_RESET);     // 5. sor
-
-  	  	  			  												HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);   //   1. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET);  //  2. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOI, GPIO_PIN_2, GPIO_PIN_SET);   //   3. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);     //   4. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOH, GPIO_PIN_6, GPIO_PIN_SET);  //   5. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOI, GPIO_PIN_0, GPIO_PIN_SET);   //   6. oszlop
-  	  	  			  												HAL_GPIO_WritePin(GPIOG, GPIO_PIN_7, GPIO_PIN_RESET);   //   7. oszlop
-  	  	  			  												HAL_Delay(1);
-
-
-  	  	  			  	  	  j++;
-  	  	  		  	  	  	  }
-  	   	  	  			  	 i++;
-
-	  	  	  		  } else{
-	  	  	  			  continue;
-	  	  	  		  }
-	  	  	  	  }
 
 
 	  	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == 0) {

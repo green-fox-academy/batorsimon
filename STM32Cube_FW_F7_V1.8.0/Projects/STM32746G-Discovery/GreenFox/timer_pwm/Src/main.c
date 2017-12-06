@@ -51,8 +51,13 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+
 UART_HandleTypeDef uart_handle;
-TIM_HandleTypeDef    TimHandle;           //the timer's config structure
+TIM_HandleTypeDef    Timer2Handle;           //the timer's config structure
+TIM_OC_InitTypeDef Timer2OCConfig;
+GPIO_InitTypeDef PWMPinConfig;
+volatile int repetition = 5;
+
 /* Private function prototypes -----------------------------------------------*/
 
 #ifdef __GNUC__
@@ -102,8 +107,60 @@ int main(void)
 
   /* Add your application code here
      */
-  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
-  BSP_LED_Init(LED_GREEN);
+
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  	PWMPinConfig.Alternate = GPIO_AF1_TIM2;
+  	PWMPinConfig.Mode = GPIO_MODE_AF_PP;
+  	PWMPinConfig.Pin = GPIO_PIN_15;
+  	PWMPinConfig.Pull = GPIO_NOPULL;
+  	PWMPinConfig.Speed = GPIO_SPEED_FAST;
+
+  	HAL_GPIO_Init(GPIOA, &PWMPinConfig);
+
+  	/*
+  	 * Configure timer
+  	 */
+  	__HAL_RCC_TIM2_CLK_ENABLE();
+
+  	Timer2Handle.Instance = TIM2;
+  	Timer2Handle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  	Timer2Handle.Init.Period = 1646;
+  	Timer2Handle.Init.Prescaler = 0xFFFF;
+  	Timer2Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
+  	HAL_TIM_Base_Init(&Timer2Handle);
+  	HAL_TIM_Base_Start_IT(&Timer2Handle);
+
+  	HAL_TIM_PWM_Init(&Timer2Handle);
+
+  	Timer2OCConfig.OCMode = TIM_OCMODE_PWM1;
+  	Timer2OCConfig.Pulse = 823;
+  	HAL_TIM_PWM_ConfigChannel(&Timer2Handle, &Timer2OCConfig, TIM_CHANNEL_1);
+  	HAL_TIM_PWM_Start_IT(&Timer2Handle, TIM_CHANNEL_1);
+
+  	HAL_NVIC_SetPriority(TIM2_IRQn, 0x0f, 0x00);
+  	HAL_NVIC_EnableIRQ(TIM2_IRQn);
+
+ /*
+  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+
+   GPIO_InitTypeDef tda0;            // create a config structure
+   tda0.Pin = GPIO_PIN_8;            // this is about PIN 0
+   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
+   tda0.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
+   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
+   HAL_GPIO_Init(GPIOF, &tda0);
+
+
+   __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
+  TimHandle.Instance               = TIM1;
+  TimHandle.Init.Period            = 1646;
+  TimHandle.Init.Prescaler         = 0xFFFF;
+  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+  HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
+  HAL_TIM_Base_Start(&TimHandle);
+*/
 
   uart_handle.Init.BaudRate   = 115200;
   uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
@@ -118,66 +175,47 @@ int main(void)
   //char msg[] = "UART HAL Example\r\n";
   //HAL_UART_Transmit(&uart_handle, msg, strlen(msg), 100);
 
-  __HAL_RCC_GPIOF_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
-   __HAL_RCC_TIM1_CLK_ENABLE();    // we need to enable the GPIOA port's clock first
 
-
-   GPIO_InitTypeDef tda0;            // create a config structure
-   tda0.Pin = GPIO_PIN_8;            // this is about PIN 0
-   tda0.Mode = GPIO_MODE_OUTPUT_PP;  // Configure as output with push-up-down enabled
-   tda0.Pull = GPIO_PULLDOWN;        // the push-up-down should work as pulldown
-   tda0.Speed = GPIO_SPEED_HIGH;     // we need a high-speed output
-   HAL_GPIO_Init(GPIOF, &tda0);
-
-
-
-  TimHandle.Instance               = TIM1;
-  TimHandle.Init.Period            = 3330;
-  TimHandle.Init.Prescaler         = 65000;
-  TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
-  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-
-  HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
-
-  HAL_TIM_Base_Start(&TimHandle);
-
-
-  /*pvm config
-  TIM_OC_InitTypeDef sConfig;
-
-  HAL_TIM_PWM_Init();
-
-  sConfig.OCMode       = TIM_OCMODE_PWM1;
-  HAL_TIM_PWM_ConfigChannel(COM1, &uart_handle);
-
-  HAL_TIM_PWM_Start();
-
-*/
 
   /* Output a message using printf function */
   printf("\n-----------------WELCOME-----------------\r\n");
   printf("**********in STATIC timer & pwm WS**********\r\n\n");
 
-
-
+  //int dirUp = 1;
 	  while (1)
 	  {
-		  /*
-		  if(BSP_PB_GetState(BUTTON_KEY)) {
-		 		  BSP_LED_Toggle(LED_GREEN);
-		 		  HAL_Delay(200);
-		 	  } else {
-		 		  BSP_LED_Off(LED_GREEN);
-		 	  }
-          */
-
-		  printf("%lu\r\n", TIM1->CNT);
-		//  BSP_LED_Toggle(LED_GREEN);
-		  //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
 		  HAL_Delay(1000);
-		//  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+		  printf("%lu\r\n", TIM1->CNT);
+
+		  /*
+		  		if (TIM1->CCR1 == 1646) {
+		  			dirUp = 0;
+		  		}
+		  		if (TIM1->CCR1 == 100) {
+		  			dirUp = 1;
+		  		}
+		  		TIM2->CCR1 = dirUp ? (TIM1->CCR1 + 1) : (TIM1->CCR1 - 1);
+		  		HAL_Delay(1);*/
 	  }
 }
+
+
+void TIM2_IRQHandler() {
+	HAL_TIM_IRQHandler(&Timer2Handle);
+}
+
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) {
+	repetition--;
+	if (repetition == 0) {
+		HAL_TIM_PWM_Stop_IT(&Timer2Handle, TIM_CHANNEL_1);
+	}
+	printf("PWM pulse finished\r\n");
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	printf("Callback called!\r\n");
+}
+
 
 /**
   * @brief  Retargets the C library printf function to the USART.
@@ -247,7 +285,7 @@ static void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
   if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
     Error_Handler();
