@@ -108,8 +108,6 @@ int main(void)
 	  button2Init();
 	  TimerITInit();
 
-	  printf("main \r\n");
-
   	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0E, 0x00);
   	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
@@ -119,8 +117,6 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	  printf("main while loop \r\n");
-	  HAL_Delay(1000);
 
   }  // end of while
 
@@ -200,7 +196,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		//pörgeti button 2
 				if (TIM1->CCR1 > 250) {
 						TIM1->CCR1 = TIM1->CCR1 - 250;
-						printf("pin10 if loop \r\n");
+						printf("pin10, button2: %lu \r\n", TIM1->CCR1);
 			} else {
 						TIM1->CCR1 = 0;
 			}
@@ -210,7 +206,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 				//lassitja button1
 				if (TIM1->CCR1 < 4750) {
 						TIM1->CCR1 = TIM1->CCR1 + 250;
-						printf("pin9 if loop \r\n");
+						printf("pin9, button1: %lu \r\n", TIM1->CCR1);
 				} else {
 						TIM1->CCR1 = 5000;
 				}
