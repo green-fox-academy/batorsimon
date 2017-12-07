@@ -51,7 +51,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-volatile int repetition = 5;
+
 
 UART_HandleTypeDef uart_handle;
 /* Private function prototypes -----------------------------------------------*/
@@ -63,6 +63,9 @@ UART_HandleTypeDef uart_handle;
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 
+//   ***********************************
+//  	VENTILLÁTOR PROJECT !!!
+// ***********************************
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
@@ -71,6 +74,20 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+void FANInit();
+void button1Init();
+void button2Init();
+void TimerITInit();
+
+void UARTInit();
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+
+GPIO_InitTypeDef fan;
+GPIO_InitTypeDef button1;
+GPIO_InitTypeDef button2;
+
+UART_HandleTypeDef uart_handle;
+TIM_HandleTypeDef TimHandle;
 
 /**
   * @brief  Main program
@@ -89,7 +106,6 @@ int main(void)
 
   /* Configure the MPU attributes as Write Through */
   MPU_Config();
-
   /* Enable the CPU Cache */
   CPU_CACHE_Enable();
 
@@ -100,15 +116,10 @@ int main(void)
        - Low Level Initialization
      */
   HAL_Init();
-
   /* Configure the System clock to have a frequency of 216 MHz */
   SystemClock_Config();
 
-BSP_LED_Init(LED_GREEN);
   /* Add your application code here     */
-
-
-
 
 HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0x0F, 0x00);
 HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
@@ -118,6 +129,84 @@ HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0F, 0x00);
 HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 
+UARTInit();
+FANInit();
+button1Init();
+button2Init();
+TimerITInit();
+
+  /* Infinite loop */
+  while (1)
+  {
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
+	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+
+
+  }  // end of while
+
+}  //end of the main
+
+void FANInit() {
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+
+	fan.Pin = GPIO_PIN_8;
+	fan.Mode = GPIO_MODE_OUTPUT_PP;
+	fan.Pull = GPIO_PULLDOWN;
+	fan.Speed = GPIO_SPEED_HIGH;
+
+	HAL_GPIO_Init(GPIOA, &fan);
+}
+
+void button1Init() {
+	__HAL_RCC_GPIOF_CLK_ENABLE();
+//  A3 pin -  af8       button1
+	button1.Pin = GPIO_PIN_8;
+	button1.Mode = GPIO_MODE_INPUT;
+	button1.Pull = GPIO_PULLUP;
+	button1.Speed = GPIO_SPEED_HIGH;
+
+	HAL_GPIO_Init(GPIOF, &button1);
+}
+
+void button2Init() {
+	__HAL_RCC_GPIOF_CLK_ENABLE();
+// A2 pin  - af9   button2
+	button2.Pin = GPIO_PIN_9;
+	button2.Mode = GPIO_MODE_INPUT;
+	button2.Pull = GPIO_PULLUP;
+	button2.Speed = GPIO_SPEED_HIGH;
+
+	HAL_GPIO_Init(GPIOF, &button2);
+}
+
+void TimerITInit() {
+
+	__HAL_RCC_TIM1_CLK_ENABLE();
+
+	TimHandle.Instance               = TIM1;
+	TimHandle.Init.Period            = 2000; //Max = 100%
+	TimHandle.Init.Prescaler         = 54000; //Using 1/4000 speed of 216MHz
+	TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+	TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+
+	HAL_TIM_Base_Init(&TimHandle);
+	//HAL_TIM_Base_Start(&TimHandle);
+	HAL_TIM_Base_Start_IT(&TimHandle);
+
+	HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn, 0x0F, 0x00);
+	HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
+}
+
+void TIM1_UP_TIM10_IRQHandler() {
+	HAL_TIM_IRQHandler(&TimHandle);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+}
+
+void UARTInit() {
 	uart_handle.Init.BaudRate = 115200;
 	uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
 	uart_handle.Init.StopBits = UART_STOPBITS_1;
@@ -126,52 +215,7 @@ HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 	uart_handle.Init.Mode = UART_MODE_TX_RX;
 
 	BSP_COM_Init(COM1, &uart_handle);
-	printf("\n-----------------WELCOME-----------------\r\n");
-	printf("**********in STATIC interrupts WS**********\r\n\n");
-
-  /* Infinite loop */
-  while (1)
-  {
-
-
-
-  }  // end of while
-
-}  //end of the main
-
-
-void EXTI15_10_IRQHandler() {
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
 }
-
-void EXTI9_5_IRQHandler(){
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_7) != RESET)
-	  {
-	    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_7);
-	    status = 1;
-	  }
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_6) != RESET)
-		  {
-		    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_6);
-		    status = 2;
-		  }
-
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_4) != RESET)
-		  {
-		    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_4);
-		    status = 4;
-		  }
-
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	 if(BSP_PB_GetState(GPIO_PIN_11) == 1) { //
-			  	  //integrated button       //matrix
-					  status = 5;
-			  }
-
-}
-
 
 
 /**
