@@ -52,8 +52,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
-
 UART_HandleTypeDef uart_handle;
+
 /* Private function prototypes -----------------------------------------------*/
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -80,7 +80,6 @@ void button2Init();
 void TimerITInit();
 
 void UARTInit();
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 
 GPIO_InitTypeDef fan;
 GPIO_InitTypeDef button1;
@@ -88,6 +87,7 @@ GPIO_InitTypeDef button2;
 
 UART_HandleTypeDef uart_handle;
 TIM_HandleTypeDef TimHandle;
+TIM_OC_InitTypeDef sConfig;
 
 /**
   * @brief  Main program
@@ -97,13 +97,7 @@ TIM_HandleTypeDef TimHandle;
 
 int main(void)
 {
-
-  /* This project template calls firstly two functions in order to configure MPU feature
-     and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
-     These functions are provided as template implementation that User may integrate
-     in his application, to enhance the performance in case of use of AXI interface
-     with several masters. */
-
+  /* This project template calls firstly two functions in order to configure MPU feature   and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable(). These functions are provided as template implementation that User may integrate in his application, to enhance the performance in case of use of AXI interface with several masters. */
   /* Configure the MPU attributes as Write Through */
   MPU_Config();
   /* Enable the CPU Cache */
@@ -121,26 +115,26 @@ int main(void)
 
   /* Add your application code here     */
 
-HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0x0F, 0x00);
-HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+	  UARTInit();
+	  FANInit();
+	  button1Init();
+	  button2Init();
+	  TimerITInit();
 
+  	HAL_NVIC_SetPriority(EXTI3_IRQn, 0x0E, 0x00);
+  	HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
-HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0x0F, 0x00);
-HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  	HAL_NVIC_SetPriority(EXTI0_IRQn, 0x0E, 0x00);
+  	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
-
-UARTInit();
-FANInit();
-button1Init();
-button2Init();
-TimerITInit();
+	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0x0F, 0x00);
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 
   /* Infinite loop */
   while (1)
   {
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
-	      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-
+	  printf("main while loop \r\n");
+	  HAL_Delay(1000);
 
   }  // end of while
 
@@ -150,33 +144,34 @@ void FANInit() {
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 
 	fan.Pin = GPIO_PIN_8;
-	fan.Mode = GPIO_MODE_OUTPUT_PP;
-	fan.Pull = GPIO_PULLDOWN;
+	//fan.Alternate = GPIO_AF;
+	fan.Mode = GPIO_MODE_AF_PP;
+	fan.Pull = GPIO_NOPULL;
 	fan.Speed = GPIO_SPEED_HIGH;
 
 	HAL_GPIO_Init(GPIOA, &fan);
 }
 
-void button1Init() {
-	__HAL_RCC_GPIOF_CLK_ENABLE();
-//  A3 pin -  af8       button1
-	button1.Pin = GPIO_PIN_8;
-	button1.Mode = GPIO_MODE_INPUT;
-	button1.Pull = GPIO_PULLUP;
-	button1.Speed = GPIO_SPEED_HIGH;
-
-	HAL_GPIO_Init(GPIOF, &button1);
-}
-
 void button2Init() {
 	__HAL_RCC_GPIOF_CLK_ENABLE();
-// A2 pin  - af9   button2
-	button2.Pin = GPIO_PIN_9;
-	button2.Mode = GPIO_MODE_INPUT;
-	button2.Pull = GPIO_PULLUP;
+//  A1 pin -  AF10       button1
+	button2.Pin = GPIO_PIN_10;
+	button2.Mode = GPIO_MODE_IT_RISING;
+	button2.Pull = GPIO_PULLDOWN;
 	button2.Speed = GPIO_SPEED_HIGH;
 
 	HAL_GPIO_Init(GPIOF, &button2);
+}
+
+void button1Init() {
+	__HAL_RCC_GPIOF_CLK_ENABLE();
+// A2 pin  - AF9   button2
+	button1.Pin = GPIO_PIN_9;
+	button1.Mode = GPIO_MODE_IT_RISING;
+	button1.Pull = GPIO_PULLDOWN;
+	button1.Speed = GPIO_SPEED_HIGH;
+
+	HAL_GPIO_Init(GPIOF, &button1);
 }
 
 void TimerITInit() {
@@ -184,27 +179,62 @@ void TimerITInit() {
 	__HAL_RCC_TIM1_CLK_ENABLE();
 
 	TimHandle.Instance               = TIM1;
-	TimHandle.Init.Period            = 2000; //Max = 100%
-	TimHandle.Init.Prescaler         = 54000; //Using 1/4000 speed of 216MHz
+	TimHandle.Init.Period            = 2000;
+	TimHandle.Init.Prescaler         = 54000;
 	TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
 	TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-
 	HAL_TIM_Base_Init(&TimHandle);
-	//HAL_TIM_Base_Start(&TimHandle);
 	HAL_TIM_Base_Start_IT(&TimHandle);
 
-	HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn, 0x0F, 0x00);
-	HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
+	HAL_TIM_PWM_Init(&TimHandle);
+	sConfig.OCMode       = TIM_OCMODE_PWM1;
+	sConfig.Pulse		 = 10;
+	HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1);
+
 }
 
-void TIM1_UP_TIM10_IRQHandler() {
-	HAL_TIM_IRQHandler(&TimHandle);
+
+void EXTI0_IRQHandler()
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9); // button 1 pin
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+void EXTI3_IRQHandler()
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);   // button 2 pin
 }
+
+void EXTI9_5_IRQHandler()
+{
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);    // fan pin
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+
+	if (GPIO_Pin == GPIO_PIN_10) {
+		//pörgeti button 2
+				if (TIM1->CCR1 > 250) {
+						TIM1->CCR1 = TIM1->CCR1 - 250;
+						printf("pin10 if loop: %lu\r\n", TIM1);
+			} else {
+						TIM1->CCR1 = 0;
+			}
+	}
+
+	if (GPIO_Pin == GPIO_PIN_9) {
+				//lassitja button1
+				if (TIM1->CCR1 < 4750) {
+						TIM1->CCR1 = TIM1->CCR1 + 250;
+						printf("pin9 if loop: %lu\r\n", TIM1);
+				} else {
+						TIM1->CCR1 = 5000;
+				}
+	}
+
+}
+
 
 void UARTInit() {
 	uart_handle.Init.BaudRate = 115200;
