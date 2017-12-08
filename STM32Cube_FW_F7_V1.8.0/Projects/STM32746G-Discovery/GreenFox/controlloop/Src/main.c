@@ -114,6 +114,10 @@ int main(void)
 	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0x0E, 0x00);
 	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 
+	printf("\n****************************************************\n");
+	printf("   		 Welcome to the FAN project!\n");
+	printf("****************************************************\n\n");
+
   /* Infinite loop */
   while (1)
   {
@@ -186,24 +190,22 @@ void EXTI15_10_IRQHandler()
 void EXTI9_5_IRQHandler()
 {
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9); // button 1 pin
-	//HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);    // fan pin
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
-	if (GPIO_Pin == GPIO_PIN_10) {
-		//pörgeti button 2
+	if (GPIO_Pin == GPIO_PIN_10) {		//lassít button 2
 				if (TIM1->CCR1 > 250) {
 						TIM1->CCR1 = TIM1->CCR1 - 250;
 						printf("pin10, button2: %lu \r\n", TIM1->CCR1);
 			} else {
 						TIM1->CCR1 = 0;
+						printf("pin10, button2: %lu \r\n", TIM1->CCR1);
 			}
 	}
 
-	if (GPIO_Pin == GPIO_PIN_9) {
-				//lassitja button1
+	if (GPIO_Pin == GPIO_PIN_9) {			//pörget button1
 				if (TIM1->CCR1 < 4750) {
 						TIM1->CCR1 = TIM1->CCR1 + 250;
 						printf("pin9, button1: %lu \r\n", TIM1->CCR1);
