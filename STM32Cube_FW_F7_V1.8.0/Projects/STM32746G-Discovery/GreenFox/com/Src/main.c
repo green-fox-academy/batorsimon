@@ -64,17 +64,12 @@ static void CPU_CACHE_Enable(void);
 /* Private functions ---------------------------------------------------------*/
 
 void LEDInit();
-void TimerITInit();
 void uartInit();
-
 
 GPIO_InitTypeDef led;
 GPIO_InitTypeDef tx;
 GPIO_InitTypeDef rx;
-
 UART_HandleTypeDef uart_handle;
-TIM_HandleTypeDef TimHandle;
-TIM_OC_InitTypeDef sConfig;
 
 /**
   * @brief  Main program
@@ -99,27 +94,15 @@ int main(void)
   BSP_LED_Init(LED_GREEN);
 	  uartInit();
 	  LEDInit();
-	  TimerITInit();
 
 	printf("\n****************************************************\n");
 	printf("    Welcome to the communication project!\n");
 	printf("****************************************************\n\n");
-
 	printf("Waiting for user input!\n");
+
   /* Infinite loop */
   while (1)
   {
-  /*      char input[10] = {};
-	  	  HAL_UART_Receive(&uart_handle, &input, 10, 1000);
-
-			if(strcmp(input, "on") == 0){
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
-				 printf("\ninput: %s!\n", input);
-			}else if(strcmp(input, "off") == 0){
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-				printf("\ninput: %s!\n", input);
-			}  */
-
 	  //  HAL_UART_Receive_IT(&uart_handle, &input, 10);
 
 			  char input[10] = {};
@@ -128,12 +111,10 @@ int main(void)
 			 int error = 0;
 
 			 if(strcmp(input, "on") == 0){
-				 BSP_LED_On(LED_GREEN);
 					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
 					 printf("\ninput: %s!\n", input);
 
 				}else if(strcmp(input, "off") == 0){
-					BSP_LED_Off(LED_GREEN);
 					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
 					printf("\ninput: %s!\n", input);
 
@@ -152,9 +133,6 @@ int main(void)
 				  BSP_LED_Off(LED_GREEN);
 			  }
 
-
-
-
   }  // end of while
 
 }  //end of the main
@@ -169,28 +147,6 @@ void LEDInit() {
 
 	HAL_GPIO_Init(GPIOF, &led);
 }
-
-
-void TimerITInit() {
-
-	__HAL_RCC_TIM1_CLK_ENABLE();
-
-	TimHandle.Instance               = TIM1;
-	TimHandle.Init.Period            = 1000;
-	TimHandle.Init.Prescaler         = 50000;
-	TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
-	TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-	HAL_TIM_Base_Init(&TimHandle);
-	HAL_TIM_Base_Start_IT(&TimHandle);
-
-	HAL_TIM_PWM_Init(&TimHandle);
-	sConfig.OCMode       = TIM_OCMODE_PWM1;
-	sConfig.Pulse		 = 0;
-	HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1);
-	HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1);
-
-}
-
 
 void uartInit(){
 			  /* Configure USART Tx as alternate function */
