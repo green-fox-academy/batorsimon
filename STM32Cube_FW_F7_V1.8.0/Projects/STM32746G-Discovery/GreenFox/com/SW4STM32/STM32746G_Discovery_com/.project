@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>STM32746G_Discovery_communication</name>
+	<name>STM32746G_Discovery_com</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -331,27 +331,27 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c</locationURI>
 		</link>
 		<link>
-			<name>communication/SW4STM32/startup_stm32f746xx.s</name>
+			<name>controlloop/SW4STM32/startup_stm32f746xx.s</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/startup_stm32f746xx.s</locationURI>
 		</link>
 		<link>
-			<name>communication/SW4STM32/syscalls.c</name>
+			<name>controlloop/SW4STM32/syscalls.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/syscalls.c</locationURI>
 		</link>
 		<link>
-			<name>communication/User/main.c</name>
+			<name>controlloop/User/main.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Src/main.c</locationURI>
 		</link>
 		<link>
-			<name>communication/User/stm32f7xx_hal_msp.c</name>
+			<name>controlloop/User/stm32f7xx_hal_msp.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Src/stm32f7xx_hal_msp.c</locationURI>
 		</link>
 		<link>
-			<name>communication/User/stm32f7xx_it.c</name>
+			<name>controlloop/User/stm32f7xx_it.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Src/stm32f7xx_it.c</locationURI>
 		</link>

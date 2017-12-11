@@ -55,6 +55,7 @@ UART_HandleTypeDef uart_handle;
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 
+
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
@@ -62,13 +63,14 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 
-
+void LEDInit();
 void TimerITInit();
+void uartInit();
 
-void UARTInit();
 
-GPIO_InitTypeDef fan;
-
+GPIO_InitTypeDef led;
+GPIO_InitTypeDef tx;
+GPIO_InitTypeDef rx;
 
 UART_HandleTypeDef uart_handle;
 TIM_HandleTypeDef TimHandle;
@@ -79,8 +81,6 @@ TIM_OC_InitTypeDef sConfig;
   * @param  None
   * @retval None
   */
-
-
 
 int main(void)
 {
@@ -97,8 +97,9 @@ int main(void)
   SystemClock_Config();     /* Configure the System clock to have a frequency of 216 MHz */
   /* Add your application code here     */
 
- // BSP_COM_INIT();
-
+	  uartInit();
+	  //LEDInit();
+	  TimerITInit();
 
 	printf("\n****************************************************\n");
 	printf("    Welcome to the communication project!\n");
@@ -109,22 +110,31 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	  scanf("%s", input);
+	  	  HAL_UART_Receive(&uart_handle, &input, 10, 1000);
+
+	  	  printf("%s\n", input);
+
+			if(strcmp(input, "on")){
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
+			}
+
+			if(strcmp(input, "off")){
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+			}
 
   }  // end of while
 
 }  //end of the main
 
-void FANInit() {
-	__HAL_RCC_GPIOA_CLK_ENABLE();
+void LEDInit() {
+	__HAL_RCC_GPIOF_CLK_ENABLE();
 
-	fan.Pin = GPIO_PIN_8;
-	fan.Alternate = GPIO_AF1_TIM1;
-	fan.Mode = GPIO_MODE_AF_PP;
-	fan.Pull = GPIO_PULLUP;
-	fan.Speed = GPIO_SPEED_HIGH;
+	led.Pin = GPIO_PIN_6;
+	led.Mode = GPIO_MODE_OUTPUT_PP;
+	led.Pull = GPIO_PULLDOWN;
+	led.Speed = GPIO_SPEED_HIGH;
 
-	HAL_GPIO_Init(GPIOA, &fan);
+	HAL_GPIO_Init(GPIOF, &led);
 }
 
 
@@ -149,17 +159,44 @@ void TimerITInit() {
 }
 
 
+void uartInit(){
+			  /* Configure USART Tx as alternate function */
 
-void UARTInit() {
-	uart_handle.Init.BaudRate = 115200;
-	uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
-	uart_handle.Init.StopBits = UART_STOPBITS_1;
-	uart_handle.Init.Parity = UART_PARITY_NONE;
-	uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	uart_handle.Init.Mode = UART_MODE_TX_RX;
+			  __HAL_RCC_GPIOA_CLK_ENABLE();
 
-	BSP_COM_Init(COM1, &uart_handle);
-}
+			  	tx.Pin = GPIO_PIN_9;
+			  	tx.Mode = GPIO_MODE_AF_PP;
+			  	tx.Pull = GPIO_PULLUP;
+			  	tx.Alternate =  GPIO_AF7_USART1;
+			  	tx.Speed = GPIO_SPEED_FAST;
+
+			  	HAL_GPIO_Init(GPIOA, &tx);
+
+			  /* Configure USART Rx as alternate function */
+
+			    __HAL_RCC_GPIOB_CLK_ENABLE();
+
+				rx.Pin = GPIO_PIN_7;
+				rx.Mode = GPIO_MODE_AF_PP;
+				rx.Pull = GPIO_PULLUP;
+				rx.Alternate = GPIO_AF7_USART1;
+				rx.Speed = GPIO_SPEED_FAST;
+
+				HAL_GPIO_Init(GPIOB, &rx);
+
+
+				__HAL_RCC_USART1_CLK_ENABLE();
+
+				uart_handle.Instance = USART1;
+				uart_handle.Init.BaudRate = 115200;
+				uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
+				uart_handle.Init.StopBits = UART_STOPBITS_1;
+				uart_handle.Init.Parity = UART_PARITY_NONE;
+				uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+				uart_handle.Init.Mode = UART_MODE_TX_RX;
+
+				 HAL_UART_Init(&uart_handle);
+  }
 
 
 /**
