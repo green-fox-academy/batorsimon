@@ -96,31 +96,64 @@ int main(void)
   HAL_Init();
   SystemClock_Config();     /* Configure the System clock to have a frequency of 216 MHz */
   /* Add your application code here     */
-
+  BSP_LED_Init(LED_GREEN);
 	  uartInit();
-	  //LEDInit();
+	  LEDInit();
 	  TimerITInit();
 
 	printf("\n****************************************************\n");
 	printf("    Welcome to the communication project!\n");
 	printf("****************************************************\n\n");
 
-	char input[10];
-
+	printf("Waiting for user input!\n");
   /* Infinite loop */
   while (1)
   {
+  /*      char input[10] = {};
 	  	  HAL_UART_Receive(&uart_handle, &input, 10, 1000);
 
-	  	  printf("%s\n", input);
-
-			if(strcmp(input, "on")){
+			if(strcmp(input, "on") == 0){
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
-			}
-
-			if(strcmp(input, "off")){
+				 printf("\ninput: %s!\n", input);
+			}else if(strcmp(input, "off") == 0){
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-			}
+				printf("\ninput: %s!\n", input);
+			}  */
+
+	  //  HAL_UART_Receive_IT(&uart_handle, &input, 10);
+
+			  char input[10] = {};
+			 HAL_UART_Receive(&uart_handle, &input, 10, 1000);
+
+			 int error = 0;
+
+			 if(strcmp(input, "on") == 0){
+				 BSP_LED_On(LED_GREEN);
+					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
+					 printf("\ninput: %s!\n", input);
+
+				}else if(strcmp(input, "off") == 0){
+					BSP_LED_Off(LED_GREEN);
+					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
+					printf("\ninput: %s!\n", input);
+
+				} else  if(strcmp(input, "on") != 0 && strcmp(input, "off") != 0 && strlen(input)>0 ) {
+					error = 1;
+					printf("\nWrong input!\n");
+				}
+
+			 if (error == 1) {
+					 for(int i = 0; i < 3; i++) {
+						  BSP_LED_Toggle(LED_GREEN);
+						  HAL_Delay(200);
+				 }
+					 error = 0;
+			  } else {
+				  BSP_LED_Off(LED_GREEN);
+			  }
+
+
+
 
   }  // end of while
 
