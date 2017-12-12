@@ -102,10 +102,11 @@ int main(void)
 /* Infinite loop */
   while (1)
   {
-     HAL_I2C_Master_Transmit(&I2cHandle, (0b1001000<<1), &trans, 1, 10000);
-	 HAL_I2C_Master_Receive(&I2cHandle, (0b1001000<<1), &temp, 1, 10000);
-	 printf("The current temperature is: %d\n", temp);
-	 HAL_Delay(1000);
+     HAL_I2C_Master_Transmit(&I2cHandle, (0b1001000<<1), &trans, 1, 100);
+	 HAL_I2C_Master_Receive(&I2cHandle, (0b1001000<<1), &temp, 1, 100);
+	 printf("The current temperature is: %u\n", temp);
+	 printf("%u\n", trans);
+	 HAL_Delay(2000);
 
   }  // end of while
 
@@ -133,6 +134,7 @@ void i2cInit(){
 
 			  	HAL_GPIO_Init(GPIOB, &data);
 
+			  	 __HAL_RCC_GPIOB_CLK_ENABLE();  //SCL
 			  	 GPIO_InitTypeDef clock;
 
 				clock.Pin = GPIO_PIN_8;
@@ -144,7 +146,7 @@ void i2cInit(){
 				HAL_GPIO_Init(GPIOB, &clock);
 
 				__HAL_RCC_I2C1_CLK_ENABLE();   // I2C
-
+				I2C_HandleTypeDef I2cHandle;
 
 				 I2cHandle.Instance             = I2C1;
 				 I2cHandle.Init.Timing          = 0x40912732;
@@ -369,3 +371,4 @@ void assert_failed(uint8_t* file, uint32_t line)
   */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
