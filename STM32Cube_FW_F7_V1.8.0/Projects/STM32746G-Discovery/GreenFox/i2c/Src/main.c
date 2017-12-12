@@ -44,6 +44,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
+ uint8_t trans =0;
+ uint8_t temp;
 
 /* Private function prototypes -----------------------------------------------*/
 #ifdef __GNUC__
@@ -96,20 +98,32 @@ int main(void)
 	  i2cInit();
 	  uartInit();
 	  printing();
-	  uint8_t trans =0;
-	  uint8_t temp;
+
+	  HAL_NVIC_SetPriority(I2C1_EV_IRQn, 14, 0x00);
+	  HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
 
 /* Infinite loop */
   while (1)
   {
-     HAL_I2C_Master_Transmit(&I2cHandle, (0b1001000<<1), &trans, 1, 10000);
-	 HAL_I2C_Master_Receive(&I2cHandle, (0b1001000<<1), &temp, 1, 10000);
-	 printf("The current temperature is: %d\n", temp);
+
+     HAL_I2C_Master_Transmit_IT(&I2cHandle, (0b1001000<<1), &trans, 1);
 	 HAL_Delay(1000);
 
   }  // end of while
 
 }  //end of the main
+
+void I2C1_EV_IRQHandler() {
+	HAL_I2C_EV_IRQHandler(&I2cHandle);
+}
+
+void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	HAL_I2C_Master_Receive_IT(&I2cHandle, (0b1001000<<1), &temp, 1);
+}
+
+void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	printf("The current temperature is: %u C degrees\n", temp);
+}
 
 
 void printing(){
