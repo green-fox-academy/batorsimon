@@ -145,7 +145,6 @@ void i2cInit(){
 
 				__HAL_RCC_I2C1_CLK_ENABLE();   // I2C
 
-
 				 I2cHandle.Instance             = I2C1;
 				 I2cHandle.Init.Timing          = 0x40912732;
 				 I2cHandle.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
@@ -188,27 +187,6 @@ void uartInit(){
 				uart_handle.Init.Mode = UART_MODE_TX_RX;
 				 HAL_UART_Init(&uart_handle);
   }
-
-/*
-void EXTI9_5_IRQHandler()
-{
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-
-	if (GPIO_Pin == GPIO_PIN_7) {
-
-	}
-
-	if (GPIO_Pin == GPIO_PIN_9) {
-
-	}
-
-} // end of callback
-*/
 
 
 /**
