@@ -61,7 +61,7 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 void LEDInit();
-void uartInit();
+void i2cInit();
 void printing();
 
 GPIO_InitTypeDef led;
@@ -91,44 +91,14 @@ int main(void)
 
   /* Add your application code here     */
   BSP_LED_Init(LED_GREEN);
-	  uartInit();
+	  i2cInit();
 	  LEDInit();
 	  printing();
 
 /* Infinite loop */
   while (1)
   {
-			 char input[10] = {};
-			  int error = 0;
-			  HAL_UART_Receive(&uart_handle, (uint8_t*)input, 10, 1000);
-			  //  HAL_UART_Receive_IT(&uart_handle, &input, 1);      // receive the data byte-by-byte
 
-			 if(strcmp(input, "on") == 0){
-					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_SET);
-					 printf("\ninput: %s!\n", input);
-
-				}else if(strcmp(input, "off") == 0){
-					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_6, GPIO_PIN_RESET);
-					printf("\ninput: %s!\n", input);
-
-				} else  if(strcmp(input, "on") != 0 && strcmp(input, "off") != 0 && strlen(input) > 0 && strlen(input) < 9) {
-					error = 1;
-					printf("\nWrong input!\n");
-
-				} else if( strlen(input) > 9){
-					error = 1;
-					printf("\nInput bigger than it could be!\n");
-				}
-
-			 if (error == 1) {
-				 for(int i = 0; i < 3; i++) {
-					 	 BSP_LED_Toggle(LED_GREEN);
-						  HAL_Delay(200);
-				 }
-				error = 0;
-			 } else {
-				 BSP_LED_Off(LED_GREEN);
-			 }
 
   }  // end of while
 
@@ -137,11 +107,9 @@ int main(void)
 void printing(){
 		printf("\n");
 		printf("****************************************************\n");
-		printf("    Welcome to the communication project!\n");
+		printf("        Welcome to the sensor project!\n");
 		printf("****************************************************\n\n");
-		printf("To turn on the led type: on !\n");
-		printf("To turn on the led type: off !\n\n");
-		printf("Waiting for user input!\n");
+
 }
 
 void LEDInit() {
@@ -155,7 +123,7 @@ void LEDInit() {
 	HAL_GPIO_Init(GPIOF, &led);
 }
 
-void uartInit(){
+void i2cInit(){
 			  /* Configure USART Tx as alternate function */
 			  __HAL_RCC_GPIOA_CLK_ENABLE();
 
@@ -189,6 +157,14 @@ void uartInit(){
 				uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
 				uart_handle.Init.Mode = UART_MODE_TX_RX;
 				 HAL_UART_Init(&uart_handle);
+
+				 I2C_HandleTypeDef I2cHandle;
+
+				 I2cHandle.Instance             = I2C1;
+				 I2cHandle.Init.Timing          = 0x40912732;
+				 I2cHandle.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+
+				 HAL_I2C_Init(&I2cHandle);
   }
 
 /*
