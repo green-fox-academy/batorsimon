@@ -188,9 +188,11 @@ void Atm::withdraw_money(string x) {
                 if(users.at(i).get_name() == x && users.at(i).get_balance() > a){
                     b = (users.at(i).get_balance() - a);
                     users.at(i).set_balance(b);
+                    cout << "Operation done. " << endl;
                     break;
                 }
             }
+            break;
 
         } else{
             cout << "Invalid operation. " << endl;
