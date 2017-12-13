@@ -1,9 +1,5 @@
 #include <iostream>
-#include <windows.h>
-#include <fstream>
 #include <vector>
-#include <math.h>
-#include <ctime>
 
 #include "administrator.h"
 #include "costumer.h"

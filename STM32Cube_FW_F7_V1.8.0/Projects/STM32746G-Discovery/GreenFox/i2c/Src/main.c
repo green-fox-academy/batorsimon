@@ -109,6 +109,9 @@ int main(void)
      HAL_I2C_Master_Transmit_IT(&I2cHandle, (0b1001000<<1), &trans, 1);
 	 HAL_Delay(1000);
 
+// TODO: shorten the way
+	 // FIXME: along ruuuuun
+
   }  // end of while
 
 }  //end of the main

@@ -1,0 +1,13 @@
+          Brave Bank         
+       Your bank receipt     
+-----------------------------
+Your name: 
+Kiss
+
+Your actual balance: 
+214256
+
+The changes were made at: 
+Wed Dec 13 16:08:06 2017
+
+

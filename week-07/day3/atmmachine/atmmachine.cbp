@@ -33,7 +33,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="administrator.cpp" />
+		<Unit filename="atm.cpp" />
+		<Unit filename="atm.h" />
+		<Unit filename="costumer.cpp" />
+		<Unit filename="costumer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="users.cpp" />
+		<Unit filename="users.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
