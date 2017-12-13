@@ -1,9 +1,60 @@
 # depslib dependency file v1.0
-1511651086 source:d:\én\greenfox\week-07\day3\atmmachine\main.cpp
+1513175603 source:d:\én\greenfox\week-07\day3\atmmachine\main.cpp
 	<iostream>
 	<windows.h>
 	<fstream>
 	<vector>
 	<math.h>
 	<ctime>
+	"administrator.h"
+	"costumer.h"
+	"atm.h"
+	"users.h"
+
+1513173495 d:\én\greenfox\week-07\day3\atmmachine\administrator.h
+	<string>
+
+1513174109 d:\én\greenfox\week-07\day3\atmmachine\custumer.h
+	<string>
+
+1513176573 d:\én\greenfox\week-07\day3\atmmachine\atm.h
+	"users.h"
+	<string>
+	<vector>
+
+1513175154 d:\én\greenfox\week-07\day3\atmmachine\users.h
+	<string>
+
+1513175603 d:\én\greenfox\week-07\day3\atmmachine\costumer.h
+	<string>
+
+1513176102 source:d:\én\greenfox\week-07\day3\atmmachine\administrator.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<vector>
+	<math.h>
+	<ctime>
+	"administrator.h"
+	"atm.h"
+
+1513177127 source:d:\én\greenfox\week-07\day3\atmmachine\atm.cpp
+	<iostream>
+	<vector>
+	<windows.h>
+	"atm.h"
+
+1513176155 source:d:\én\greenfox\week-07\day3\atmmachine\costumer.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<vector>
+	<math.h>
+	<ctime>
+	"costumer.h"
+	"atm.h"
+
+1513175924 source:d:\én\greenfox\week-07\day3\atmmachine\users.cpp
+	<string>
+	"users.h"
 

@@ -11,6 +11,10 @@ public:
         this->grade=grade;
     }
 
+    ~student(){
+        cout << "End of the program!" << endl;
+    }
+
     void add_grade(int grade){
         this->grade = grade;
     }
