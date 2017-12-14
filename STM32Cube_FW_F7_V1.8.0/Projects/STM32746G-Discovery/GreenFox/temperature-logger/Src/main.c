@@ -38,6 +38,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include <string.h>
+#include<stdio.h>
+#include <time.h>
+
 
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -66,6 +69,9 @@ void i2cInit();
 void printing();
 void uartInit();
 
+void TimerITInit();
+TIM_HandleTypeDef TimHandle;
+
 uint8_t trans =0;
  uint8_t temp;
 
@@ -84,6 +90,11 @@ static void Peripherials_Config(void);
 static void UART_Config(void);
 static void RTC_Config(void);
 static void RTC_SetDateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t weekday, uint8_t hour, uint8_t minute, uint8_t second);
+RTC_DateTypeDef dDate;
+   RTC_TimeTypeDef dTime;
+
+   time_t rawtime;     // if lokal time
+  	struct tm * timeinfo;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -99,37 +110,33 @@ int main(void) {
             17,                         // 2017
             12,                         // december
             12,                         // 12th
-            RTC_WEEKDAY_TUESDAY,        // tuesday
+			RTC_WEEKDAY_TUESDAY,        // tuesday
             13,                         // hour: 13
             11,                         // minute: 11
             0                           // second: 0
     );
 
-    i2cInit();
+      i2cInit();
   	  uartInit();
   	  printing();
+  	TimerITInit();
 
   	  HAL_NVIC_SetPriority(I2C1_EV_IRQn, 14, 0x00);
   	  HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
 
-    /**
-     * Demo for sending date and time in every second
-     */
-    RTC_DateTypeDef dDate;
-    RTC_TimeTypeDef dTime;
+  	  HAL_NVIC_SetPriority(TIM2_IRQn, 13, 0x00);
+  	  HAL_NVIC_EnableIRQ(TIM2_IRQn);
+
     while (1) {
-        HAL_RTC_GetTime(&RtcHandle, &dTime, RTC_FORMAT_BIN);
-        HAL_RTC_GetDate(&RtcHandle, &dDate, RTC_FORMAT_BIN);
-
-        printf("%d.%d.%d. %d:%d:%d\r\n", (dDate.Year + 2000), dDate.Month,
-                dDate.Date, dTime.Hours, dTime.Minutes, dTime.Seconds);
-
-        HAL_Delay(1000);
-
-        HAL_I2C_Master_Transmit_IT(&I2cHandle, (0b1001000<<1), &trans, 1);
-        	 HAL_Delay(1000);
 
     }
+}
+void TIM2_IRQHandler() {
+	HAL_TIM_IRQHandler(&TimHandle);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	  HAL_I2C_Master_Transmit_IT(&I2cHandle, (0b1001000<<1), &trans, 1);
 }
 
 
@@ -142,7 +149,16 @@ void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c) {
 }
 
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {
-	printf("The current temperature is: %u C degrees\n", temp);
+	  HAL_RTC_GetTime(&RtcHandle, &dTime, RTC_FORMAT_BIN);
+	  HAL_RTC_GetDate(&RtcHandle, &dDate, RTC_FORMAT_BIN);
+
+	  printf("%d.%d.%d. %d:%d:%d\r\n", (dDate.Year + 2000), dDate.Month, dDate.Date, dTime.Hours, dTime.Minutes, dTime.Seconds);
+
+   	   //time (&rawtime);
+	   //timeinfo = localtime (&rawtime);
+	   //printf ("Current time and date: %s", asctime(timeinfo));
+
+	   printf("The current temperature is: %u C degrees\n\n", temp);
 }
 
 
@@ -154,6 +170,19 @@ void printing(){
 
 }
 
+void TimerITInit() {
+
+__HAL_RCC_TIM2_CLK_ENABLE();
+
+	TimHandle.Instance               = TIM2;
+	TimHandle.Init.Period            = 5000;
+	TimHandle.Init.Prescaler         = 21599;  // 108 MHz/prescaler (needed-1 from 21600 because of the bit shifting)
+	TimHandle.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+	TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
+	HAL_TIM_Base_Init(&TimHandle);
+	HAL_TIM_Base_Start_IT(&TimHandle);
+
+}
 
 void i2cInit(){
 			  __HAL_RCC_GPIOB_CLK_ENABLE();  //SDA
