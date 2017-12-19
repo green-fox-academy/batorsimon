@@ -1,7 +1,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include <string.h>
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
 
+UART_HandleTypeDef uart_handle;
+GPIO_InitTypeDef gpio_init_structure;
+TIM_HandleTypeDef TimHandle;
+
+/* Private function prototypes -----------------------------------------------*/
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
  set to 'Yes') calls __io_putchar() */
@@ -10,156 +19,141 @@
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 
-typedef enum {
-    STATE_OPEN,
-    STATE_SECURING,
-    STATE_SECURED,
-    STATE_OPENING
-} State;
-
-typedef struct {
-        State state;
-        State nextState;
-        uint8_t timerPeriodCounts;
-        uint8_t ledTogglePeriodCounts;
-} State_Config;
-
-/* Private define ------------------------------------------------------------*/
-#define TIMER_2HZ   TIM2
-
-UART_HandleTypeDef UartHandle;
-TIM_HandleTypeDef Tim2HzHandle;
-
-volatile State_Config _currentState;
-volatile uint8_t _periodCounter;
-
-/* Private function prototypes -----------------------------------------------*/
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
 
-static void Peripherals_Config(void);
-static void Tim2Hz_Config_IT(void);
-static void Tim2Hz_Start_IT(void);
-static void Tim2Hz_Stop_IT(void);
-static void State_Start(State newState);
-static void UART_Config(void);
-/* Private functions ---------------------------------------------------------*/
+void EXTI15_10_IRQHandler(void);
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+void TIM2_IRQHandler(void);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+void reinit_tim(uint16_t flash_time);
+void peripheral_init();
+
+enum stat{OPEN, SECURING, SECURED, OPENING} status;
+uint8_t tim_counter = 0;
 
 int main(void) {
-    Peripherals_Config();
-    State_Start(STATE_OPEN);
-    while (1) {}  // no need it
-}
-
-static void State_Start(State newState) {
-    Tim2Hz_Stop_IT();  // stop the timer
-
-    _currentState.state = newState;  // I set the new state
-    switch (newState) {
-        case STATE_OPEN:
-            printf("Entering OPEN state\r\n");          // send the string to UART according to the specs
-            _currentState.nextState = STATE_SECURING;   // the next state is STATE_SECURING
-            _currentState.ledTogglePeriodCounts = 2;    // 0.5Hz flashing, so 2*0.5sec period
-            _currentState.timerPeriodCounts = 0;        // the state remains until external interrupt
-            break;
-        case STATE_SECURING:
-            printf("Entering SECURING state\r\n");      // send the string to UART according to the specs
-            _currentState.nextState = STATE_SECURED;    // the next state is STATE_SECURED
-            _currentState.ledTogglePeriodCounts = 1;    // 1Hz flashing, so 1*0.5sec period
-            _currentState.timerPeriodCounts = 10;       // 5sec = 10*0.5sec (10 timer periods)
-            break;
-        case STATE_SECURED:
-            printf("Entering SECURED state\r\n");       // send the string to UART according to the specs
-            _currentState.nextState = STATE_OPENING;    // the next state is STATE_OPENING
-            _currentState.ledTogglePeriodCounts = 0;    // no flashing
-            _currentState.timerPeriodCounts = 0;        // the state remains until external interrupt
-            break;
-        case STATE_OPENING:
-            printf("Entering OPENING state\r\n");       // send the string to UART according to the specs
-            _currentState.nextState = STATE_OPEN;       // the next state is STATE_OPEN
-            _currentState.ledTogglePeriodCounts = 1;    // 1Hz flashing, so 1*0.5sec period
-            _currentState.timerPeriodCounts = 12;       // 6sec = 12*0.5sec (12 timer periods)
-            break;
-    }
-    // The LED should be flashed if the state is not SECURED so i start the timer with interrupts
-    if (newState != STATE_SECURED) {
-        Tim2Hz_Start_IT();
-    }
-}
-
-
-static void Tim2Hz_Start_IT(void) {
-    TIMER_2HZ->CNT = 0;
-    _periodCounter = 0;
-    BSP_LED_On(LED_GREEN);
-    HAL_TIM_Base_Start_IT(&Tim2HzHandle);
-}
-
-static void Tim2Hz_Stop_IT(void) {
-    BSP_LED_Off(LED_GREEN);
-    HAL_TIM_Base_Stop_IT(&Tim2HzHandle);
-}
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    _periodCounter++;
-    if (_currentState.timerPeriodCounts && _currentState.timerPeriodCounts == _periodCounter) {
-        State_Start(_currentState.nextState);
-        return;
-    }
-
-    if (_currentState.ledTogglePeriodCounts && !(_periodCounter%_currentState.ledTogglePeriodCounts)) {
-        BSP_LED_Toggle(LED_GREEN);
-    }
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-    if (_currentState.state == STATE_OPENING || _currentState.state == STATE_SECURING) {
-        return;
-    }
-    State_Start(_currentState.nextState);
-}
-
-static void Peripherals_Config(void) {
     MPU_Config();
     CPU_CACHE_Enable();
     HAL_Init();
     SystemClock_Config();
+    peripheral_init();
 
-    Tim2Hz_Config_IT();
-    UART_Config();
+    printf("\n-----------------WELCOME-----------------\r\n");
+    uint8_t prev_status = 5;
+    status = OPEN;
 
-    BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
-    BSP_LED_Init(LED_GREEN);
+    while (1) {
+        if(prev_status != status || status == SECURING || status == OPENING){
+            prev_status = status;
+            switch(status){
+                case OPEN:
+                    reinit_tim(1000);
+                    printf("entered OPEN stage\n");
+                    break;
+                case SECURING:
+                    if(tim_counter == 0){
+                        reinit_tim(500);
+                        printf("entered SECURING stage\n");
+                    }else if(tim_counter == 10){
+                        status = SECURED;
+                        tim_counter = 0;
+                    }
+                    break;
+                case SECURED:
+                    reinit_tim(1000);
+                    printf("entered SECURED stage\n");
+                    break;
+                case OPENING:
+                    if(tim_counter == 0){
+                        reinit_tim(500);
+                        printf("entered OPENING stage\n");
+                    }else if(tim_counter == 12){
+                        status = OPEN;
+                        tim_counter = 0;
+                    }
+                    break;
+                default:
+                    break;
+            } // end of switch case
+        }   // end of if
+    }   // end of while
+}  // end of main
+
+void reinit_tim(uint16_t flash_time){
+    TimHandle.Init.Period = flash_time;
+    HAL_TIM_Base_Stop_IT(&TimHandle);
+    HAL_TIM_Base_Init(&TimHandle);          //Configure the timer
+    HAL_TIM_Base_Start_IT(&TimHandle);      //Start the timer peripherial
 }
-static void Tim2Hz_Config_IT(void) {
+void TIM2_IRQHandler() {
+    HAL_TIM_IRQHandler(&TimHandle);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    if(status == SECURING || status == OPENING){
+        tim_counter++;
+    }
+    if(status == SECURED){
+        BSP_LED_Off(LED_GREEN);
+    }else{
+        BSP_LED_Toggle(LED_GREEN);
+    }
+}
+void EXTI15_10_IRQHandler(){
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
+}
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+    if (status == OPEN){
+        status = SECURING;
+    }else if(status == SECURED){
+        status = OPENING;
+    }
+}
+void peripheral_init(){
+    __HAL_RCC_GPIOI_CLK_ENABLE();
+    gpio_init_structure.Pin = GPIO_PIN_11;
+    gpio_init_structure.Mode = GPIO_MODE_IT_RISING;
+    gpio_init_structure.Speed = GPIO_SPEED_HIGH;
+    gpio_init_structure.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(GPIOI, &gpio_init_structure);
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 15, 0);
+    /* Add your application code here
+     */
+    BSP_LED_Init(LED_GREEN);
+    BSP_LED_On(LED_GREEN);
 
-    // TIM2's bus clock is: 108MHz, so 108 000 000 = 2*(Period+1)*(Prescaler+1)
-    Tim2HzHandle.Instance = TIMER_2HZ;
-    Tim2HzHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-    Tim2HzHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-    Tim2HzHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
-    Tim2HzHandle.Init.Period = 9999;
-    Tim2HzHandle.Init.Prescaler = 5399;
+    __HAL_RCC_TIM2_CLK_ENABLE();
+    uart_handle.Init.BaudRate = 115200;
+    uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
+    uart_handle.Init.StopBits = UART_STOPBITS_1;
+    uart_handle.Init.Parity = UART_PARITY_NONE;
+    uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    uart_handle.Init.Mode = UART_MODE_TX_RX;
+    BSP_COM_Init(COM1, &uart_handle);
 
-    HAL_TIM_Base_Init(&Tim2HzHandle);
-    HAL_NVIC_SetPriority(TIM2_IRQn, 0x0F, 0);
+    TimHandle.Instance = TIM2;
+    TimHandle.Init.Period = 65535;
+    TimHandle.Init.Prescaler = 54000;
+    TimHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+    TimHandle.Init.RepetitionCounter = 0;
+    HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
+    HAL_TIM_Base_Start_IT(&TimHandle);          // start the timer peripherial
+    HAL_NVIC_SetPriority(TIM2_IRQn, 0x00, 0x00);
     HAL_NVIC_EnableIRQ(TIM2_IRQn);
 }
 
-static void UART_Config(void) {
-    UartHandle.Init.BaudRate = 115200;
-    UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
-    UartHandle.Init.StopBits = UART_STOPBITS_1;
-    UartHandle.Init.Parity = UART_PARITY_NONE;
-    UartHandle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    UartHandle.Init.Mode = UART_MODE_TX_RX;
+// SYSTEM FILES    -----------------------------------------
 
-    BSP_COM_Init(COM1, &UartHandle);
+PUTCHAR_PROTOTYPE {
+    /* Place your implementation of fputc here */
+    /* e.g. write a character to the EVAL_COM1 and Loop until the end of transmission */
+    HAL_UART_Transmit(&uart_handle, (uint8_t *) &ch, 1, 0xFFFF);
+    return ch;
 }
-
-
 /**
  * @brief  System Clock Configuration
  *         The system Clock is configured as follow :
@@ -183,7 +177,6 @@ static void UART_Config(void) {
 static void SystemClock_Config(void) {
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
-
     /* Enable HSE Oscillator and activate PLL with HSE as source */
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -197,25 +190,22 @@ static void SystemClock_Config(void) {
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
         Error_Handler();
     }
-
     /* activate the OverDrive to reach the 216 Mhz Frequency */
     if (HAL_PWREx_EnableOverDrive() != HAL_OK) {
         Error_Handler();
     }
-
     /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
      clocks dividers */
-    RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1
-            | RCC_CLOCKTYPE_PCLK2);
+    RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK
+            | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV8;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK) {
         Error_Handler();
     }
 }
-
 /**
  * @brief  This function is executed in case of error occurrence.
  * @param  None
@@ -226,7 +216,6 @@ static void Error_Handler(void) {
     while (1) {
     }
 }
-
 /**
  * @brief  Configure the MPU attributes as Write Through for SRAM1/2.
  * @note   The Base Address is 0x20010000 since this memory interface is the AXI.
@@ -236,10 +225,8 @@ static void Error_Handler(void) {
  */
 static void MPU_Config(void) {
     MPU_Region_InitTypeDef MPU_InitStruct;
-
     /* Disable the MPU */
     HAL_MPU_Disable();
-
     /* Configure the MPU attributes as WT for SRAM */
     MPU_InitStruct.Enable = MPU_REGION_ENABLE;
     MPU_InitStruct.BaseAddress = 0x20010000;
@@ -252,13 +239,10 @@ static void MPU_Config(void) {
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.SubRegionDisable = 0x00;
     MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
-
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
-
     /* Enable the MPU */
     HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
 }
-
 /**
  * @brief  CPU L1-Cache enable.
  * @param  None
@@ -267,26 +251,10 @@ static void MPU_Config(void) {
 static void CPU_CACHE_Enable(void) {
     /* Enable I-Cache */
     SCB_EnableICache();
-
     /* Enable D-Cache */
     SCB_EnableDCache();
 }
-
-/**
- * @brief  Retargets the C library printf function to the USART.
- * @param  None
- * @retval None
- */
-PUTCHAR_PROTOTYPE {
-    /* Place your implementation of fputc here */
-    /* e.g. write a character to the EVAL_COM1 and Loop until the end of transmission */
-    HAL_UART_Transmit(&UartHandle, (uint8_t *) &ch, 1, 0xFFFF);
-
-    return ch;
-}
-
 #ifdef  USE_FULL_ASSERT
-
 /**
  * @brief  Reports the name of the source file and the source line number
  *         where the assert_param error has occurred.
@@ -298,20 +266,9 @@ void assert_failed(uint8_t* file, uint32_t line)
 {
     /* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
     /* Infinite loop */
     while (1)
     {
     }
 }
 #endif
-
-/**
- * @}
- */
-
-/**
- * @}
- */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
