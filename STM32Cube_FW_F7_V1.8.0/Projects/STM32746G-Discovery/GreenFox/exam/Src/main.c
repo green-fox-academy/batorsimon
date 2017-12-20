@@ -48,6 +48,7 @@ int main(void) {
     while (1) {
         if(prev_status != status || status == SECURING || status == OPENING){
             prev_status = status;
+
             switch(status){
                 case OPEN:
                     reinit_tim(1000);
@@ -63,7 +64,6 @@ int main(void) {
                     }
                     break;
                 case SECURED:
-                    reinit_tim(1000);
                     printf("entered SECURED stage\n");
                     break;
                 case OPENING:
@@ -101,9 +101,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
         BSP_LED_Toggle(LED_GREEN);
     }
 }
+
 void EXTI15_10_IRQHandler(){
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
 }
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
     if (status == OPEN){
         status = SECURING;

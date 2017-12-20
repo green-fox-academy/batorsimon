@@ -4,11 +4,11 @@
 enum stat{OPEN, OPENING, SECURING, SECURED} status;
 
 typedef enum{
-nulla,
-egy,
-ketto,
-harom,
-negy
+    nulla,
+    egy,
+    ketto,
+    harom,
+    negy
 } status2;
 
 int main()
@@ -27,23 +27,32 @@ int main()
     printf("3: %d\n", harom);
     printf("4: %d\n", negy);
 
-
-    printf("Switch loop\n");
-    switch(status){
-        case OPEN:
-            printf("open: %d\n", OPEN);
-            break;
-        case OPENING:
-            printf("opening: %d\n", OPENING);
-            break;
-        case SECURING:
-            printf("SECURING: %d\n", SECURING);
-            break;
-        case SECURED:
-            printf("SECURED: %d\n", SECURED);
-            break;
-        default:
-            printf("End of switch!\n");
+    int i = 0;
+    printf("\nSwitch loop\n");
+    while(i < 4) {
+        status = i;
+        switch(status){
+            case OPEN:
+                printf("OPEN: %d\n", OPEN);
+                i++;
+                break;
+            case OPENING:
+                printf("OPENING: %d\n", OPENING);
+                i++;
+                break;
+            case SECURING:
+                printf("SECURING: %d\n", SECURING);
+                i++;
+                break;
+            case SECURED:
+                printf("SECURED: %d\n", SECURED);
+                i++;
+                break;
+            default:
+                printf("End of switch!\n");
+                break;
+        }
     }
+
     return 0;
 }
