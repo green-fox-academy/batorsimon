@@ -28,11 +28,16 @@ void EXTI15_10_IRQHandler(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
 void TIM2_IRQHandler(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
-void reinit_tim(uint16_t flash_time);
 void peripheral_init();
 
-enum stat{OPEN, SECURING, SECURED, OPENING} status;
+enum morsecode{a, c, i, s, o} morse;
+char array[20];
 uint8_t tim_counter = 0;
+uint8_t short_signal = 0;
+uint8_t long_signal = 0;
+uint8_t space = 0;
+int f = 0;
+
 
 int main(void) {
     MPU_Config();
@@ -42,64 +47,17 @@ int main(void) {
     peripheral_init();
 
     printf("\n-----------------WELCOME-----------------\r\n");
-    uint8_t prev_status = 5;
-    status = OPEN;
 
-    while (1) {
-        if(prev_status != status || status == SECURING || status == OPENING){
-            prev_status = status;
+    while (1) {   }
 
-            switch(status){
-                case OPEN:
-                    reinit_tim(1000);
-                    printf("entered OPEN stage\n");
-                    break;
-                case SECURING:
-                    if(tim_counter == 0){
-                        reinit_tim(500);
-                        printf("entered SECURING stage\n");
-                    }else if(tim_counter == 10){
-                        status = SECURED;
-                        tim_counter = 0;
-                    }
-                    break;
-                case SECURED:
-                    printf("entered SECURED stage\n");
-                    break;
-                case OPENING:
-                    if(tim_counter == 0){
-                        reinit_tim(500);
-                        printf("entered OPENING stage\n");
-                    }else if(tim_counter == 12){
-                        status = OPEN;
-                        tim_counter = 0;
-                    }
-                    break;
-                default:
-                    break;
-            } // end of switch case
-        }   // end of if
-    }   // end of while
-}  // end of main
-
-void reinit_tim(uint16_t flash_time){
-    TimHandle.Init.Period = flash_time;
-    HAL_TIM_Base_Stop_IT(&TimHandle);
-    HAL_TIM_Base_Init(&TimHandle);          //Configure the timer
-    HAL_TIM_Base_Start_IT(&TimHandle);      //Start the timer peripherial
 }
+
 void TIM2_IRQHandler() {
     HAL_TIM_IRQHandler(&TimHandle);
 }
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    if(status == SECURING || status == OPENING){
-        tim_counter++;
-    }
-    if(status == SECURED){
-        BSP_LED_Off(LED_GREEN);
-    }else{
-        BSP_LED_Toggle(LED_GREEN);
-    }
+	tim_counter++;
 }
 
 void EXTI15_10_IRQHandler(){
@@ -107,11 +65,131 @@ void EXTI15_10_IRQHandler(){
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-    if (status == OPEN){
-        status = SECURING;
-    }else if(status == SECURED){
-        status = OPENING;
-    }
+
+ 	if (tim_counter > 10 && tim_counter < 140 ){    // tim_counter > 50 && tim_counter < 250
+ 		//printf("short signal! timer: %d \n", tim_counter);
+ 		short_signal++;
+ 		tim_counter = 0;
+
+ 	} else if (tim_counter > 140 && tim_counter < 210 ){   // tim_counter > 250 && tim_counter < 750
+ 		//printf("long signal. timer: %d\n", tim_counter);
+ 		long_signal++;
+ 		tim_counter = 0;
+
+ 	} else if (tim_counter > 210){   // tim_counter > 1000
+ 		printf("The word you morsed in: ");
+ 		for(int j = 0; j < f; j++){
+ 			printf("%c", array[j]);
+ 		}
+ 		printf("\nEnd of the word! \n\n");
+ 		tim_counter = 0;
+ 		f = 0;
+
+ 	} else {
+ 		printf("you moron!! Watch out for the right signal distance!! \n");
+ 		tim_counter = 0;
+ 	}
+
+
+ 	 if(short_signal == 1 && long_signal == 1) {
+		   printf("a\n");
+		   array[f] = 'a';
+		   f++;
+		  long_signal = 0;
+		 short_signal = 0;
+
+	   }
+
+ 	   if( long_signal == 2 &&  short_signal == 2) {
+		   printf("c\n");
+		  array[f] = 'c';
+		   f++;
+		  long_signal = 0;
+		  short_signal = 0;
+
+		}
+
+ 	  if(short_signal == 2 ) {
+			printf("i\n");
+			array[f] = 'i';
+			f++;
+			long_signal = 0;
+			short_signal = 0;
+
+		}
+
+ 	 if(short_signal == 3 ) {
+		   printf("s\n");
+		  array[f] = 's';
+		   f++;
+		  long_signal = 0;
+		   short_signal = 0;
+
+		}
+
+ 	if(long_signal == 3 ) {
+		printf("o\n");
+		array[f] = 'o';
+		f++;
+		long_signal = 0;
+		short_signal = 0;
+
+	}
+
+
+/*
+    switch(morse){
+               case a:
+                   if(short_signal == 1 && space == 1 && long_signal == 1) {
+                	   printf("a\n");
+                   } else {
+                	   break;
+                   }
+                   break;
+
+               case c:
+            	   if( long_signal == 1 && space == 1&&  short_signal == 1 && space == 1 && long_signal == 1 &&  short_signal == 1) {
+            		   printf("c\n");
+					} else {
+						break;
+					}
+            	   break;
+
+               case i:
+            	   if(short_signal == 1 && space == 1 && short_signal == 1) {
+            		   printf("i\n");
+					} else {
+						break;
+					}
+            	   break;
+
+               case s:
+            	   if(short_signal == 1 && space == 1 && short_signal == 1 && space == 1 && short_signal == 1) {
+            		   printf("s\n");
+					} else {
+						break;
+					}
+            	   break;
+
+               case o:
+            	   if(long_signal == 1 && space == 1 && long_signal == 1 && space == 1 && long_signal == 1) {
+            		   printf("o\n");
+					} else {
+						break;
+					}
+            	   break;
+
+               default:
+                   break;
+       }
+*/
+
+    if(morse == a || morse == c || morse == i || morse == s || morse == o){
+           BSP_LED_Toggle(LED_GREEN);
+       } else {
+       	BSP_LED_Off(LED_GREEN);
+       }
+
 }
 void peripheral_init(){
     __HAL_RCC_GPIOI_CLK_ENABLE();
@@ -122,8 +200,7 @@ void peripheral_init(){
     HAL_GPIO_Init(GPIOI, &gpio_init_structure);
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
     HAL_NVIC_SetPriority(EXTI15_10_IRQn, 15, 0);
-    /* Add your application code here
-     */
+
     BSP_LED_Init(LED_GREEN);
     BSP_LED_On(LED_GREEN);
 
@@ -136,9 +213,9 @@ void peripheral_init(){
     uart_handle.Init.Mode = UART_MODE_TX_RX;
     BSP_COM_Init(COM1, &uart_handle);
 
-    TimHandle.Instance = TIM2;
-    TimHandle.Init.Period = 65535;
-    TimHandle.Init.Prescaler = 54000;
+    TimHandle.Instance = TIM2;  // 108 000 000  / 54 000 = 2000
+    TimHandle.Init.Period = 1;    //   65535
+    TimHandle.Init.Prescaler =  54000;   // 54000
     TimHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
     TimHandle.Init.RepetitionCounter = 0;
