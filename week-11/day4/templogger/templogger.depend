@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1513862938 source:d:\én\greenfox\week-11\day4\templogger\main.cpp
+1513867763 source:d:\én\greenfox\week-11\day4\templogger\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+	<fstream>
+	<string>
 
