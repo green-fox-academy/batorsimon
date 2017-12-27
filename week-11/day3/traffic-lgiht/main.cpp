@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unistd.h>
 #include <chrono>
 #include <thread>
 
@@ -25,10 +24,10 @@ int main()
 
 
 void Ampel1(string Farbe){
-    cout << "Ampel1: " << Farbe << endl;
+    cout << "Ampel 1: " << Farbe << endl;
 };
 void Ampel2(string Farbe){
-    cout << "Ampel2: " << Farbe << endl << endl;
+    cout << "Ampel 2: " << Farbe << endl << endl;
 };
 
 void stateMachine()
