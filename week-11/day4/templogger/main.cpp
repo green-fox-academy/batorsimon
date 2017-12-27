@@ -13,9 +13,10 @@ A 3. Parameter a file neve amibe berakja  */
 #include <time.h>
 #include <fstream>
 #include <string>
-
+#include <string.h>
+#include <stdio.h>
+#include <cstring>
 using namespace std;
-
 
 class TempGen{
     protected:
@@ -113,12 +114,24 @@ void user_input(){
     cout << "Enter the date: ";
     cin >> user_input_date;
 
-    // token !!!
-    // token !!!
-    if(!cin){
-        cout << "Please give in a valid date." << endl;
-         cin.clear();
+    string delimiter = ".";
+    size_t pos = 0;
+    string token;
+    while ((pos = user_input_date.find(delimiter)) != std::string::npos) {
+        token = user_input_date.substr(0, pos);
+        cout << token << endl;
+        user_input_date.erase(0, pos + delimiter.length());
     }
+    cout << user_input_date << endl;
+
+/*
+    if(token == NULL){
+        cout << "Please give in a valid date." << endl;
+        cout << "Enter the date: ";
+        cin >> user_input_date;
+    }
+*/
+
 
     cout << "Enter the number of days: ";
     cin >> user_input_days;

@@ -1,7 +1,6 @@
 # depslib dependency file v1.0
-1514402889 source:d:\én\greenfox\week-11\day3\traffic-lgiht\main.cpp
+1514403549 source:d:\én\greenfox\week-11\day3\traffic-lgiht\main.cpp
 	<iostream>
-	<unistd.h>
 	<chrono>
 	<thread>
 
