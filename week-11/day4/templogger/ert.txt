@@ -1,0 +1,250 @@
+The given date: 2017.12.22.
+The given number of days: 2
+The request were made at: 
+Thu Dec 28 00:07:29 2017
+
+-----------------------------
+The 1. day temperatures: 
+-----------------------------
+The temperature at the 0. hour:
+The temperature in Celsius: -10
+The temperature in Fahrenheit: 14
+The temperature in Kelvin: 263.15
+
+The temperature at the 1. hour:
+The temperature in Celsius: 9
+The temperature in Fahrenheit: 48.2
+The temperature in Kelvin: 282.15
+
+The temperature at the 2. hour:
+The temperature in Celsius: 4
+The temperature in Fahrenheit: 39.2
+The temperature in Kelvin: 277.15
+
+The temperature at the 3. hour:
+The temperature in Celsius: -10
+The temperature in Fahrenheit: 14
+The temperature in Kelvin: 263.15
+
+The temperature at the 4. hour:
+The temperature in Celsius: 5
+The temperature in Fahrenheit: 41
+The temperature in Kelvin: 278.15
+
+The temperature at the 5. hour:
+The temperature in Celsius: 8
+The temperature in Fahrenheit: 46.4
+The temperature in Kelvin: 281.15
+
+The temperature at the 6. hour:
+The temperature in Celsius: 0
+The temperature in Fahrenheit: 32
+The temperature in Kelvin: 273.15
+
+The temperature at the 7. hour:
+The temperature in Celsius: 2
+The temperature in Fahrenheit: 35.6
+The temperature in Kelvin: 275.15
+
+The temperature at the 8. hour:
+The temperature in Celsius: -10
+The temperature in Fahrenheit: 14
+The temperature in Kelvin: 263.15
+
+The temperature at the 9. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The temperature at the 10. hour:
+The temperature in Celsius: -5
+The temperature in Fahrenheit: 23
+The temperature in Kelvin: 268.15
+
+The temperature at the 11. hour:
+The temperature in Celsius: -4
+The temperature in Fahrenheit: 24.8
+The temperature in Kelvin: 269.15
+
+The temperature at the 12. hour:
+The temperature in Celsius: -2
+The temperature in Fahrenheit: 28.4
+The temperature in Kelvin: 271.15
+
+The temperature at the 13. hour:
+The temperature in Celsius: -6
+The temperature in Fahrenheit: 21.2
+The temperature in Kelvin: 267.15
+
+The temperature at the 14. hour:
+The temperature in Celsius: 4
+The temperature in Fahrenheit: 39.2
+The temperature in Kelvin: 277.15
+
+The temperature at the 15. hour:
+The temperature in Celsius: -5
+The temperature in Fahrenheit: 23
+The temperature in Kelvin: 268.15
+
+The temperature at the 16. hour:
+The temperature in Celsius: -5
+The temperature in Fahrenheit: 23
+The temperature in Kelvin: 268.15
+
+The temperature at the 17. hour:
+The temperature in Celsius: -1
+The temperature in Fahrenheit: 30.2
+The temperature in Kelvin: 272.15
+
+The temperature at the 18. hour:
+The temperature in Celsius: 5
+The temperature in Fahrenheit: 41
+The temperature in Kelvin: 278.15
+
+The temperature at the 19. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The temperature at the 20. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The temperature at the 21. hour:
+The temperature in Celsius: -1
+The temperature in Fahrenheit: 30.2
+The temperature in Kelvin: 272.15
+
+The temperature at the 22. hour:
+The temperature in Celsius: 0
+The temperature in Fahrenheit: 32
+The temperature in Kelvin: 273.15
+
+The temperature at the 23. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The 2. day temperatures: 
+-----------------------------
+The temperature at the 0. hour:
+The temperature in Celsius: -1
+The temperature in Fahrenheit: 30.2
+The temperature in Kelvin: 272.15
+
+The temperature at the 1. hour:
+The temperature in Celsius: -4
+The temperature in Fahrenheit: 24.8
+The temperature in Kelvin: 269.15
+
+The temperature at the 2. hour:
+The temperature in Celsius: -8
+The temperature in Fahrenheit: 17.6
+The temperature in Kelvin: 265.15
+
+The temperature at the 3. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The temperature at the 4. hour:
+The temperature in Celsius: -4
+The temperature in Fahrenheit: 24.8
+The temperature in Kelvin: 269.15
+
+The temperature at the 5. hour:
+The temperature in Celsius: 0
+The temperature in Fahrenheit: 32
+The temperature in Kelvin: 273.15
+
+The temperature at the 6. hour:
+The temperature in Celsius: -1
+The temperature in Fahrenheit: 30.2
+The temperature in Kelvin: 272.15
+
+The temperature at the 7. hour:
+The temperature in Celsius: 4
+The temperature in Fahrenheit: 39.2
+The temperature in Kelvin: 277.15
+
+The temperature at the 8. hour:
+The temperature in Celsius: -6
+The temperature in Fahrenheit: 21.2
+The temperature in Kelvin: 267.15
+
+The temperature at the 9. hour:
+The temperature in Celsius: -4
+The temperature in Fahrenheit: 24.8
+The temperature in Kelvin: 269.15
+
+The temperature at the 10. hour:
+The temperature in Celsius: -1
+The temperature in Fahrenheit: 30.2
+The temperature in Kelvin: 272.15
+
+The temperature at the 11. hour:
+The temperature in Celsius: -3
+The temperature in Fahrenheit: 26.6
+The temperature in Kelvin: 270.15
+
+The temperature at the 12. hour:
+The temperature in Celsius: 2
+The temperature in Fahrenheit: 35.6
+The temperature in Kelvin: 275.15
+
+The temperature at the 13. hour:
+The temperature in Celsius: 3
+The temperature in Fahrenheit: 37.4
+The temperature in Kelvin: 276.15
+
+The temperature at the 14. hour:
+The temperature in Celsius: 2
+The temperature in Fahrenheit: 35.6
+The temperature in Kelvin: 275.15
+
+The temperature at the 15. hour:
+The temperature in Celsius: 6
+The temperature in Fahrenheit: 42.8
+The temperature in Kelvin: 279.15
+
+The temperature at the 16. hour:
+The temperature in Celsius: 0
+The temperature in Fahrenheit: 32
+The temperature in Kelvin: 273.15
+
+The temperature at the 17. hour:
+The temperature in Celsius: 8
+The temperature in Fahrenheit: 46.4
+The temperature in Kelvin: 281.15
+
+The temperature at the 18. hour:
+The temperature in Celsius: -2
+The temperature in Fahrenheit: 28.4
+The temperature in Kelvin: 271.15
+
+The temperature at the 19. hour:
+The temperature in Celsius: 0
+The temperature in Fahrenheit: 32
+The temperature in Kelvin: 273.15
+
+The temperature at the 20. hour:
+The temperature in Celsius: -7
+The temperature in Fahrenheit: 19.4
+The temperature in Kelvin: 266.15
+
+The temperature at the 21. hour:
+The temperature in Celsius: 9
+The temperature in Fahrenheit: 48.2
+The temperature in Kelvin: 282.15
+
+The temperature at the 22. hour:
+The temperature in Celsius: 9
+The temperature in Fahrenheit: 48.2
+The temperature in Kelvin: 282.15
+
+The temperature at the 23. hour:
+The temperature in Celsius: 7
+The temperature in Fahrenheit: 44.6
+The temperature in Kelvin: 280.15
+

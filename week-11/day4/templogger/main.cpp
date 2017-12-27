@@ -1,12 +1,3 @@
-/* Készíts egy aplikációt, ami temperature loggert imitál.
-Legyen egy temperature generátor õsosztály. Ez tud random alapon hõmérsékletet generálni.
-Dátum alapján az aznapi középhõmérséklet körül valamekkora (-10, +10) szórással. Ebbõl leszármazik 3,
- ami megvalósítja ezeket. Celsius, Kelvin és Fahrenheit fokokra.
-Legyen egy logger ami ezeket hívja, kap tõle számot és kiírja fileba.
-A program induljon úgy, hogy 3 parametert kap a command lineon.
-Egy datumot es, hogy hany naponyi  adatot generaljin. Egy nap 24 random adatot taroljon.
-A 3. Parameter a file neve amibe berakja  */
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +7,7 @@ A 3. Parameter a file neve amibe berakja  */
 #include <string.h>
 #include <stdio.h>
 #include <cstring>
+
 using namespace std;
 
 class TempGen{
@@ -68,7 +60,8 @@ public:
 
 void starting_screen();
 void user_input();
-void logger(string x, unsigned int a, string y);
+void date_error_handling(string date);
+int logger(string x, unsigned int a, string y);
 
 int main()
 {
@@ -77,6 +70,7 @@ int main()
     user_input();
 
     cout << "End of the program. You can check the created file in the same folder." << endl;
+
     return 0;
 }
 
@@ -113,25 +107,7 @@ void user_input(){
 
     cout << "Enter the date: ";
     cin >> user_input_date;
-
-    string delimiter = ".";
-    size_t pos = 0;
-    string token;
-    while ((pos = user_input_date.find(delimiter)) != std::string::npos) {
-        token = user_input_date.substr(0, pos);
-        cout << token << endl;
-        user_input_date.erase(0, pos + delimiter.length());
-    }
-    cout << user_input_date << endl;
-
-/*
-    if(token == NULL){
-        cout << "Please give in a valid date." << endl;
-        cout << "Enter the date: ";
-        cin >> user_input_date;
-    }
-*/
-
+    date_error_handling(user_input_date);
 
     cout << "Enter the number of days: ";
     cin >> user_input_days;
@@ -143,12 +119,12 @@ void user_input(){
 
     cout << "Enter the file name: ";
     cin >> user_input_file_name;
-// try catch
+
     logger(user_input_date, user_input_days, user_input_file_name);
 
 }
 
-void logger(string x, unsigned int a, string y){
+int logger(string x, unsigned int a, string y){
 
     TempGen tn;
     Celsius cs;
@@ -162,6 +138,17 @@ void logger(string x, unsigned int a, string y){
     ifstream infile;
     ofstream outfile;
     outfile.open(file_name.c_str());
+
+    /*  ifstream file;
+    file.exceptions ( ifstream::failbit | ifstream::badbit );
+    try {
+        file.open(file_name.c_str());
+        while (!file.eof()) file.get();
+        file.close();
+    }
+    catch (ifstream::failure e) {
+        cerr << "Exception opening/reading/closing file" << endl;
+    }  */
 
     outfile << "The given date: " << x <<endl;
     outfile << "The given number of days: " << a <<endl;
@@ -190,4 +177,85 @@ void logger(string x, unsigned int a, string y){
 
     outfile.close();
 
+    return 0;
+
 }
+
+void date_error_handling(string date){
+    string user_input_date = date;
+    int year = 0;
+    int mounth = 0;
+    int day = 0;
+    int error = 0;
+    string delimiter = ".";
+    size_t pos = 0;
+    string token;
+
+    pos = user_input_date.find(delimiter);
+    while (pos != std::string::npos) {
+        token = user_input_date.substr(0, pos);
+        year = atoi(token.c_str());
+
+        if(year > 2017 || year < 1990){
+            error++;
+            break;
+        } else {
+            user_input_date.erase(0, pos + delimiter.length());
+            break;
+        }
+
+    }
+
+    pos = user_input_date.find(delimiter);
+    while (pos != std::string::npos) {
+        token = user_input_date.substr(0, pos);
+        mounth = atoi(token.c_str());
+
+        if(mounth < 13 && mounth > 0){
+            user_input_date.erase(0, pos + delimiter.length());
+            break;
+        } else {
+            error++;
+            break;
+        }
+
+    }
+
+    pos = user_input_date.find(delimiter);
+    while (pos != std::string::npos) {
+        token = user_input_date.substr(0, pos);
+        day = atoi(token.c_str());
+
+        if(mounth == 2 && day > 29 && (year == 1992 || year == 1996 || year == 2000 || year == 2004 || year == 2008 || year == 2012 || year == 2016)) {
+            error++;
+            break;
+
+        } else if(mounth == 2 && day > 0 && day < 30 && (year == 1992 || year == 1996 || year == 2000 || year == 2004 || year == 2008 || year == 2012 || year == 2016)) {
+            user_input_date.erase(0, pos + delimiter.length());
+            break;
+
+        } else if(mounth == 2 && day > 28 && (year != 1992 || year != 1996 || year != 2000 || year != 2004 || year != 2008 || year != 2012 || year != 2016)) {
+            error++;
+            break;
+
+        } else if(day < 32 && day > 0){
+            user_input_date.erase(0, pos + delimiter.length());
+            break;
+
+        } else {
+            error++;
+            break;
+        }
+
+    }
+
+    if(year ==0 || mounth == 0 ||day == 0){
+        error++;
+    }
+
+    if(error > 0){
+        cout << "Invalid date. Try it again!" << endl;
+        user_input();
+    }
+
+};
