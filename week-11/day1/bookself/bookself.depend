@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1514589278 source:d:\én\greenfox\week-11\day1\bookself\main.cpp
+	<iostream>
+	<string>
+	<vector>
+
