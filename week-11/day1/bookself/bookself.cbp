@@ -33,6 +33,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="book.cpp" />
+		<Unit filename="book.h" />
+		<Unit filename="bookself_class.cpp" />
+		<Unit filename="bookself_class.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
