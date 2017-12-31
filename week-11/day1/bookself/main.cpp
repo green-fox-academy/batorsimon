@@ -23,8 +23,9 @@ using namespace std;
 
 typedef struct
 {
-    int a;
-    int b;
+    string a;
+    string b;
+    string c;
 }Mystruct;
 
 Mystruct myfun();
@@ -46,12 +47,13 @@ int main()
     cout << endl << "The books on the self are: " << endl;
     bs.list_books(&bk);
 
-    /*
+
     cout << endl << "The books on the self are: " << endl;
     Mystruct ms2;
     ms2 = myfun();
+     cout << ms2.a << ms2.b << ms2.c << endl;
 
-
+/*
      for(unsigned int i = 0; i < bs.get_counter()-1; ++i){
             cout << bs.list_books(&bk, i) << endl;
         //cout << i+1 << ". book. Name: " << book.at(i).get_name() << ". Year of publication: " << book.at(i).get_year_of_publication() << ". It is: " << book.at(i).get_number_of_pages() << " pages long." << endl;
@@ -59,4 +61,21 @@ int main()
 
 */
     return 0;
+}
+
+Mystruct myfun()
+{
+    string a;
+    string b;
+    string c;
+    Mystruct ms;
+
+    a = "name";
+    b = "year";
+    c = "length";
+    ms.a = a;
+    ms.b = b;
+    ms.c = c;
+
+    return(ms);
 }
