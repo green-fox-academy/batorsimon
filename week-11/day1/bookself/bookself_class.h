@@ -7,6 +7,14 @@
 
 using namespace std;
 
+typedef struct
+{
+    string a;
+    int b;
+    int c;
+}Mystruct;
+
+
 class Bookself{
 private:
     int counter;
@@ -21,6 +29,7 @@ public:
     void set_counter(int counter);
     int get_counter();
     void list_books(Book *bk);
+    Mystruct myfun(Book *bk, int i);
 };
 
 #endif // BOOKSELF_CLASS_H_INCLUDED

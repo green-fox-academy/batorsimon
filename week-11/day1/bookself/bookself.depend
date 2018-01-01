@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1514738769 source:d:\én\greenfox\week-11\day1\bookself\main.cpp
+1514807064 source:d:\én\greenfox\week-11\day1\bookself\main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -13,13 +13,13 @@
 1514726919 d:\én\greenfox\week-11\day1\bookself\book.h
 	<string>
 
-1514738353 source:d:\én\greenfox\week-11\day1\bookself\bookself_class.cpp
+1514807064 source:d:\én\greenfox\week-11\day1\bookself\bookself_class.cpp
 	<iostream>
 	<string>
 	<vector>
 	"bookself_class.h"
 
-1514738353 d:\én\greenfox\week-11\day1\bookself\bookself_class.h
+1514807064 d:\én\greenfox\week-11\day1\bookself\bookself_class.h
 	<string>
 	<vector>
 	"book.h"

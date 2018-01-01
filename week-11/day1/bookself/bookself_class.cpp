@@ -55,3 +55,21 @@ void Bookself::list_books(Book *bk){
     }
 
 };
+
+Mystruct Bookself::myfun(Book *bk, int i)
+{
+    string a;
+    int b;
+    int c;
+    Mystruct ms;
+
+    a = book.at(i).get_name();
+    b = book.at(i).get_year_of_publication();
+    c = book.at(i).get_number_of_pages();
+
+    ms.a = a;
+    ms.b = b;
+    ms.c = c;
+
+    return(ms);
+}
