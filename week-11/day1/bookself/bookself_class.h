@@ -12,24 +12,25 @@ typedef struct
     string a;
     int b;
     int c;
+
 }Mystruct;
 
 
 class Bookself{
-private:
-    int counter;
-    vector<Book> book;
+    private:
+        int counter;
+        vector<Book> book;
 
-public:
-    Bookself();
-    Bookself(int counter);
-    void add(Book *bk);
-    int get_oldest(Book *bk);
-    int get_longest(Book *bk);
-    void set_counter(int counter);
-    int get_counter();
-    void list_books(Book *bk);
-    Mystruct myfun(Book *bk, int i);
+    public:
+        Bookself();
+        Bookself(int counter);
+        void add(Book *bk);
+        int get_oldest(Book *bk);
+        int get_longest(Book *bk);
+        void set_counter(int counter);
+        int get_counter();
+        void list_books(Book *bk);
+        Mystruct myfun(Book *bk, int i);
 };
 
 #endif // BOOKSELF_CLASS_H_INCLUDED

@@ -30,10 +30,10 @@ int Bookself::get_longest(Book *bk){
 };
 
 int Bookself::get_oldest(Book *bk){
-    int result = 3000;
+    int result = 0;
 
     for(unsigned int i = 0; i < book.size(); ++i){
-        if(book.at(i).get_year_of_publication() < result){
+        if(book.at(i).get_year_of_publication() > result){
             result = book.at(i).get_year_of_publication();
         }
     }
@@ -51,7 +51,9 @@ int Bookself::get_counter() {
 
 void Bookself::list_books(Book *bk){
     for(unsigned int i = 0; i < book.size(); ++i){
-        cout << i+1 << ". book. Name: " << book.at(i).get_name() << ". Year of publication: " << book.at(i).get_year_of_publication() << ". It is: " << book.at(i).get_number_of_pages() << " pages long." << endl;
+        cout << i+1 << ". book. Name: " << book.at(i).get_name();
+        cout << ". Year of publication: " << book.at(i).get_year_of_publication();
+        cout << ". It is: " << book.at(i).get_number_of_pages() << " pages long." << endl;
     }
 
 };
