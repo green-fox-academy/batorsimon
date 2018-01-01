@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1514815654 source:d:\én\greenfox\week-11\day2\read_from_file\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
