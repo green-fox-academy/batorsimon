@@ -24,6 +24,7 @@ class Bookself{
     public:
         Bookself();
         Bookself(int counter);
+        ~Bookself();
         void add(Book *bk);
         int get_oldest(Book *bk);
         int get_longest(Book *bk);

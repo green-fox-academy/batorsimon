@@ -12,6 +12,13 @@ Bookself::Bookself(int counter){
     this->counter = counter;
 };
 
+Bookself::~Bookself() {
+    for(unsigned int i = 0; i < book.size(); i++){
+        delete &book[i];
+        book.clear();
+    }
+};
+
 void Bookself::add(Book *bk){
     book.push_back(*bk);
     counter++;

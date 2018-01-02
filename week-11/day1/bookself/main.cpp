@@ -37,9 +37,8 @@ int main()
     cout << "The oldest book was published in: " << bs.get_oldest(&bk) << endl;
     cout << "The longest book is: " << bs.get_longest(&bk) << " pages long." << endl;
 
-    cout << endl << "The books on the shelf are: " << endl;
-    bs.list_books(&bk);
-
+    //cout << endl << "The books on the shelf are: " << endl;
+    //bs.list_books(&bk);
 
     cout << endl << "The books on the shelf are: " << endl;
     Mystruct ms2;
@@ -52,7 +51,7 @@ int main()
     return 0;
 }
 
-void banner(){
+void banner() {
 
     cout << "        11111       1111       1111      1  1  " << endl;
     cout << "        1    1     1    1     1    1     1 1   " << endl;
@@ -61,5 +60,5 @@ void banner(){
     cout << "        1    1     1    1     1    1     1 1   " << endl;
     cout << "        11111       1111       1111      1  1  " << endl << endl;
 
-    cout << "           Welcome to this bookshelf!" << endl << endl;
+    cout << "           Welcome to this bookshelf!          " << endl << endl;
 }
