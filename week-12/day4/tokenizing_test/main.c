@@ -12,21 +12,23 @@ int main()
     int i = 0;
     int j = 0;
     float temp = 0;
-    char func_array[40] = {2, 9, 2, 9, 7, 6, 0, 4};
+    char func_array[40] = {'2', '9', 46, '2', '9', '7', '6', '0', '5' , '\0'};  // 29.297604
     char temp_arr[40];
+
     for(i = 0; func_array[i] != '\0';){
-        printf("func[%d]: %d\n", i, func_array[i]);
-        j = 0;
+        printf("func[%d]: %c\n", i, func_array[i]);
         temp_arr[j] = func_array[i];
         i++;
         j++;
-        if(i == 0){
-            temp = (float)atof(temp_arr);
-            printf("temp: %f\n",temp);
-            break;
-        }
+
     }
 
+    temp = (float)atof(temp_arr);
+    printf("temp: %f\n",temp);
+
+    for(i = 33; i < 50; i++){
+       //printf("%d: %c\n", i, i);
+    }
 
     //tokenizing(probe);
 

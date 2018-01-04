@@ -6,30 +6,28 @@ char *read_file_line_by_line();
 int couting_lines();
 
 char *linessssss();
+int readed = 0;
 
 int main()
 {
     //read_complete_file();
-
     int i = 0;
-    int lines;
-    lines = couting_lines();
-    printf("lines: %d\n", lines);
-
     char *p;
     printf("Data from the file:\n");
-    for(i = 0; i < lines; i++){
+    for(i = 0; i < couting_lines(); i++){
         p = read_file_line_by_line();
         printf("%s\n", p);
     }
     printf("End of the file!\n");
 
+/*
     char *p2;
     for(i = 0; i < lines; i++){
         p2 = linessssss();
         printf("%s\n", p2);
     }
     printf("End of the file!\n");
+*/
 
     return 0;
 }
@@ -40,19 +38,24 @@ char *read_file_line_by_line() {
     //fgets(file_name, 40, stdin);
     char temp_arr[1000];
     FILE *fptr;
+    fptr = readed;
+printf("fptr: %d. readed: %d   before reading!!\n", fptr, readed);
 
     if ((fptr = fopen(file_name, "r")) == NULL)
     {
         printf("Error! opening file"); // Program exits if file pointer returns NULL.
         exit(0);
+    } else{
+
+    fscanf(fptr,"%[^\n]", temp_arr); // reads text until newline
+    fptr = fptr+1;
+    readed = fptr;
+    printf("fptr: %d. readed: %d after reading\n", fptr, readed);
     }
 
-    //fscanfet belerakni egy függvénybe !!!
-    fscanf(fptr,"%[^\n]", temp_arr); // reads text until newline
     fclose(fptr);
 
     return temp_arr;
-
 };
 
 char *linessssss(){
@@ -73,11 +76,11 @@ char *linessssss(){
 
 
 int couting_lines(){
- int c;
- int lines_count = 0;
+    int c;
+    int lines_count = 0;
 
-  FILE *fptr;
-  fptr = fopen("test.txt", "r");
+    FILE *fptr;
+    fptr = fopen("test.txt", "r");
     while ((c = getc(fptr)) != EOF){
         if(c == '\n'){
             lines_count++;

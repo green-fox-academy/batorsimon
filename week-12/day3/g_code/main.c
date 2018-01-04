@@ -17,6 +17,8 @@ void search_codes(char func_array[]);
 int main()
 {
     char probe[500] = "G03 X29.297604 Y20.946643 Z-1.000000 I-1.029490 J-1.472092 F200.000000";
+    printf("%s\n", probe);
+
     tokenizing(probe);
 
     return 0;
@@ -47,162 +49,101 @@ void search_codes(char func_array[]){
     char temp_arr[50];
     int i = 0;
     int j = 0;
-    char* pEnd;
-    float f1, f2;
 
-    for(i = 0; func_array[i] != '\0'; i++){
+    //for(i = 0; func_array[i] != '\0'; i++){
+    for(i = 0; i < 1; i++){
         //printf("func_array[%d]: %c\n", i, func_array[i]);
 
         if(func_array[i] == 'F'){
             printf("found letter F\n");
-            for(i++; func_array[i] != '\0';){
-                printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
-                i++;
                 j++;
-                if(i == 0){
-                    break;
-                }
             }
-
-            f1 = strtof(temp_arr, &pEnd);
-            f2 = strtof(pEnd, NULL);
-
-            printf("\n f1: %f, f2: %f\n", f1, f2);
-
-            temp = strtof(temp_arr, &pEnd);
-            printf("temp: %d\n",temp);
-
-            for(i = 0; i < 10; i++){
-                printf("temp_arr[%d]: %d\n", i, temp_arr[i]);
-            }
+            temp = (float)atof(temp_arr);
             feed_rate(temp);
-/*
+
         } else if(func_array[i] == 'G'){
             printf("found letter G\n");
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             g_code(temp);
 
         } else if(func_array[i] == 'I'){
             printf("found letter I\n");
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             x_offset(temp);
 
         } else if(func_array[i] == 'J'){
             printf("found letter J\n");
-             for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;  for(i = 0; i < 10; i++){
-                printf("temp_arr[%d]: %f\n", i, temp_arr[i]);
-            }
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             y_offset(temp);
 
         } else if(func_array[i] == 'M'){
             printf("found letter M\n");
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             m_code(temp);
 
         } else if(func_array[i] == 'X'){
             printf("found letter X\n");
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             x_code(temp);
 
         } else if(func_array[i] == 'Y'){
             printf("found letter Y\n");
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             y_code(temp);
 
         } else if(func_array[i] == 'Z'){
             printf("found letter Z\n");
-            //for(i = 0; func_array[i] != '\0'; i++){  not working
-            for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
-                temp_arr[0] = func_array[i];
+            j = 0;
+            for(i++; func_array[i] != '\0'; i++){
+                temp_arr[j] = func_array[i];
                 j++;
-                i++;
-                temp = (float)atof(temp_arr);
-                printf("temp: %f\n",temp);
-                i++;
-                if(i == 0){
-                    break;
-                }
             }
+
+            temp = (float)atof(temp_arr);
             z_code(temp);
 
         } else {
             continue;
-            */
+
         }
 
 
@@ -239,6 +180,7 @@ void x_code(float temporary) {
     float temp = temporary;
     printf("in function x_code: temp = %f\n", temp);
      printf("it should be: 29.297604\n");
+
 };
 
 void y_code(float temporary) {
@@ -262,11 +204,11 @@ void feed_rate(float temporary) {
 void x_offset(float temporary) {
     float temp = temporary;
     printf("in function x_offset: temp = %f\n", temp);
-    printf("it should be: -1.472092\n");
+    printf("it should be: -1.029490\n");
 };
 
 void y_offset(float temporary) {
  float temp = temporary;
     printf("in function y_offset: temp = %f\n", temp);
-    printf("it should be: -1.029490\n");
+    printf("it should be: -1.472092\n");
 };
