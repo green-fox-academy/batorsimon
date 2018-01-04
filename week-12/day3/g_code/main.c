@@ -47,6 +47,8 @@ void search_codes(char func_array[]){
     char temp_arr[50];
     int i = 0;
     int j = 0;
+    char* pEnd;
+    float f1, f2;
 
     for(i = 0; func_array[i] != '\0'; i++){
         //printf("func_array[%d]: %c\n", i, func_array[i]);
@@ -54,19 +56,29 @@ void search_codes(char func_array[]){
         if(func_array[i] == 'F'){
             printf("found letter F\n");
             for(i++; func_array[i] != '\0';){
-                //printf("func[%d]: %c\n", i, func_array[i]);
+                printf("func[%d]: %c\n", i, func_array[i]);
                 j = 0;
                 temp_arr[j] = func_array[i];
                 i++;
                 j++;
                 if(i == 0){
-                    temp = (float)atof(temp_arr);
-                    printf("temp: %f\n",temp);
                     break;
                 }
             }
-            feed_rate(temp);
 
+            f1 = strtof(temp_arr, &pEnd);
+            f2 = strtof(pEnd, NULL);
+
+            printf("\n f1: %f, f2: %f\n", f1, f2);
+
+            temp = strtof(temp_arr, &pEnd);
+            printf("temp: %d\n",temp);
+
+            for(i = 0; i < 10; i++){
+                printf("temp_arr[%d]: %d\n", i, temp_arr[i]);
+            }
+            feed_rate(temp);
+/*
         } else if(func_array[i] == 'G'){
             printf("found letter G\n");
             for(i++; func_array[i] != '\0';){
@@ -104,7 +116,9 @@ void search_codes(char func_array[]){
             printf("found letter J\n");
              for(i++; func_array[i] != '\0';){
                 //printf("func[%d]: %c\n", i, func_array[i]);
-                j = 0;
+                j = 0;  for(i = 0; i < 10; i++){
+                printf("temp_arr[%d]: %f\n", i, temp_arr[i]);
+            }
                 temp_arr[0] = func_array[i];
                 j++;
                 i++;
@@ -188,6 +202,7 @@ void search_codes(char func_array[]){
 
         } else {
             continue;
+            */
         }
 
 
