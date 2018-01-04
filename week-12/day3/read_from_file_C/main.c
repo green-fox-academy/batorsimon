@@ -47,8 +47,9 @@ char *read_file_line_by_line() {
         exit(0);
     }
 
+    //fscanfet belerakni egy függvénybe !!!
     fscanf(fptr,"%[^\n]", temp_arr); // reads text until newline
-    //fclose(fptr);
+    fclose(fptr);
 
     return temp_arr;
 

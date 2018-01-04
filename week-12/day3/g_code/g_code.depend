@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1514997892 source:d:\én\greenfox\week-12\day3\g_code\main.c
+1515067170 source:d:\én\greenfox\week-12\day3\g_code\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
