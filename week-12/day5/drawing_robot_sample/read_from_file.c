@@ -1,26 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void read_complete_file();
-char *read_file_line_by_line();
-int couting_lines();
-char *linessssss();
-
-int readed = 0;
-
-int main()
-{
-    read_complete_file();
-
-    int i = 0;
-    char *p;
-    for(i = 0; i < couting_lines(); i++){
-        p = read_file_line_by_line();
-        printf("%s\n", p);
-    }
-
-    return 0;
-}
+#include "read_from_file.h"
 
 char *read_file_line_by_line() {
 
@@ -36,7 +18,7 @@ char *read_file_line_by_line() {
         printf("Error! opening file"); // Program exits if file pointer returns NULL.
         exit(0);
     } else{
-        fptr = fopen(file_name, "r");
+        //fptr = fopen(file_name, "r");
         fscanf(fptr,"%[^\n]", temp_arr); // reads text until newline
         fptr = fptr+1;
         readed = fptr;
@@ -63,22 +45,6 @@ int couting_lines(){
     fclose(fptr);
     return lines_count;
 }
-
-char *linessssss(){
-    static const char filename[] = "test.txt";
-    FILE *file = fopen ( filename, "r" );
-    if ( file != NULL )
-    {
-      char line [128]; /* or other suitable maximum line size */
-      while ( fgets ( line, sizeof line, file ) != NULL ) /* read a line */
-      {
-         //fputs ( line, stdout ); /* write the line */
-         fputs(line, file);
-         return line;
-      }
-      fclose ( file );
-    }
-};
 
 void read_complete_file() {
 
