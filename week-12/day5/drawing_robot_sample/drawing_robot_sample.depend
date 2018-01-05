@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1515149268 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\main.c
+1515171115 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\main.c
 	<stdio.h>
 	<stdlib.h>
 	"g_code.h"
@@ -11,7 +11,7 @@
 	<string.h>
 	"read_from_file.h"
 
-1515151702 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
+1515157724 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -33,12 +33,14 @@ void tokenizing(char func_array[]) {
     while (token != NULL) {
         codes[codes_length++] = token;
         token = strtok(NULL, delimiter);
+        //printf("codes[%d]: '%c'\n", codes_length, codes[codes_length]);
+        printf("token %d: %s\n", codes_length, token);
     }
 
     int i = 0;
     for(i = 0; i < codes_length; i++){
-        //printf("codes[%d]: %s\n", i, codes[i]);
-        search_codes(codes[i]);
+        printf("codes[%d]: %s\n", i, codes[i]);
+        //search_codes(codes[i]);
     }
 
 };
