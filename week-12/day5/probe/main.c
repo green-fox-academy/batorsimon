@@ -9,12 +9,10 @@ char *givingbackanarray();
 int main()
 {
     couting_lines();
-    //printf("%d\n", couting_lines());
     //printf("%s\n", line_length);
 
     printf("\n--------------\n");
     printf(givingbackanarray());
-
 
     /*
     char file_name[40] = "test.txt";
@@ -44,6 +42,7 @@ int main()
         //printf("%d: %d\n", i, line_length[i]);
     }
 */
+
     return 0;
 }
 
@@ -89,10 +88,11 @@ char *givingbackanarray(){
             line_length[lines_count] = i;
             lines_count++;
             strcpy(line_length, temp);
-            return line_length;
+            //return line_length;
         }
     }
     lines_count++;
     fclose(fptr);
+    return line_length;
 
 };

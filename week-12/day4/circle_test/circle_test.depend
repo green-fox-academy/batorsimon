@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1516051657 source:d:\én\greenfox\week-12\day4\circle_test\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

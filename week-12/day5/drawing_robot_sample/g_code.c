@@ -4,144 +4,178 @@
 
 #include "g_code.h"
 
+
 void tokenizing(char func_array[]) {
-    printf("\nin func tokenizing: %s\n", func_array);
-    char *codes[50]; //  tokenizing into 7 pieces
+
+    printf("\nIn func tokenizing: %s\n", func_array);
+    char temp[300];
+    strcpy(temp, func_array);
+    char *codes[10]; //  tokenizing intO pieces
     int codes_length = 0;
     const char delimiter[4] = " ";
-    char *token = strtok(func_array, delimiter); // get the first token
-    codes[codes_length] = token;
-    printf("token %d: %s\n", codes_length, token);
+    char *token = strtok(temp, delimiter); // get the first token
 
     while (token != NULL) {
         codes[codes_length] = token;
         token = strtok(NULL, delimiter);
         codes_length++;
-        //printf("codes[%d]: '%c'\n", codes_length, codes[codes_length]);
-        //printf("token %d: %s\n", codes_length, token);
     }
 
     int i = 0;
     for(i = 0; i < codes_length; ++i){
-        printf("codes[%d]: '%s'\n", i, codes[i]);
         search_codes(codes[i]);
+
     }
 
 };
 
 void search_codes(char func_array[]){
-    printf(" in func search codes: %s\n", func_array);
+    //printf(" in func search codes: %s\n", func_array);
     float temp = 0;
     char temp_arr[50];
     int i = 0;
     int j = 0;
 
-    //for(i = 0; func_array[i] != '\0'; i++){
     for(i = 0; i < 1; i++){
-        //printf("func_array[%d]: %c\n", i, func_array[i]);
-
         if(func_array[i] == 'F'){
-            printf("found letter F\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
             temp = (float)atof(temp_arr);
-            feed_rate(temp);
+            code.F = temp;
+            //feed_rate(temp);
 
         } else if(func_array[i] == 'G'){
-            printf("found letter G\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            g_code(temp);
+            code.G = temp;
+            //g_code(temp);
 
         } else if(func_array[i] == 'I'){
-            printf("found letter I\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            x_offset(temp);
+            code.I = temp;
+            //x_offset(temp);
 
         } else if(func_array[i] == 'J'){
-            printf("found letter J\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            y_offset(temp);
+            code.J = temp;
+            //y_offset(temp);
 
-        } else if(func_array[i] == 'M'){
-            printf("found letter M\n");
+        } else if(func_array[i] == 'R'){
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            m_code(temp);
+            code.R = temp;
+            //m_code(temp);
 
         } else if(func_array[i] == 'X'){
-            printf("found letter X\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            x_code(temp);
+            code.x = temp;
+            //x_code(temp);
 
         } else if(func_array[i] == 'Y'){
-            printf("found letter Y\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            y_code(temp);
+            code.y = temp;
+            //y_code(temp);
 
         } else if(func_array[i] == 'Z'){
-            printf("found letter Z\n");
             j = 0;
+            memset(temp_arr, '\0', 50);
             for(i++; func_array[i] != '\0'; i++){
                 temp_arr[j] = func_array[i];
                 j++;
             }
 
             temp = (float)atof(temp_arr);
-            z_code(temp);
+            code.Z = temp;
+            //z_code(temp);
 
         } else {
             continue;
 
         }
 
-
     }
 
 };
 
+void printel(){
+   printf("G: %d, x: %g, y: %g, Z: %g, I: %g, J: %g, R: %g, F: %d \n", code.G, code.x, code.y, code.Z, code.I, code.J, code.R, code.F);
+
+/*
+    if(code.G == 1){
+        move(code.x, code.y);
+        Z_Axis(code.Z);
+    }
+
+    if(code.G == 2 ||code.G == 3){
+            if(code.R == 0){
+                arc(code.G, code.I, code.J);
+            } else {
+                arc(code.G, code.R);
+            }
+
+    }
+
+     if(code.G == 28){
+       home();
+    }
+
+    */
+
+}
+
+//printf("%g", codes);
+
+
 void g_code(float temporary){
     float g_code = temporary;
-    printf("in function g_code: temp = %f\n", g_code);
-    //printf("it should be: 03\n");
+    //printf("in function g_code: temp = %f\n", g_code);
+    //one_line.g_code = temp;ú
 
+/*
     if(g_code == 0){
          printf("rapid positioning\n");
 
@@ -163,20 +197,16 @@ void g_code(float temporary){
     }  else if(g_code == 28){
         printf("home(machine zero aka reference point)\n");
 
-    }  else if(g_code == 1){
-        printf("linear interpolation\n");
-
     } else{
         printf("Not valid G code!!\n");
         exit(0);
     }
-
+*/
 };
 
 void m_code(float temporary) {
      float temp = temporary;
-    printf("in function m_code: temp = %f\n", temp);
-    //printf("it should be: - \n");
+    //printf("in function m_code: temp = %f\n", temp);
 
     if(temp == 2){
         printf("End of program\n");
@@ -194,17 +224,17 @@ void m_code(float temporary) {
 
 void x_code(float temporary) {
     float temp = temporary;
-    printf("in function x_code: temp = %f\n", temp);
-    // printf("it should be: 29.297604\n");
+    //printf("in function x_code: temp = %f\n", temp);
 
      if(temp < -120){
-        printf("X coordinate cant be lower than -120!\n");
+       // printf("X coordinate cant be lower than -120!\n");
 
-    } else if(temp > 300) {
-        printf("X coordinate cant be higher than 300!\n");
+    } else if(temp > 340) {
+        temp = 340;
+       // printf("X coordinate cant be higher than 300!\n");
 
     } else {
-        printf("i will go in X: %f mm\n", temp);
+       // printf("i will go in X: %f mm\n", temp);
 
     }
 
@@ -212,34 +242,32 @@ void x_code(float temporary) {
 
 void y_code(float temporary) {
     float temp = temporary;
-    printf("in function y_code: temp = %f\n", temp);
-    // printf("it should be: 20.946643\n");
+   // printf("in function y_code: temp = %f\n", temp);
 
     if(temp < -120){
-        printf("Y coordinate cant be lower than -120!\n");
+      //  printf("Y coordinate cant be lower than -120!\n");
 
     } else if(temp > 300) {
-        printf("Y coordinate cant be higher than 300!\n");
+       // printf("Y coordinate cant be higher than 300!\n");
 
     } else {
-        printf("i will go in Y: %f mm\n", temp);
+       // printf("i will go in Y: %f mm\n", temp);
 
     }
 };
 
 void z_code(float temporary) {
     float temp = temporary;
-    printf("in function z_code: temp = %f\n", temp);
-    // printf("it should be: -1.000000\n");
+   // printf("in function z_code: temp = %f\n", temp);
 
     if(temp < -120){
-        printf("Z coordinate cant be lower than -120!\n");
+      //  printf("Z coordinate cant be lower than -120!\n");
 
     } else if(temp > 300) {
-        printf("Z coordinate cant be higher than 300!\n");
+      //  printf("Z coordinate cant be higher than 300!\n");
 
     } else {
-        printf("i will go in Z: %f mm\n", temp);
+     //   printf("i will go in Z: %f mm\n", temp);
 
     }
 
@@ -247,29 +275,29 @@ void z_code(float temporary) {
 
 void feed_rate(float temporary) {
     float temp = temporary;
-    printf("in function feed_rate: temp = %f\n", temp);
-    // printf("it should be: 200.000000\n");
+   // printf("in function feed_rate: temp = %f\n", temp);
 
     if(temp < -120){
-        printf("Feed rate cant be lower than -120!\n");
+      //  printf("Feed rate cant be lower than -120!\n");
+        //struct.feed_rate = temp;
 
     } else if(temp > 300) {
-        printf("Feed rate cant be higher than 300!\n");
+      //  printf("Feed rate cant be higher than 300!\n");
 
     } else {
-        printf("i will go with: %f mm/s\n", temp);
+     //   printf("i will go with: %f mm/s\n", temp);
 
     }
 };
 
 void x_offset(float temporary) {
     float temp = temporary;
-    printf("in function x_offset: temp = %f\n", temp);
-    // printf("it should be: -1.029490\n");
+  //  printf("in function x_offset: temp = %f\n", temp);
+
 };
 
 void y_offset(float temporary) {
- float temp = temporary;
-    printf("in function y_offset: temp = %f\n", temp);
-    // printf("it should be: -1.472092\n");
+    float temp = temporary;
+   // printf("in function y_offset: temp = %f\n", temp);
+
 };

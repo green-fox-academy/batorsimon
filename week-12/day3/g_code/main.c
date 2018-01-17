@@ -28,6 +28,7 @@ void tokenizing(char func_array[]) {
     char *codes[50]; //  tokenizing into 7 pieces
     int codes_length = 0;
     const char delimiter[3] = " ";
+    char temp[50];
     char *token = strtok(func_array, delimiter); // get the first token
 
     while (token != NULL) {
@@ -39,8 +40,8 @@ void tokenizing(char func_array[]) {
 
     int i = 0;
     for(i = 0; i < codes_length; i++){
-        printf("codes[%d]: %s\n", i, codes[i]);
-        //search_codes(codes[i]);
+        //printf("codes[%d]: %s\n", i, codes[i]);
+        search_codes(codes[i]);
     }
 
 };

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "g_code.h"
 #include "read_from_file.h"
 
 char *read_file_line_by_line() {
@@ -50,26 +51,34 @@ void read_complete_file() {
 
     printf("Type in the file you want to read with it's extension: ");
     char file_name[40] = "test.txt";
-    //fgets(file_name, 40, stdin);
     printf("\nThe requested file name: %s\n", file_name);
 
+    char arr[60] = {0};
     FILE *file;
     int c;
     int lines = 0;
     file = fopen(file_name, "r");
+    int i = 0;
 
     if (file) {
         printf("The file contains the following: \n\n");
         while ((c = getc(file)) != EOF){
-                putchar(c);
-                if(c == '\n'){
-                    lines++;
-                }
+            arr[i] = c;
+            i++;
+
+            if(c == '\n'){
+                tokenizing(arr);
+                 printel();
+                code = (codes){0};
+                memset(arr, '\0', 60);
+                i = 0;
+            }
         }
 
+        tokenizing(arr);
+        printel();
+
         fclose(file);
-        lines++;
-        printf("\nlines: %d\n", lines);
         printf("\n\nEnd of file\n\n");
 
     } else {
