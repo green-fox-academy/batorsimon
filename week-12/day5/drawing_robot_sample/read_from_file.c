@@ -50,7 +50,7 @@ int couting_lines(){
 void read_complete_file() {
 
     printf("Type in the file you want to read with it's extension: ");
-    char file_name[40] = "test.txt";
+    char file_name[40] = "greenfox.txt";
     printf("\nThe requested file name: %s\n", file_name);
 
     char arr[60] = {0};
@@ -68,8 +68,17 @@ void read_complete_file() {
 
             if(c == '\n'){
                 tokenizing(arr);
-                 printel();
-                code = (codes){0};
+                printel();
+                //code = (codes){0,0,0,0,0,0,0};
+
+                code.G = 0;
+                code.x = 0;
+                code.y = 0;
+                code.Z = 0;
+                code.I = 0;
+                code.J = 0;
+                code.R = 0;
+
                 memset(arr, '\0', 60);
                 i = 0;
             }
@@ -77,6 +86,7 @@ void read_complete_file() {
 
         tokenizing(arr);
         printel();
+        code = (codes){0,0,0,0,0,0,0};
 
         fclose(file);
         printf("\n\nEnd of file\n\n");

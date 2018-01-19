@@ -7,7 +7,7 @@
 
 void tokenizing(char func_array[]) {
 
-    printf("\nIn func tokenizing: %s\n", func_array);
+    //printf("\nIn func tokenizing: %s\n", func_array);
     char temp[300];
     strcpy(temp, func_array);
     char *codes[10]; //  tokenizing intO pieces
@@ -24,7 +24,6 @@ void tokenizing(char func_array[]) {
     int i = 0;
     for(i = 0; i < codes_length; ++i){
         search_codes(codes[i]);
-
     }
 
 };
@@ -45,7 +44,11 @@ void search_codes(char func_array[]){
                 j++;
             }
             temp = (float)atof(temp_arr);
-            code.F = temp;
+            if(temp <= 0){
+
+            } else {
+                code.F = temp;
+            }
             //feed_rate(temp);
 
         } else if(func_array[i] == 'G'){
@@ -58,7 +61,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.G = temp;
-            //g_code(temp);
 
         } else if(func_array[i] == 'I'){
             j = 0;
@@ -70,7 +72,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.I = temp;
-            //x_offset(temp);
 
         } else if(func_array[i] == 'J'){
             j = 0;
@@ -82,7 +83,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.J = temp;
-            //y_offset(temp);
 
         } else if(func_array[i] == 'R'){
             j = 0;
@@ -94,7 +94,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.R = temp;
-            //m_code(temp);
 
         } else if(func_array[i] == 'X'){
             j = 0;
@@ -106,7 +105,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.x = temp;
-            //x_code(temp);
 
         } else if(func_array[i] == 'Y'){
             j = 0;
@@ -118,7 +116,6 @@ void search_codes(char func_array[]){
 
             temp = (float)atof(temp_arr);
             code.y = temp;
-            //y_code(temp);
 
         } else if(func_array[i] == 'Z'){
             j = 0;
@@ -129,8 +126,12 @@ void search_codes(char func_array[]){
             }
 
             temp = (float)atof(temp_arr);
+            if(temp > 0){
+                temp = 1;
+            } else if( temp <= 0){
+                temp = 0;
+            }
             code.Z = temp;
-            //z_code(temp);
 
         } else {
             continue;
@@ -142,7 +143,12 @@ void search_codes(char func_array[]){
 };
 
 void printel(){
-   printf("G: %d, x: %g, y: %g, Z: %g, I: %g, J: %g, R: %g, F: %d \n", code.G, code.x, code.y, code.Z, code.I, code.J, code.R, code.F);
+
+    if(code.G + code.x + code.y + code.Z + code.I + code.J + code.R == 0){
+       // printf("asddsa\n");
+    } else {
+        printf("G: %d, x: %g, y: %g, Z: %g, I: %g, J: %g, R: %g, F: %d \n", code.G, code.x, code.y, code.Z, code.I, code.J, code.R, code.F);
+    }
 
 /*
     if(code.G == 1){
@@ -167,7 +173,8 @@ void printel(){
 
 }
 
-//printf("%g", codes);
+
+
 
 
 void g_code(float temporary){

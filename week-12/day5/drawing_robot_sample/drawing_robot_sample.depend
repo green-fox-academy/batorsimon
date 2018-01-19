@@ -5,20 +5,20 @@
 	"g_code.h"
 	"read_from_file.h"
 
-1516202293 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\read_from_file.c
+1516357225 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\read_from_file.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"g_code.h"
 	"read_from_file.h"
 
-1516202520 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
+1516356642 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"g_code.h"
 
-1516201858 d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.h
+1516357225 d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.h
 
 1515146736 d:\én\greenfox\week-12\day5\drawing_robot_sample\read_from_file.h
 
