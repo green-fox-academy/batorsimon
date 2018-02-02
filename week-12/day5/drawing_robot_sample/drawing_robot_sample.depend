@@ -5,14 +5,14 @@
 	"g_code.h"
 	"read_from_file.h"
 
-1516357225 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\read_from_file.c
+1517322435 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\read_from_file.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"g_code.h"
 	"read_from_file.h"
 
-1516356642 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
+1517322383 source:d:\én\greenfox\week-12\day5\drawing_robot_sample\g_code.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -144,32 +144,45 @@ void search_codes(char func_array[]){
 
 void printel(){
 
-    if(code.G + code.x + code.y + code.Z + code.I + code.J + code.R == 0){
-       // printf("asddsa\n");
+    if(code.G + code.x + code.y == 0){
+        printf("empty line!\n");
+
+    } else if(code.G == 100) {
+        printf("wrong code!\n");
+
     } else {
         printf("G: %d, x: %g, y: %g, Z: %g, I: %g, J: %g, R: %g, F: %d \n", code.G, code.x, code.y, code.Z, code.I, code.J, code.R, code.F);
+
     }
 
-/*
+
+    if(code.G == 0){
+        printf("G%d I will move in X: %g and in Y: %g mm-s\n", code.G, code.x, code.y);
+        //move(code.x, code.y);
+        //Z_Axis(code.Z);
+    }
+
     if(code.G == 1){
-        move(code.x, code.y);
-        Z_Axis(code.Z);
+        printf("G%d I will move in X: %g and in Y: %g mm-s\n", code.G, code.x, code.y);
+       //move(code.x, code.y);
+        //Z_Axis(code.Z);
     }
 
     if(code.G == 2 ||code.G == 3){
             if(code.R == 0){
-                arc(code.G, code.I, code.J);
+                printf("G%d I draw circle in X: %g and in Y: %g mm-s\n", code.G, code.x, code.y);
+                //arc(code.G, code.I, code.J);
             } else {
-                arc(code.G, code.R);
+                printf("G%d I draw circle in X: %g and in Y: %g mm-s\n", code.G, code.x, code.y);
+                //arc(code.G, code.R);
             }
 
     }
 
      if(code.G == 28){
-       home();
+       printf("homeing\n");
+       //home();
     }
-
-    */
 
 }
 

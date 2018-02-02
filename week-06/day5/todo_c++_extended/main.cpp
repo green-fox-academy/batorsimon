@@ -14,7 +14,7 @@ class Todo{
             this->done = done;
         }
 
-        void set_x(string x){
+        void set_x(string x){7
             this->x = x;
         }
         string get_x(){
