@@ -8,10 +8,10 @@ void decision();
 
 int main()
 {
-   // task();
+    task();
 
     float array[30] = { 23.4, 55.2, 22.6, 3.83, 40.5, 18.66};
-    //multiple(array);
+    multiple(array);
 
     decision();
 
@@ -20,6 +20,9 @@ int main()
 
 
 void multiple(float temp[]) {
+    //float temp[]
+    //strcpy(temp2, temp);
+
     int i = 0;
     float sum = 0;
     float avg = 0;
@@ -46,6 +49,8 @@ void multiple(float temp[]) {
     printf("\nThe sum of the multiplied array: %f\n", sum);
     printf("The average of the multiplied array: %f\n\n", avg);
 
+    temp[0] = '\0';
+
 }
 
 void decision() {
@@ -59,13 +64,25 @@ void decision() {
 
     if (strcmp(antwort, "Y") == 0) {
         printf("Okay! let's type in some numbers: \n");
-        printf("If you are finished press a capital F\n");
 
-        do{
+        while(1) {
+
             scanf("%f", &temp);
             array[i] = temp;
             i++;
-        } while (strcmp(antwort, "F") == 0);
+            array[i] = '\0';
+
+            printf("Do you want to type in more? Y or N? \n");
+            scanf("%s", antwort);
+
+            if (strcmp(antwort, "Y") == 0) {
+                continue;
+
+            } else if (strcmp(antwort, "N") == 0) {
+                multiple(array);
+                exit(0);
+            }
+        }
 
     } else if (strcmp(antwort, "N") == 0) {
         printf("Then have a nice day!\n");
