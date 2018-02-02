@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1517562373 source:d:\én\greenfox\exam\exam\main.c
+1517563894 source:d:\én\greenfox\exam\exam\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
